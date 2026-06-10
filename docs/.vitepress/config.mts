@@ -13,12 +13,12 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   srcExclude: [
-    '**/images/**',
-    '**/intro.md'
+    '**/images/**'
   ],
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
+      { text: '简介', link: '/intro.md' },
       { text: '项目简介', link: '/project-intro' },
       { text: 'AI', link: '/ai/' },
       { text: 'BPM', link: '/bpm/' },
