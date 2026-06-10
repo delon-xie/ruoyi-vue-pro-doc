@@ -6,6 +6,7 @@ const teekConfig = defineTeekConfig({});
 
 // VitePress configuration
 export default defineConfig({
+  base: '/ruoyi-vue-pro-doc/',
   extends: teekConfig,
   title: 'RuoYi-Vue-Pro 文档',
   description: 'RuoYi-Vue-Pro 项目文档',
@@ -446,6 +447,9 @@ export default defineConfig({
       ]
     }
   },
+  socialLinks: [
+    { icon: 'github', link: 'https://github.com/delon-xie/ruoyi-vue-pro-doc' }
+  ],
   markdown: {
     lineNumbers: true
   }
