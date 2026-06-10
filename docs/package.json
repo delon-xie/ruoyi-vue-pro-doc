@@ -1,0 +1,17 @@
+{
+  "name": "ruoyi-vue-pro-doc",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vitepress-theme-teek": "^1.5.6"
+  },
+  "dependencies": {
+    "vue": "^3.5.0"
+  }
+}

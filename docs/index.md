@@ -1,0 +1,4 @@
+---
+home: true
+bannerBg: auto
+---
