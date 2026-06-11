@@ -1,12 +1,12 @@
 # 异步任务
 
-[`yudao-spring-boot-starter-job` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-job/) 技术组件，除了提供定时任务的功能，还提供了 Async 异步任务的能力。系统使用异步任务，提升执行效率。例如说：
-- [操作日志模块 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/logger/OperateLogServiceImpl.java#L42-L56)，异步记录【操作日志】
-- [访问日志模块 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/service/logger/ApiAccessLogServiceImpl.java#L39-L44)，异步记录【访问日志】
+[`yudao-spring-boot-starter-job`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-job/) 技术组件，除了提供定时任务的功能，还提供了 Async 异步任务的能力。系统使用异步任务，提升执行效率。例如说：
+- [操作日志模块](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/logger/OperateLogServiceImpl.java#L42-L56)，异步记录【操作日志】
+- [访问日志模块](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/service/logger/ApiAccessLogServiceImpl.java#L39-L44)，异步记录【访问日志】
 友情提示：
-如果你未学习过 Spring 异步任务，可以后续阅读 [《芋道 Spring Boot 异步任务入门 》 (opens new window)](https://www.iocoder.cn/Spring-Boot/Async-Job/?yudao) 文章。
+如果你未学习过 Spring 异步任务，可以后续阅读 [《芋道 Spring Boot 异步任务入门 》](https://www.iocoder.cn/Spring-Boot/Async-Job/?yudao) 文章。
 ## # 1. Async 配置
-在 [YudaoAsyncAutoConfiguration (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-job/src/main/java/cn/iocoder/yudao/framework/quartz/config/YudaoAsyncAutoConfiguration.java) 配置类，设置使用 [TransmittableThreadLocal (opens new window)](https://github.com/alibaba/transmittable-thread-local)，解决异步执行时上下文传递的问题。如下图所示：
+在 [YudaoAsyncAutoConfiguration](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-job/src/main/java/cn/iocoder/yudao/framework/quartz/config/YudaoAsyncAutoConfiguration.java) 配置类，设置使用 [TransmittableThreadLocal](https://github.com/alibaba/transmittable-thread-local)，解决异步执行时上下文传递的问题。如下图所示：
 ![YudaoAsyncAutoConfiguration 配置](/images/01.png) 友情提示：
 项目使用到 ThreadLocal 的地方，建议都使用 TransmittableThreadLocal 进行替换。
 ## # 2. 引入依赖
@@ -16,7 +16,7 @@
 cn.iocoder.boot
 yudao-spring-boot-starter-job
 ### # 2.2 添加 @Async 注解
-在 [ApiAccessLogServiceImpl (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/service/logger/ApiAccessLogServiceImpl.java#L39-L44) 的 `#createApiAccessLogAsync(...)` 方法上，添加 `@Async` 注解，声明它要异步执行。如下图所示：
+在 [ApiAccessLogServiceImpl](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/service/logger/ApiAccessLogServiceImpl.java#L39-L44) 的 `#createApiAccessLogAsync(...)` 方法上，添加 `@Async` 注解，声明它要异步执行。如下图所示：
 ![ApiAccessLogServiceImpl 类](/images/02.png) 
 ### # 2.3 测试调用
 随便请求一个 RESTful API 接口，可以看到在异步任务的线程池中，进行了访问日志的记录。如下图所示：

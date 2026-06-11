@@ -4,9 +4,9 @@
 ![Jenkins 部署](/images/01.png) 友情提示：
 本文是 [《开发指南 —— Linux 部署》](/deployment-linux) 的加强版，差别在于使用 Jenkins 部署。
 ## # 1. 安装 Jenkins
-阅读 [《芋道 Jenkins 极简入门 》 (opens new window)](https://www.iocoder.cn/Jenkins/install/?yudao) 文章，进行 Jenkins 的安装。
+阅读 [《芋道 Jenkins 极简入门 》](https://www.iocoder.cn/Jenkins/install/?yudao) 文章，进行 Jenkins 的安装。
 ## # 2. 部署后端
-阅读 [《芋道 Spring Boot 持续交付 Jenkins 入门 》 (opens new window)](https://www.iocoder.cn/Spring-Boot/Jenkins/?yudao) 文章，进行后端的部署。
+阅读 [《芋道 Spring Boot 持续交付 Jenkins 入门 》](https://www.iocoder.cn/Spring-Boot/Jenkins/?yudao) 文章，进行后端的部署。
 可参考 Jenkins 配置如下：
 ![Build](/images/01.png) ![Post Steps](/images/02.png) 
 ## # 3. 部署前端

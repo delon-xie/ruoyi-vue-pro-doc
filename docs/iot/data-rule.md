@@ -1,7 +1,7 @@
 # 数据流转
 
 推荐阅读：
-- [《阿里云物联网平台 —— 云产品流转》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/data-forwarding-v2-overview)
+- [《阿里云物联网平台 —— 云产品流转》](https://help.aliyun.com/zh/iot/user-guide/data-forwarding-v2-overview)
 数据流转模块，由 `yudao-module-iot` 后端模块的 `rule/data` 包实现。它将设备上行消息，按照规则转发到外部系统（如 HTTP、Kafka、RocketMQ、RabbitMQ、Redis、TCP、WebSocket 等），实现设备数据与业务系统的打通。
 它和 [《场景联动》](/iot/scene-rule/) 的区别在于：数据流转侧重于"数据推送到外部系统"，场景联动侧重于"设备控制和告警"。
 ## # 1. 数据流转

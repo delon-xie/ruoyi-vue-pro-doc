@@ -12,7 +12,7 @@
 - Redis：缓存
 - Nginx：负载均衡
 ### # 1.1 安装 Docker
-执行如下命令，进行 Docker 的安装。参考自 [https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance (opens new window)](https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance) 文档。
+执行如下命令，进行 Docker 的安装。参考自 [https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance](https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance) 文档。
 # ① 运行以下命令，安装 Docker 存储驱动的依赖包
 dnf install -y device-mapper-persistent-data lvm2
 # ② 添加稳定的 Docker 软件源
@@ -28,10 +28,10 @@ systemctl start docker
 systemctl enable docker
 补充说明：由于访问 Docker 镜像不稳定，一般建议加速访问！！！
 问题反馈：
-- [https://t.zsxq.com/sfdMJ (opens new window)](https://t.zsxq.com/sfdMJ)
+- [https://t.zsxq.com/sfdMJ](https://t.zsxq.com/sfdMJ)
 可参考加速方式：
-- [DaoCloud / public-image-mirror (opens new window)](https://github.com/DaoCloud/public-image-mirror)
-- [kubesre / docker-registry-mirrors (opens new window)](https://github.com/kubesre/docker-registry-mirrors)
+- [DaoCloud / public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
+- [kubesre / docker-registry-mirrors](https://github.com/kubesre/docker-registry-mirrors)
 ### # 1.2 安装 MySQL
 #### # 第一步，安装 MySQL（可选）
 友情提示：使用 Docker 安装 MySQL 是可选步骤，也可以直接安装 MySQL，或者购买 MySQL 云服务。
@@ -44,7 +44,7 @@ docker run -v /work/mysql/:/var/lib/mysql \
 ② 执行 `ls /work/mysql` 命令，查看 `/work/mysql/` 目录的数据库文件。
 ![数据库文件](/images/03.png) 
 #### # 第二步，导入 SQL 脚本
-创建一个名字为 `ruoyi-vue-pro` 数据库，执行数据库对应的 [`sql` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/sql) 目录下的 SQL 文件，进行初始化。
+创建一个名字为 `ruoyi-vue-pro` 数据库，执行数据库对应的 [`sql`](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/sql) 目录下的 SQL 文件，进行初始化。
 ![使用 Navicat 导入 SQL 脚本](/images/02.png) 
 ### # 1.3 安装 Redis
 友情提示：使用 Docker 安装 Redis 是可选步骤，也可以直接安装 Redis，或者购买 Redis 云服务。
@@ -99,7 +99,7 @@ m.daocloud.io/docker.io/nginx
 ② 执行 `docker ps` 命令，查看到 Nginx 容器的状态是 `UP` 的。
 ## # 2. 部署后端服务
 #### # 第一步，修改配置
-后端 dev 开发环境对应的是 [`application-dev.yaml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-dev.yaml) 配置文件，主要是修改 MySQL 和 Redis 为你的地址。如下图所示：
+后端 dev 开发环境对应的是 [`application-dev.yaml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-dev.yaml) 配置文件，主要是修改 MySQL 和 Redis 为你的地址。如下图所示：
 ![ 配置文件](/images/03.png) 
 #### # 第二步，编译后端
 在项目的根目录下，执行 `mvn clean package -Dmaven.test.skip=true` 命令，编译后端项目，构建出它的 Jar 包。如下图所示：
@@ -169,14 +169,14 @@ yudao-server
 ### # 3.1 yudao-ui-admin-vue3
 基于 Vue3 + element-plus
 #### # 第一步，修改配置
-前端 dev 开发环境对应的是 [`.env.dev` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/.env.dev#L6-L7) 配置文件，主要是修改 `VITE_BASE_URL` 为你的后端项目的访问地址。如下图所示：
+前端 dev 开发环境对应的是 [`.env.dev`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/.env.dev#L6-L7) 配置文件，主要是修改 `VITE_BASE_URL` 为你的后端项目的访问地址。如下图所示：
 ![ 配置文件](/images/ep-env.png) 
 #### # 第二步，编译前端
 在前端项目的根目录下，执行 `npm run build:dev` 命令，编译前端项目，构建出它的 `dist` 文件，里面是 HTML、CSS、JavaScript 等静态文件。如下图所示：
 ![编译前端](/images/img_eed1139b.png) 如下想要打包其它环境，可使用如下命令：
 npm run build:prod ## 打包 prod 生产环境
 npm run build:stage ## 打包 stage 预发布环境
-如果是在服务器上构建，并且出现卡死的情况，可以参考 [https://t.zsxq.com/Quq1U (opens new window)](https://t.zsxq.com/Quq1U) 或 [https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/IAU0T3 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/IAU0T3) 解决
+如果是在服务器上构建，并且出现卡死的情况，可以参考 [https://t.zsxq.com/Quq1U](https://t.zsxq.com/Quq1U) 或 [https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/IAU0T3](https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/IAU0T3) 解决
 其它高级参数说明【可暂时不看】：
 ① `VITE_PUBLIC_PATH`：前端打包的路径（静态资源的基础路径），一般默认为 `/` 即可。目前有两种用法：
 第一种，可用于二级目录部署。例如说，`VITE_PUBLIC_PATH` 设置为 `/demo` 。然后 Nginx 配置时，需要特殊注意，如下所示：
@@ -187,7 +187,7 @@ index  index.html index.htm;
 try_files $uri $uri/ /index.html;
 }
 第二种，可用于七牛等 CDN 服务，读取前端的静态文件，提升访问速度，建议 prod 生产环境使用。例如说，我们演示环境的 `VITE_PUBLIC_PATH` 是 `http://static-vue3.yudao.iocoder.cn/` 。
-具体操作，可参考文章的 [《Vue 项目使用七牛云 CDN 存放静态资源》 (opens new window)](https://blog.csdn.net/weixin_71403100/article/details/132037721) 的「二、实现方式 」部分，只是最终的“修改 index.html 中静态资源引用”，变成 `PUBLIC_PATH` 修改即可。
+具体操作，可参考文章的 [《Vue 项目使用七牛云 CDN 存放静态资源》](https://blog.csdn.net/weixin_71403100/article/details/132037721) 的「二、实现方式 」部分，只是最终的“修改 index.html 中静态资源引用”，变成 `PUBLIC_PATH` 修改即可。
 #### # 第三步，上传 `dist` 文件
 在 Linux 服务器上创建 `/work/projects/yudao-ui-admin` 目录，使用 `scp` 命令或者 FTP 工具，将 `dist` 上传到该目录下。如下图所示：
 ![上传  文件](/images/ep-dist.png) 
@@ -195,7 +195,7 @@ try_files $uri $uri/ /index.html;
 基于 Vue3 + vben5(ant-design-vue、element-plus)。
 下面主要以 ant-design-vue 为例，element-plus 类似。
 #### # 第一步，修改配置
-前端 production 开发环境对应的是 [`.env.production` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/.env.production#L3-L8) 配置文件，主要是修改 `VITE_BASE_URL`、`VITE_GLOB_API_URL` 为你的后端项目的访问地址。如下图所示：
+前端 production 开发环境对应的是 [`.env.production`](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/.env.production#L3-L8) 配置文件，主要是修改 `VITE_BASE_URL`、`VITE_GLOB_API_URL` 为你的后端项目的访问地址。如下图所示：
 ![ 配置文件](/images/vben-env.png) 其它高级参数说明【可暂时不看】：
 ① `VITE_BASE`：前端打包的路径（静态资源的基础路径），一般默认为 `/` 即可。目前有两种用法：
 第一种，可用于二级目录部署。例如说，`VITE_BASE` 设置为 `/demo` 。然后 Nginx 配置时，需要特殊注意，如下所示：
@@ -206,7 +206,7 @@ index  index.html index.htm;
 try_files $uri $uri/ /index.html;
 }
 第二种，可用于七牛等 CDN 服务，读取前端的静态文件，提升访问速度，建议 prod 生产环境使用。例如说，我们演示环境的 `VITE_BASE` 是 `http://static-vue3.yudao.iocoder.cn/` 。
-具体操作，可参考文章的 [《Vue 项目使用七牛云 CDN 存放静态资源》 (opens new window)](https://blog.csdn.net/weixin_71403100/article/details/132037721) 的「二、实现方式 」部分，只是最终的“修改 index.html 中静态资源引用”，变成 `PUBLIC_PATH` 修改即可。
+具体操作，可参考文章的 [《Vue 项目使用七牛云 CDN 存放静态资源》](https://blog.csdn.net/weixin_71403100/article/details/132037721) 的「二、实现方式 」部分，只是最终的“修改 index.html 中静态资源引用”，变成 `PUBLIC_PATH` 修改即可。
 #### # 第二步，编译前端
 在前端项目的根目录下，执行 `npm run build:antd` 或 `npm run build:ele` 命令，编译前端项目，构建出它的 `dist.zip` 压缩包，里面是 HTML、CSS、JavaScript 等静态文件。如下图所示：
 ![编译前端](/images/img_51d573ff.png) 
@@ -216,7 +216,7 @@ try_files $uri $uri/ /index.html;
 ### # 4.3 yudao-ui-admin-vue2
 基于 Vue2 + element-ui
 #### # 第一步，修改配置
-前端 dev 开发环境对应的是 [`.env.dev` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/.env.dev) 配置文件，主要是修改 `VUE_APP_BASE_API` 为你的后端项目的访问地址。如下图所示：
+前端 dev 开发环境对应的是 [`.env.dev`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/.env.dev) 配置文件，主要是修改 `VUE_APP_BASE_API` 为你的后端项目的访问地址。如下图所示：
 ![ 配置文件](/images/eu-env.png) 
 #### # 第二步，编译前端
 在前端项目的根目录下，执行 `npm run build:dev` 命令，编译前端项目，构建出它的 `dist` 文件，里面是 HTML、CSS、JavaScript 等静态文件。如下图所示：
@@ -225,9 +225,9 @@ npm run build:prod ## 打包 prod 生产环境
 npm run build:stage ## 打包 stage 预发布环境
 其它高级参数说明【可暂时不看】：
 ① `PUBLIC_PATH`：可用于七牛等 CDN 服务，读取前端的静态文件，提升访问速度，建议 prod 生产环境使用。示例如下：
-可参考文章的 [《Vue 项目使用七牛云 CDN 存放静态资源》 (opens new window)](https://blog.csdn.net/weixin_71403100/article/details/132037721) 的「二、实现方式 」部分，只是最终的“修改 index.html 中静态资源引用”，变成 `PUBLIC_PATH` 修改即可。
+可参考文章的 [《Vue 项目使用七牛云 CDN 存放静态资源》](https://blog.csdn.net/weixin_71403100/article/details/132037721) 的「二、实现方式 」部分，只是最终的“修改 index.html 中静态资源引用”，变成 `PUBLIC_PATH` 修改即可。
 ② `VUE_APP_APP_NAME`：二级部署路径，默认为 `/` 根目录，一般不用修改。
-③ `mode`：前端路由的模式，默认采用 `history` 路由，一般不用修改。可以通过修改 [`router/index.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/router/index.js#L173-L178) 来设置为 `hash` 路由，示例如下：
+③ `mode`：前端路由的模式，默认采用 `history` 路由，一般不用修改。可以通过修改 [`router/index.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/router/index.js#L173-L178) 来设置为 `hash` 路由，示例如下：
 ![ 参数](/images/eu-mode.png) 
 #### # 第三步，上传 `dist` 文件
 在 Linux 服务器上创建 `/work/projects/yudao-ui-admin` 目录，使用 `scp` 命令或者 FTP 工具，将 `dist` 上传到该目录下。如下图所示：
@@ -266,8 +266,8 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 ③ 执行 `curl http://192.168.0.213/admin-api/` 命令，成功访问后端项目的内网地址，返回结果如下：
 {"code":401,"data":null,"msg":"账号未登录"}
 执行 `curl http://139.9.196.247:48080/admin-api/` 命令（“需要换成你的外网 IP”），成功访问后端项目的外网地址，返回结果一致。
-④ 请求 [http://139.9.196.247:48080 (opens new window)](http://139.9.196.247:48080) 地址（“需要换成你的外网 IP”），成功访问前端项目的外网地址，，返回前端界面如下：
-![前端界面](/images/06.png) ⑤ 如果你使用到 WebSocket 的话，需要额外对 `/infra/ws` 路径进行配置，具体可见 [https://t.zsxq.com/LQEfC (opens new window)](https://t.zsxq.com/LQEfC) 链接。
+④ 请求 [http://139.9.196.247:48080](http://139.9.196.247:48080) 地址（“需要换成你的外网 IP”），成功访问前端项目的外网地址，，返回前端界面如下：
+![前端界面](/images/06.png) ⑤ 如果你使用到 WebSocket 的话，需要额外对 `/infra/ws` 路径进行配置，具体可见 [https://t.zsxq.com/LQEfC](https://t.zsxq.com/LQEfC) 链接。
 ### # 4.2 方式二：独立域名访问
 友情提示：在前端项目的编译时，需要把 `VUE_APP_BASE_API` 修改为后端项目对应的域名。
 例如说，这里使用的是 `http://api.iocoder.cn`
@@ -301,15 +301,15 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 }
 ② 执行 `docker exec nginx nginx -s reload` 命令，重新加载 Nginx 配置。
-③ 请求 [http://api.iocoder.cn/admin-api/ (opens new window)](http://api.iocoder.cn/admin-api/) 地址，成功访问后端项目，返回结果如下：
+③ 请求 [http://api.iocoder.cn/admin-api/](http://api.iocoder.cn/admin-api/) 地址，成功访问后端项目，返回结果如下：
 {"code":401,"data":null,"msg":"账号未登录"}
-④ 请求 [http://admin.iocoder.cn (opens new window)](http://admin.iocoder.cn) 地址，成功访问前端项目，返回前端界面如下：
+④ 请求 [http://admin.iocoder.cn](http://admin.iocoder.cn) 地址，成功访问前端项目，返回前端界面如下：
 ![前端界面](/images/15.png) 
 ## # 666. 更多说明
-① 积木报表菜单，无法访问。参考 [https://t.zsxq.com/vBkup (opens new window)](https://t.zsxq.com/vBkup) 解决。
-② 如果希望分离 Maven 依赖 lib 打包，可参考 [https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1259/ (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1259/) 贡献。
-③ Swagger 接口的转发，参考 [https://t.zsxq.com/IpALd (opens new window)](https://t.zsxq.com/IpALd) 和 [https://t.zsxq.com/9p9Xu (opens new window)](https://t.zsxq.com/9p9Xu) 解决。
-④ 关于 Nginx，如何部署的一点分享，来自球友 [https://t.zsxq.com/H5KKy (opens new window)](https://t.zsxq.com/H5KKy) 投稿。
+① 积木报表菜单，无法访问。参考 [https://t.zsxq.com/vBkup](https://t.zsxq.com/vBkup) 解决。
+② 如果希望分离 Maven 依赖 lib 打包，可参考 [https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1259/](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1259/) 贡献。
+③ Swagger 接口的转发，参考 [https://t.zsxq.com/IpALd](https://t.zsxq.com/IpALd) 和 [https://t.zsxq.com/9p9Xu](https://t.zsxq.com/9p9Xu) 解决。
+④ 关于 Nginx，如何部署的一点分享，来自球友 [https://t.zsxq.com/H5KKy](https://t.zsxq.com/H5KKy) 投稿。
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [Linux 部署](/deployment-linux/) [Jenkins 部署](/deployment-jenkins/) 

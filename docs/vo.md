@@ -6,12 +6,12 @@
 市面上有很多的对象转换工具，例如说 MapStruct、Dozer、各种 BeanUtils、BeanCopier 等等。目前我们提供了 MapStruct、BeanUtils 两种解决方案。
 相比来说，MapStruct 性能会略好于 BeanUtils，但是相比数据库操作带来的耗时来说，基本可以忽略不计。因此，一般情况下，建议使用 BeanUtils 即可。
 ### # 1.1 MapStruct
-项目使用 [MapStruct (opens new window)](https://www.iocoder.cn/Spring-Boot/MapStruct/?yudao) 实现 VO、DO、DTO 等对象之间的转换。
-如果你没有学习过 MapStruct，需要阅读下 [《芋道 Spring Boot 对象转换 MapStruct 入门》 (opens new window)](https://www.iocoder.cn/Spring-Boot/MapStruct/?yudao) 文章。
+项目使用 [MapStruct](https://www.iocoder.cn/Spring-Boot/MapStruct/?yudao) 实现 VO、DO、DTO 等对象之间的转换。
+如果你没有学习过 MapStruct，需要阅读下 [《芋道 Spring Boot 对象转换 MapStruct 入门》](https://www.iocoder.cn/Spring-Boot/MapStruct/?yudao) 文章。
 在每个 `yudao-module-xxx` 模块的 `convert` 包下，可以看到各个业务的 Convert 接口，如下图所示：
 ![MapStruct 示例](/images/MapStruct.png) 
 ### # 1.2 BeanUtils
-项目提供了 [BeanUtils (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-common/src/main/java/cn/iocoder/yudao/framework/common/util/object/BeanUtils.java) 类，它是基于 Hutool 的 BeanUtil 封装一层。如下图所示：
+项目提供了 [BeanUtils](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-common/src/main/java/cn/iocoder/yudao/framework/common/util/object/BeanUtils.java) 类，它是基于 Hutool 的 BeanUtil 封装一层。如下图所示：
 ![BeanUtils](/images/BeanUtils.png) 疑问：为什么不直接使用 Hutool BeanUtil，而是额外封装一层呢？
 ① 方便替换实现。例如说，你想把 Hutool BeanUtil 换成 Spring BeanUtil、BeanCopier 等时，只需要修改它。
 ② 特性增强。额外支持 List、Page 对象的转换，也支持 Consumer 进一步转化。
@@ -27,7 +27,7 @@
 - 方案二：数据库多次单表查询，然后在 Java 代码中进行数据拼接（翻译）。其实就是「1.2 BeanUtils」的“复杂场景”。如下图所示：
 图片纠错：最新版本不区分 yudao-module-erp-api 和 yudao-module-erp-biz 子模块，代码直接合并到 yudao-module-erp 模块的 src 目录下，更适合单体项目
 ![复杂场景](/images/BeanUtils-02.png) 项目里，大多数采用“方案二”，因为这样可以减少数据库的压力，避免 SQL 过于复杂，也方便后续维护。
-不过如果你觉得“方案二”比较麻烦，我们也集成了 [`easy-trans` (opens new window)](https://gitee.com/dromara/easy_trans) 框架，一个注解，搞定数据翻译。
+不过如果你觉得“方案二”比较麻烦，我们也集成了 [`easy-trans`](https://gitee.com/dromara/easy_trans) 框架，一个注解，搞定数据翻译。
 下面，我们来分场景，看看具体如何使用！
 ### # 2.1 场景一：模块内翻译
 模块内翻译，指的是在同一个模块内，进行数据翻译。例如说，OperateLogRespVO 属于 `yudao-module-system` 模块，需要读取模块内的 AdminUserDO 数据。
@@ -38,7 +38,7 @@
 - `target` 属性：目标 DO 实体的类，例如说 `AdminUserDO.class`
 - `fields` 属性：读取 DO 实体的字段，例如说 `nickname`。如果是多个字段，它也是个数组
 - `ref` 属性：设置 VO 类的字段，例如说 `userNickname`。如果是多个字段，可以使用 `refs`
-更多关于 `@Trans` 注解的讲解，可见 [《Trans 注解详解(必读)》 (opens new window)](http://easy-trans.fhs-opensource.cn/components/trans.html) 文档。
+更多关于 `@Trans` 注解的讲解，可见 [《Trans 注解详解(必读)》](http://easy-trans.fhs-opensource.cn/components/trans.html) 文档。
 ③ 第三步，给需要翻译的 Controller 接口，添加 `@@TransMethodResult` 注解，代码如下所示：
 @Tag(name = "管理后台 - 操作日志")
 @RestController
@@ -71,9 +71,9 @@ return success(BeanUtils.toBean(pageResult, OperateLogRespVO.class));
 因此，“跨模块翻译”使用 `targetClassName` 属性的原因，是因为拿不到跨模块的 DO 实体类 = =
 ③ 第三步，给需要翻译的 Controller 接口，添加 `@TransMethodResult` 注解，和上面是一样的。
 ### # 2.3 场景三：Excel 导出翻译
-在 Excel 导出时，如果也有数据翻译的需求，需要调用 [TranslateUtils (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mybatis/src/main/java/cn/iocoder/yudao/framework/translate/core/TranslateUtils.java) 的 `#translate(...)` 方法，如下图所示：
+在 Excel 导出时，如果也有数据翻译的需求，需要调用 [TranslateUtils](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mybatis/src/main/java/cn/iocoder/yudao/framework/translate/core/TranslateUtils.java) 的 `#translate(...)` 方法，如下图所示：
 图片纠错：最新版本不区分 yudao-module-crm-api 和 yudao-module-crm-biz 子模块，代码直接合并到 yudao-module-erp 模块的 src 目录下，更适合单体项目
-![Excel 导出翻译](/images/img_bf6d97f4.png) 本质上，它就是 `easy-trans` 的手动翻译，可见 [《Trans 基础使用(必读)》的“3、自动翻译和手动翻译” (opens new window)](http://easy-trans.fhs-opensource.cn/components/basic.html#_3%E3%80%81%E8%87%AA%E5%8A%A8%E7%BF%BB%E8%AF%91%E5%92%8C%E6%89%8B%E5%8A%A8%E7%BF%BB%E8%AF%91)
+![Excel 导出翻译](/images/img_bf6d97f4.png) 本质上，它就是 `easy-trans` 的手动翻译，可见 [《Trans 基础使用(必读)》的“3、自动翻译和手动翻译”](http://easy-trans.fhs-opensource.cn/components/basic.html#_3%E3%80%81%E8%87%AA%E5%8A%A8%E7%BF%BB%E8%AF%91%E5%92%8C%E6%89%8B%E5%8A%A8%E7%BF%BB%E8%AF%91)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [分页实现](/page-feature/) [文件存储（上传下载）](/file/) 

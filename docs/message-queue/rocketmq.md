@@ -1,10 +1,10 @@
 # 消息队列（RocketMQ）
 
 ## # RocketMQ-Spring
-[`yudao-spring-boot-starter-mq` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 RocketMQ 实现分布式消息队列。
-如果你对 RocketMQ 不太了解，可以看看 [《芋道 Spring Boot 消息队列 RocketMQ 入门》 (opens new window)](https://www.iocoder.cn/Spring-Boot/RocketMQ/?yudao) 文档。
+[`yudao-spring-boot-starter-mq`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 RocketMQ 实现分布式消息队列。
+如果你对 RocketMQ 不太了解，可以看看 [《芋道 Spring Boot 消息队列 RocketMQ 入门》](https://www.iocoder.cn/Spring-Boot/RocketMQ/?yudao) 文档。
 如何安装一个 RocketMQ 服务？
-参考 [《芋道 RocketMQ 极简入门 》 (opens new window)](https://www.iocoder.cn/RocketMQ/install/?yudao) 文档。
+参考 [《芋道 RocketMQ 极简入门 》](https://www.iocoder.cn/RocketMQ/install/?yudao) 文档。
 ## # 2. 使用示例
 以【短信发送】举例子，改造使用 RocketMQ 作为消息队列。
 ## # 2.0 引入依赖与配置
@@ -104,7 +104,7 @@ smsSendService.doSendSms(message);
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![简单测试](../images/img_248ebe40.png) 如果 IDEA 控制台看到 `[onMessage][消息内容` 日志内容，说明消息的发送和消费成功。
 ## # 666. 社区贡献相关
-- [《Pull Request：RocketMQ 批量消费消息 tenantId 上下文设置》 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/983)
+- [《Pull Request：RocketMQ 批量消费消息 tenantId 上下文设置》](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/983)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [消息队列（Redis）](/message-queue/redis/) [消息队列（RabbitMQ）](/message-queue/rabbitmq/) 

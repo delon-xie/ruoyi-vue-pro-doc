@@ -7,19 +7,19 @@
 微信公众号支付，使用 WxPubPayClient 客户端进行对接。
 下面，我们以 `yudao-mall-uniapp` 商城项目，演示微信公众号支付的接入流程。
 友情提示：
-- [http://niubi.natapp1.cc (opens new window)](http://niubi.natapp1.cc) 域名，是我前端项目的访问域名
-- [http://yunai.natapp1.cc (opens new window)](http://yunai.natapp1.cc) 域名，是我后端项目的访问域名
+- [http://niubi.natapp1.cc](http://niubi.natapp1.cc) 域名，是我前端项目的访问域名
+- [http://yunai.natapp1.cc](http://yunai.natapp1.cc) 域名，是我后端项目的访问域名
 所以，你的前后端项目也要分别使用 [《内网穿透》](/natapp/) 实现独立域名！！！
 ## # 1. 第一步，配置支付渠道
 ① 访问 [支付管理 -> 应用信息] 菜单，点击“商城应用”对应的【微信 JSAPI 支付】，进入支付渠道的配置。如下图所示：
 ![支付渠道配置](../images/img_5261714b.png) 
-- 在 [https://pay.weixin.qq.com/index.php/core/account/info (opens new window)](https://pay.weixin.qq.com/index.php/core/account/info) 地址，可获取微信支付商户号
-- 在 [https://pay.weixin.qq.com/index.php/core/cert/api_cert#/ (opens new window)](https://pay.weixin.qq.com/index.php/core/cert/api_cert#/) 地址，可获取 API 证书、密钥
+- 在 [https://pay.weixin.qq.com/index.php/core/account/info](https://pay.weixin.qq.com/index.php/core/account/info) 地址，可获取微信支付商户号
+- 在 [https://pay.weixin.qq.com/index.php/core/cert/api_cert#/](https://pay.weixin.qq.com/index.php/core/cert/api_cert#/) 地址，可获取 API 证书、密钥
 友情提示：
-可以简单阅读下 [《微信官方文档 —— JSAPI 支付的接入前准备》 (opens new window)](https://pay.weixin.qq.com/doc/v3/partner/4012069852) 文章。
-目前建议使用微信支付的 V3 版本，并且使用[“微信支付公钥” (opens new window)](https://pay.weixin.qq.com/doc/v3/merchant/4012153196)！！！
-如果使用 V2 版本，最好参考 [https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT (opens new window)](https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT) 帖子，降低 `weixin-java` 组件的版本。
-② 访问微信支付的 [开发配置 (opens new window)](https://pay.weixin.qq.com/index.php/extend/pay_setting) 地址，设置 JSAPI 支付目录，设置为前端项目的访问域名。如下图所示：
+可以简单阅读下 [《微信官方文档 —— JSAPI 支付的接入前准备》](https://pay.weixin.qq.com/doc/v3/partner/4012069852) 文章。
+目前建议使用微信支付的 V3 版本，并且使用[“微信支付公钥”](https://pay.weixin.qq.com/doc/v3/merchant/4012153196)！！！
+如果使用 V2 版本，最好参考 [https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT](https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT) 帖子，降低 `weixin-java` 组件的版本。
+② 访问微信支付的 [开发配置](https://pay.weixin.qq.com/index.php/extend/pay_setting) 地址，设置 JSAPI 支付目录，设置为前端项目的访问域名。如下图所示：
 ![JSAPI 支付目录](../images/img_4817bd8b.png) 
 ## # 2. 支付功能测试
 ① IDEA 打开前端 uniapp 项目，修改 `.env` 配置文件的 `SHOPRO_DEV_BASE_URL` 配置项目，替换成你的后端项目的访问域名。例如说下图：

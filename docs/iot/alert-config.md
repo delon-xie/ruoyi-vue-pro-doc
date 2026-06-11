@@ -1,9 +1,9 @@
 # 告警配置
 
 推荐阅读：
-- [《阿里云物联网平台 —— 告警中心》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/alerting-center)
-- [《JetLinks —— 告警中心》 (opens new window)](https://doc.jetlinks.cn/Best_practices/Alarm_Center.html)
-- [《FastBee —— 告警管理》 (opens new window)](https://fastbee.cn/doc/manual/alert.html)
+- [《阿里云物联网平台 —— 告警中心》](https://help.aliyun.com/zh/iot/user-guide/alerting-center)
+- [《JetLinks —— 告警中心》](https://doc.jetlinks.cn/Best_practices/Alarm_Center.html)
+- [《FastBee —— 告警管理》](https://fastbee.cn/doc/manual/alert.html)
 告警模块，由 `yudao-module-iot` 后端模块的 `alert` 包实现，主要有告警配置、告警记录两个功能：
 - 告警配置：定义"什么情况需要告警、通知谁"
 - 告警记录：保存每次告警的详细信息
@@ -64,7 +64,7 @@ PRIMARY KEY (`id`) USING BTREE
 ![管理后台 - 告警记录列表](../images/img_c12c5482.png) ② 点击操作列的【处理】按钮，弹出输入框输入处理原因，即可将告警标记为已处理。
 ![管理后台 - 处理告警](../images/img_9e4190a6.png) 
 ## # 2. 快速上手
-以内置的 id 为 25 的 [演示设备 (opens new window)](http://127.0.0.1/iot/device/detail/25) 为例，演示如何配置告警：当设备上报的 `height` 属性大于 2000 时触发告警，并通知管理员。
+以内置的 id 为 25 的 [演示设备](http://127.0.0.1/iot/device/detail/25) 为例，演示如何配置告警：当设备上报的 `height` 属性大于 2000 时触发告警，并通知管理员。
 ### # 2.1 步骤一：创建场景联动规则
 告警需要先有场景联动规则，再由告警配置去关联它。进入 [IoT 物联网 -> 规则引擎 -> 场景联动]，点击【新增】按钮创建一条规则，配置如下：
 系统已预设了一条名为"高度超标触发告警"的演示规则，可直接用于体验，跳过本步骤。

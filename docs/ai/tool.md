@@ -2,8 +2,8 @@
 
 AI 工具，基于 LLM 模型的 function calling 机制，实现模型对我们系统内部的功能调用。
 疑问：什么是 function calling？
-- [《OpenAI 的新能力 —— Function Calling》 (opens new window)](https://zhuanlan.zhihu.com/p/637002733)
-- [《阿里云 Function Calling》 (opens new window)](https://help.aliyun.com/zh/model-studio/qwen-function-calling)
+- [《OpenAI 的新能力 —— Function Calling》](https://zhuanlan.zhihu.com/p/637002733)
+- [《阿里云 Function Calling》](https://help.aliyun.com/zh/model-studio/qwen-function-calling)
 目前，项目中的 [AI 聊天对话](/ai/chat/) 功能，已经接入 AI 工具，如下图所示：
 ![AI 工具的案例](../images/img_50066096.png) 整个功能，涉及到 1 个表：
 - `ai_tool`：AI 工具表
@@ -23,7 +23,7 @@ PRIMARY KEY (`id`) USING BTREE
 - WeatherQueryToolFunction 类：查询指定城市的天气信息，对应 `weather_query`
 - DirectoryListToolFunction 类：列出指定目录的文件列表，对应 `directory_list`
 具体 AI 工具类的编写方式，可以看看上面两个类。当然，更多也可以看看 Spring AI 的如下文档：
-- [《Tool Calling》 (opens new window)](https://docs.spring.io/spring-ai/reference/api/tools.html)
+- [《Tool Calling》](https://docs.spring.io/spring-ai/reference/api/tools.html)
 ### # 1.2 管理后台
 前端对应 [AI 大模型 -> 控制台 -> AI 工具管理] 菜单，对应 `yudao-ui-admin-vue3` 项目的 `@/views/ai/model/tool` 目录，提供给管理员使用，创建工具。
 ![AI 工具](../images/img_69a0535b.png) 它的后端 HTTP 接口，由 `yudao-module-ai` 模块的 `model` 包的 AiToolController 实现。

@@ -5,7 +5,7 @@
 - [《支付功能开启》](/pay/build/)
 - [《支付宝支付接入》](/pay/alipay-pay-demo/)
 - [《支付宝、微信退款接入》](/pay/refund-demo)
-在 `yudao-module-pay` 模块的 [`wallet` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/service/wallet) 模块，实现了钱包，包括了如下功能：
+在 `yudao-module-pay` 模块的 [`wallet`](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/service/wallet) 模块，实现了钱包，包括了如下功能：
 - 充值：可见 PayWalletRechargeService 类
 - 支付：可见 WalletPayClient 类的 `#doUnifiedOrder(...)` 方法
 - 退款：可见 WalletRefundClient 类的 `#doUnifiedRefund(...)` 方法
@@ -128,10 +128,10 @@ PRIMARY KEY (`id`) USING BTREE
 ![钱包充值开启](../images/img_81a44a6f.png) 一般情况下，需要将钱包的支付宝、微信等支付渠道也进行配置。这里，我们为了演示方便，直接使用上图的“模拟支付”。
 另外，钱包也有对应的的支付、退款回调地址，如下图所示：
 ![钱包充值回调](../images/img_ce37c009.png) 
-- 支付回调地址：由 PayWalletRechargeController 的 [`#updateWalletRechargerPaid(...)` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/wallet/PayWalletRechargeController.java#L31-L38) 方法实现
-- 退款回调地址：由 PayWalletRefundController 的 [`#updateWalletRechargeRefunded(...)` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/wallet/PayWalletRechargeController.java#L49-L56) 方法实现
+- 支付回调地址：由 PayWalletRechargeController 的 [`#updateWalletRechargerPaid(...)`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/wallet/PayWalletRechargeController.java#L31-L38) 方法实现
+- 退款回调地址：由 PayWalletRefundController 的 [`#updateWalletRechargeRefunded(...)`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/wallet/PayWalletRechargeController.java#L49-L56) 方法实现
 友情提示：上述两个回调地址的逻辑，可以等后续再看，不影响充值流程的理解。
-② 在商城 uni-app 端，访问 [http://127.0.0.1:3000/pages/pay/recharge (opens new window)](http://127.0.0.1:3000/pages/pay/recharge) 地址，进入 [充值] 界面，对应 界面。如下图所示：
+② 在商城 uni-app 端，访问 [http://127.0.0.1:3000/pages/pay/recharge](http://127.0.0.1:3000/pages/pay/recharge) 地址，进入 [充值] 界面，对应 界面。如下图所示：
 ![钱包充值发起](../images/img_2d9b4fc6.png) 随便选择一个充值套餐，或者你想充值的金额，然后点击 [确认充值] 按钮，进入支付界面。
 选择“模拟支付”，完成支付后，可点击“查看订单”按钮，跳转到 [充值记录] 界面，对应 界面。如下图所示：
 ![充值记录](../images/img_b4ae1ba8.png) 

@@ -2,14 +2,14 @@
 
 ## # 1. 演示地址
 ### # 1.1 MES 管理后台
-- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/ (opens new window)](http://dashboard-vue3.yudao.iocoder.cn/)
+- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/](http://dashboard-vue3.yudao.iocoder.cn/)
 - 菜单："MES 系统"下的「基础数据」「生产管理」「仓库管理」「质量管理」「设备管理」「工具管理」「排班管理」
-- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `mes` 目录，基于 Vue3 + Element Plus 实现
+- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `mes` 目录，基于 Vue3 + Element Plus 实现
 ![管理后台](/images/mes-preview.png) 
 ### # 1.2 MES 后端
 支持 Spring Boot 单体、Spring Cloud 微服务架构
-- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-mes` 模块
-- 微服务仓库： [https://github.com/YunaiV/yudao-cloud (opens new window)](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-mes` 服务
+- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-mes` 模块
+- 微服务仓库： [https://github.com/YunaiV/yudao-cloud](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-mes` 服务
 ## # 2. MES 启动
 参见 [《MES 手册 —— 功能开启》](/mes/build/) 文档，一般 3 分钟就可以启动完成。
 ## # 3. MES 交流

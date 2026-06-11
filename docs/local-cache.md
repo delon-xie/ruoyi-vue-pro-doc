@@ -5,18 +5,18 @@
 也因此，本章节更多的，是讲解如何在项目中使用本地缓存。如果你不需要本地缓存，可以忽略本章节。
 ② 项目中还保留了部分地方使用本地缓存，例如说：短信客户端、文件客户端、敏感词等。主要原因是，它们是“有状态”的 Java 对象，无法缓存到 Redis 中。
 系统使用本地缓存，提升公用逻辑的执行性能。 例如说：
-- [租户模块 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/tenant/TenantServiceImpl.java) 缓存租户信息，每次 RESTful API 校验租户是否禁用、过期时，无需读库。
-- [部门模块 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/dept/DeptServiceImpl.java) 缓存部门信息，每次数据权限校验时，无需读库。
-- [权限模块 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/PermissionServiceImpl.java) 缓存权限信息，每次功能权限校验时，无需读库。
+- [租户模块](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/tenant/TenantServiceImpl.java) 缓存租户信息，每次 RESTful API 校验租户是否禁用、过期时，无需读库。
+- [部门模块](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/dept/DeptServiceImpl.java) 缓存部门信息，每次数据权限校验时，无需读库。
+- [权限模块](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/PermissionServiceImpl.java) 缓存权限信息，每次功能权限校验时，无需读库。
 ## # 1. 实现原理
 本地缓存的实现，一共有两步，如下图所示：
 ![整体流程](/images/04.png) 
 - 项目启动时，初始化缓存：从数据库中读取数据，写入到本地缓存（例如说一个 Map 对象）
 - 数据变化时，实时刷新缓存：（例如说通过管理后台修改数据）重新从数据库中读取数据，重新写入到本地缓存
 ## # 2. 实战案例
-以 [角色模块 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/RoleServiceImpl.java) 为例，讲解如何实现角色信息的本地缓存。
+以 [角色模块](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/RoleServiceImpl.java) 为例，讲解如何实现角色信息的本地缓存。
 ### # 2.1 初始化缓存
-① 在 [RoleService (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/RoleService.java) 接口中，定义 `#initLocalCache()` 方法。代码如下：
+① 在 [RoleService](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/RoleService.java) 接口中，定义 `#initLocalCache()` 方法。代码如下：
 // RoleService.java
 /**
 * 初始化角色的本地缓存
@@ -24,7 +24,7 @@
 void initLocalCache();
 为什么要定义接口方法？
 稍后实时刷新缓存时，会调用 RoleService 接口的该方法。
-② 在 [RoleServiceImpl (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/RoleServiceImpl.java) 类中，实现 `#initLocalCache()` 方法，通过 `@PostConstruct` 注解，在项目启动时进行本地缓存的初始化。代码如下：
+② 在 [RoleServiceImpl](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/yudao-module-system-biz/src/main/java/cn/iocoder/yudao/module/system/service/permission/RoleServiceImpl.java) 类中，实现 `#initLocalCache()` 方法，通过 `@PostConstruct` 注解，在项目启动时进行本地缓存的初始化。代码如下：
 // RoleServiceImpl.java
 /**
 * 角色缓存

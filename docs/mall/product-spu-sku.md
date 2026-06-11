@@ -1,6 +1,6 @@
 # 【商品】商品 SPU 与 SKU
 
-参考 [《产品 SKU 是什么意思？与之相关的还有哪些？》 (opens new window)](https://www.zhihu.com/question/19841574) 整理
+参考 [《产品 SKU 是什么意思？与之相关的还有哪些？》](https://www.zhihu.com/question/19841574) 整理
 ## # 1. 表结构
 商品 SPU 与 SKU，由 `yudao-module-product` 后端模块的 `spu`、`sku` 包实现，分成商品 SPU 和商品 SKU 两个表。
 ![表结构](../images/img_0b2f6003.png) 
@@ -123,7 +123,7 @@ PRIMARY KEY (`id`) USING BTREE
 ![商品详情](../images/img_9448057c.png) 另外，如果你想看商品 SKU 选择的代码，可以看 `/sheep/components/s-select-sku/s-select-sku.vue` 文件。
 注意，拼团、秒杀商品的界面展示不同，所以单独分别对应了 `@/pages/goods/groupon.vue`、`@/pages/goods/seckill.vue` 文件。
 ## # 4. 社区贡献的商品相关
-- 新增基于 SPU id 复制商品的功能：[#517 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/pull/517)、[#49 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/49)
+- 新增基于 SPU id 复制商品的功能：[#517](https://github.com/YunaiV/ruoyi-vue-pro/pull/517)、[#49](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/49)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [【商品】商品属性](/mall/product-property/) [【商品】商品评价](/mall/product-comment/) 

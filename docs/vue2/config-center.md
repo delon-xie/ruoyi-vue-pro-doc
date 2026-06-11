@@ -4,7 +4,7 @@
 ![配置管理](../images/01.png) 提示
 对应 [《后端手册 —— 配置中心》](/config-center/) 文档。
 ## # 1. 读取配置
-前端调用 [`/@api/infra/config` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/api/infra/config.js#L20-L26) 的 `#getConfigKey(configKey)` 方法，获取指定 key 对应的配置的值。代码如下：
+前端调用 [`/@api/infra/config`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/api/infra/config.js#L20-L26) 的 `#getConfigKey(configKey)` 方法，获取指定 key 对应的配置的值。代码如下：
 export function getConfigKey(configKey) {
 return request({
 url: '/infra/config/get-value-by-key?key=' + configKey,
@@ -12,7 +12,7 @@ method: 'get'
 })
 }
 ## # 2. 实战案例
-在 [`src/views/infra/server/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/infra/server/index.vue) 页面中，获取 key 为 `"url.skywalking"` 的配置的值。代码如下：
+在 [`src/views/infra/server/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/infra/server/index.vue) 页面中，获取 key 为 `"url.skywalking"` 的配置的值。代码如下：
 ![前端案例](../images/07-vue2.png) 
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}

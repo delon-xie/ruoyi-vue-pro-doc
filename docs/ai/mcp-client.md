@@ -2,8 +2,8 @@
 
 前置阅读：
 - [《AI 工具（function calling）》](/ai/tool/)
-- [《一文看懂：MCP(大模型上下文协议)》 (opens new window)](https://zhuanlan.zhihu.com/p/27327515233)
-- 「可选」[《项目接入 MCP Client 代码》 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/commit/369ca68)
+- [《一文看懂：MCP(大模型上下文协议)》](https://zhuanlan.zhihu.com/p/27327515233)
+- 「可选」[《项目接入 MCP Client 代码》](https://gitee.com/zhijiantianya/ruoyi-vue-pro/commit/369ca68)
 目前，项目的 [AI 聊天对话](/ai/chat/) 功能，也已经接入 MCP Client 客户端，如下图所示：
 ![MCP Client 的案例](../images/img_eef9d708.png) 
 ## # 1. 如何配置？
@@ -11,7 +11,7 @@
 ## https://www.npmjs.com/package/@agent-infra/mcp-server-filesystem
 ## 注意： 需要替换成你想开放的目录
 npx @agent-infra/mcp-server-filesystem --port 8089 --allowed-directories 
-启动完成后，可以浏览器访问 [http://127.0.0.1:8089/sse (opens new window)](http://127.0.0.1:8089/sse) 是否通了。
+启动完成后，可以浏览器访问 [http://127.0.0.1:8089/sse](http://127.0.0.1:8089/sse) 是否通了。
 ② 在项目的 `application.yaml` 中，配置 `spring.ai.mcp.client` 配置项，配置对应的 MCP Client ，如下所示：
 spring:
 ai:
@@ -25,7 +25,7 @@ filesystem:
 url: http://127.0.0.1:8089
 sse-endpoint: /sse
 友情提示：
-具体每个配置项的作用，可见 [《Spring AI 官方文档 —— MCP Client Boot Starter》 (opens new window)](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-client-boot-starter-docs.html) 文档。
+具体每个配置项的作用，可见 [《Spring AI 官方文档 —— MCP Client Boot Starter》](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-client-boot-starter-docs.html) 文档。
 接着启动后端项目，可以看到 `INFO io.modelcontextprotocol.client.McpAsyncClient` 日志，表示 MCP Client 启动成功。
 ## # 2. 如何使用（所有工具）？
 一个 MCP 会有多个工具，例如说上面 `mcp` Client 连接的 `filesystem` Server，就提供了 `read_file`、`write_file`、`list_directory` 等多个工具，如何进行使用？

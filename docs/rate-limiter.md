@@ -1,6 +1,6 @@
 # 请求限流（RateLimiter）
 
-[`yudao-spring-boot-starter-protection` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/) 技术组件，由它的 [`ratelimiter` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/) 包，提供声明式的限流特性，可防止请求过多。例如说，用户疯狂的点击了某个按钮，导致发送了大量的请求。
+[`yudao-spring-boot-starter-protection`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/) 技术组件，由它的 [`ratelimiter`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/) 包，提供声明式的限流特性，可防止请求过多。例如说，用户疯狂的点击了某个按钮，导致发送了大量的请求。
 @RateLimiter(count = 10, timeUnit = TimeUnit.MINUTES)
 @PostMapping("/user/create")
 public String createUser(User user){
@@ -22,11 +22,11 @@ return "添加成功";
 在方法执行前，判断参数对应的 Key 是否超过限制：
 - 如果**超过**，则进行报错。
 - 如果**未超过**，则使用 Redis 计数 +1
-默认参数的 Redis Key 的计算规则由 [DefaultRateLimiterKeyResolver (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/keyresolver/impl/DefaultRateLimiterKeyResolver.java) 实现，使用 MD5(方法名 + 方法参数)，避免 Redis Key 过长。
+默认参数的 Redis Key 的计算规则由 [DefaultRateLimiterKeyResolver](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/keyresolver/impl/DefaultRateLimiterKeyResolver.java) 实现，使用 MD5(方法名 + 方法参数)，避免 Redis Key 过长。
 ## # 2. `@RateLimiter` 注解
-[`@RateLimiter` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/annotation/RateLimiter.java) 注解，声明在方法上，表示该方法需要开启限流。代码如下：
-![ 注解](/images/img_bdccada9.png) ① 对应的 AOP 切面是 [RateLimiterAspect (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/aop/RateLimiterAspect.java) 类，核心就 10 行左右的代码，如下图所示：
-![RateLimiterAspect](/images/RateLimiterAspect.png) ② 对应的 Redis Key 的前缀是 `rate_limiter:%` ，可见 [IdempotentRedisDAO (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/redis/RateLimiterRedisDAO.java) 类，如下图所示：
+[`@RateLimiter`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/annotation/RateLimiter.java) 注解，声明在方法上，表示该方法需要开启限流。代码如下：
+![ 注解](/images/img_bdccada9.png) ① 对应的 AOP 切面是 [RateLimiterAspect](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/aop/RateLimiterAspect.java) 类，核心就 10 行左右的代码，如下图所示：
+![RateLimiterAspect](/images/RateLimiterAspect.png) ② 对应的 Redis Key 的前缀是 `rate_limiter:%` ，可见 [IdempotentRedisDAO](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/ratelimiter/core/redis/RateLimiterRedisDAO.java) 类，如下图所示：
 ![IdempotentRedisDAO 存储](/images/IdempotentRedisDAO.png) 
 ## # 3. 使用示例
 本小节，我们实现 `/admin-api/system/user/page` RESTful API 接口的限流。

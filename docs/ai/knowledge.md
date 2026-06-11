@@ -2,9 +2,9 @@
 
 AI 知识库，基于 RAG 方式，实现 LLM 打通内部知识库。
 疑问：什么是 RAG？
-- [《一文读懂：大模型 RAG（检索增强生成）含高级方法》 (opens new window)](https://www.zhihu.com/tardis/zm/art/675509396)
-- [《检索增强生成 (RAG)》 (opens new window)](https://www.promptingguide.ai/zh/techniques/rag)
-- [《什么是检索增强生成？》 (opens new window)](https://www.redhat.com/zh/topics/ai/what-is-retrieval-augmented-generation)
+- [《一文读懂：大模型 RAG（检索增强生成）含高级方法》](https://www.zhihu.com/tardis/zm/art/675509396)
+- [《检索增强生成 (RAG)》](https://www.promptingguide.ai/zh/techniques/rag)
+- [《什么是检索增强生成？》](https://www.redhat.com/zh/topics/ai/what-is-retrieval-augmented-generation)
 目前，项目中的 [AI 聊天对话](/ai/chat/) 功能，已经接入 AI 知识库，如下图所示：
 ![AI 知识库的案例](../images/img_f5f3cb93.png) 整个功能，涉及到 3 个表：
 ![表关系图](../images/img_7daa811d.png) 
@@ -100,10 +100,10 @@ PRIMARY KEY (`id`)
 ![AI 知识库的案例](../images/img_f5f3cb93.png) 
 ## # 5. 如何 Rerank 重排序？
 疑问：为什么 Rerank 可以提升 RAG 效果？
-- [《Rerank —— RAG 中百尺竿头更进一步的神器，从原理到解决方案 》 (opens new window)](https://luxiangdong.com/2023/11/06/rerank/)
-- [《深入浅出：理解 RAG 中的 Re-Ranking 机制》 (opens new window)](https://blog.csdn.net/fudaihb/article/details/137285681)
-目前 Spring AI 暂时没有提供 Rerank 功能，目前只有 Alibaba AI 提供了 [RerankModel (opens new window)](https://github.com/alibaba/spring-ai-alibaba/blob/main/spring-ai-alibaba-core/src/main/java/com/alibaba/cloud/ai/model/RerankModel.java)。
-也因此，如果想使用 Rerank 功能，目前只能使用 DashScopeRerankModel 实现类，对应 [《阿里云 —— 文本排序》 (opens new window)](https://help.aliyun.com/zh/model-studio/text-rerank-api)。使用的话，只需要修改 `application.yml` 中，配置如下内容：
+- [《Rerank —— RAG 中百尺竿头更进一步的神器，从原理到解决方案 》](https://luxiangdong.com/2023/11/06/rerank/)
+- [《深入浅出：理解 RAG 中的 Re-Ranking 机制》](https://blog.csdn.net/fudaihb/article/details/137285681)
+目前 Spring AI 暂时没有提供 Rerank 功能，目前只有 Alibaba AI 提供了 [RerankModel](https://github.com/alibaba/spring-ai-alibaba/blob/main/spring-ai-alibaba-core/src/main/java/com/alibaba/cloud/ai/model/RerankModel.java)。
+也因此，如果想使用 Rerank 功能，目前只能使用 DashScopeRerankModel 实现类，对应 [《阿里云 —— 文本排序》](https://help.aliyun.com/zh/model-studio/text-rerank-api)。使用的话，只需要修改 `application.yml` 中，配置如下内容：
 spring:
 ai:
 dashscope: # 通义千问
@@ -117,47 +117,47 @@ rerank: dashscope # 是否开启“通义千问”的 Rerank 模型，填写 das
 - 已实现 OllamaEmbeddingModel、DashScopeEmbeddingModel 模型的接入
 - 未实现的其它平台的向量模型，可参考实现到上述方法中
 ### # OllamaEmbeddingModel
-① 首先，访问 [https://ollama.ai/download (opens new window)](https://ollama.ai/download)，下载对应系统 Ollama 客户端，然后安装。
-② 然后，访问 [https://ollama.com/search?c=embedding (opens new window)](https://ollama.com/search?c=embedding) 地址，获取想运行的向量模型。
+① 首先，访问 [https://ollama.ai/download](https://ollama.ai/download)，下载对应系统 Ollama 客户端，然后安装。
+② 然后，访问 [https://ollama.com/search?c=embedding](https://ollama.com/search?c=embedding) 地址，获取想运行的向量模型。
 例如说：`nomic-embed-text`，则可在命令中执行 `ollama pull nomic-embed-text` 命令，进行一键部署。
 ③ 最后，在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，添加该向量模型。
 注意，模型名使用你 Ollama 部署的模型名。
 ### # DashScopeEmbeddingModel
 ① 首先，参考 [《【模型接入】通义千问》](/ai/tongyi) 文档，申请对应的 API 密钥。
 ② 然后，在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，添加该向量模型。
-模型名，可使用 `text_embedding_v3`，更多可参考 [《阿里云 —— 通用文本向量》 (opens new window)](https://help.aliyun.com/zh/model-studio/developer-reference/general-text-embedding/)
+模型名，可使用 `text_embedding_v3`，更多可参考 [《阿里云 —— 通用文本向量》](https://help.aliyun.com/zh/model-studio/developer-reference/general-text-embedding/)
 ### # ZhiPuAiEmbeddingModel
 ① 首先，参考 [《【模型接入】智普 GLM》](/ai/glm) 文档，申请智普 AI 的 API 密钥。
 ② 然后，在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，添加该向量模型。
-模型名，可使用 `embedding-3`，更多可参考 [《智谱 —— 模型广场》 (opens new window)](https://bigmodel.cn/console/modelcenter/square) 搜 “embedding” 关键字。
+模型名，可使用 `embedding-3`，更多可参考 [《智谱 —— 模型广场》](https://bigmodel.cn/console/modelcenter/square) 搜 “embedding” 关键字。
 ### # QianFanEmbeddingModel
 ① 首先，参考 [《【模型接入】文心一言》](/ai/qianfan) 文档，申请对应的 API 密钥。
 ② 然后，在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，添加该向量模型。
-模型名，可使用 `embedding-v1`，更多可参考 [《千帆大模型服务 —— 向量Embeddings》 (opens new window)](https://cloud.baidu.com/doc/WENXINWORKSHOP/s/om6070n97)。
+模型名，可使用 `embedding-v1`，更多可参考 [《千帆大模型服务 —— 向量Embeddings》](https://cloud.baidu.com/doc/WENXINWORKSHOP/s/om6070n97)。
 ### # MoonshotEmbeddingModel
 ① 首先，参考 [《【模型接入】Moonshot》](/ai/moonshot) 文档，申请对应的 API 密钥。
 ② 然后，在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，添加该向量模型。
-模型名，可使用 `embo-01`，更多可参考 [《Moonshot 文档 —— Embeddings（向量化）》 (opens new window)](https://platform.minimaxi.com/document/embeddings?key=66718fbfa427f0c8a5701627)。
+模型名，可使用 `embo-01`，更多可参考 [《Moonshot 文档 —— Embeddings（向量化）》](https://platform.minimaxi.com/document/embeddings?key=66718fbfa427f0c8a5701627)。
 ### # OpenAiEmbeddingModel
 ① 首先，参考 [《【模型接入】OpenAI》](/ai/openai) 文档，申请对应的 API 密钥。
 ② 然后，在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，添加该向量模型。
-模型名，可使用 `text-embedding-ada-002`，TODO 更多可参考 [《OpenAI 中文文档 —— 嵌入模型》 (opens new window)](https://openai.xiniushu.com/docs/guides/embeddings)。
+模型名，可使用 `text-embedding-ada-002`，TODO 更多可参考 [《OpenAI 中文文档 —— 嵌入模型》](https://openai.xiniushu.com/docs/guides/embeddings)。
 ### # AzureOpenAiEmbeddingModel
 ① 首先，参考 [《【模型接入】微软 OpenAI》](/ai/azure-openai) 文档，申请对应的 API 密钥。
 ② 然后，在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，添加该向量模型。
-模型名，可使用 `text-embedding-3-small`，更多可参考 [《教程：探索 Azure OpenAI 服务嵌入和文档搜索》 (opens new window)](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/tutorials/embeddings)。
+模型名，可使用 `text-embedding-3-small`，更多可参考 [《教程：探索 Azure OpenAI 服务嵌入和文档搜索》](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/tutorials/embeddings)。
 ## # 附录：向量存储
 在 Spring AI 中，通过 VectorStore 接口，实现了各个平台的向量存储的接入。如下图所示：
 ![VectorStore 实现](../images/VectorStore.png) 目前在项目的 AiModelFactoryImpl 中，提供了 `#getOrCreateVectorStore(...)` 方法，实现如下模型的接入：
 - 本地磁盘 SimpleVectorStore
-- [Redis (opens new window)](https://redis.io/solutions/vector-database/) RedisVectorStore
-- [Qdrant (opens new window)](https://qdrant.tech/) QdrantVectorStore
-- [Milvus (opens new window)](https://milvus.io/) MilvusVectorStore
+- [Redis](https://redis.io/solutions/vector-database/) RedisVectorStore
+- [Qdrant](https://qdrant.tech/) QdrantVectorStore
+- [Milvus](https://milvus.io/) MilvusVectorStore
 ps：其它平台的向量存储，可参考实现到上述方法中。
 另外，默认使用 SimpleVectorStore。如需切换，可修改 AiModelServiceImpl 的 `#getOrCreateVectorStore(...)` 方法，如下图所示：
 ![VectorStore 切换](../images/img_3e5f440a.png) 
 ### # RedisVectorStore
-① 参考 [https://blog.csdn.net/NiDeHaoPengYou/article/details/129748387 (opens new window)](https://blog.csdn.net/NiDeHaoPengYou/article/details/129748387) 文档，执行 `docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest` 命令，安装开启向量存储的 Redis。
+① 参考 [https://blog.csdn.net/NiDeHaoPengYou/article/details/129748387](https://blog.csdn.net/NiDeHaoPengYou/article/details/129748387) 文档，执行 `docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest` 命令，安装开启向量存储的 Redis。
 ② 修改 AiModelServiceImpl 的 `#getOrCreateVectorStore(...)` 方法，使用 RedisVectorStore。
 另外，默认在 `application.yaml` 配置如下：
 spring:
@@ -180,7 +180,7 @@ collection-name: knowledge_segment # Qdrant 中向量集合的名称：用于存
 host: 127.0.0.1
 port: 6334
 ### # MilvusVectorStore
-① 参考 [https://milvus.io/docs/zh/prerequisite-docker.md (opens new window)](https://milvus.io/docs/zh/prerequisite-docker.md) 文档，执行如下命令（需要翻墙）：
+① 参考 [https://milvus.io/docs/zh/prerequisite-docker.md](https://milvus.io/docs/zh/prerequisite-docker.md) 文档，执行如下命令（需要翻墙）：
 curl -sfL https://raw.githubusercontent.com/milvus-io/milvus/master/scripts/standalone_embed.sh -o standalone_embed.sh
 bash standalone_embed.sh start
 ② 修改 AiModelServiceImpl 的 `#getOrCreateVectorStore(...)` 方法，使用 MilvusVectorStore。
@@ -197,9 +197,9 @@ host: 127.0.0.1
 port: 19530
 ## # 常见问题？
 ① 如果使用本地向量化模型的应用分享？
-参见 [https://t.zsxq.com/6KM05 (opens new window)](https://t.zsxq.com/6KM05) 文档。
+参见 [https://t.zsxq.com/6KM05](https://t.zsxq.com/6KM05) 文档。
 ② 使用多个向量模型，维度数不同时会报错？
-参见 [https://t.zsxq.com/tpn1L (opens new window)](https://t.zsxq.com/tpn1L) 文档来解决。
+参见 [https://t.zsxq.com/tpn1L](https://t.zsxq.com/tpn1L) 文档来解决。
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [AI 绘画创作](/ai/image/) [AI 音乐创作](/ai/music/) 

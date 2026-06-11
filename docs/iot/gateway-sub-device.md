@@ -1,7 +1,7 @@
 # 设备网关与子设备
 
 推荐阅读：
-- [《阿里云物联网平台 —— 网关与子设备》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/gateways-and-sub-devices)
+- [《阿里云物联网平台 —— 网关与子设备》](https://help.aliyun.com/zh/iot/user-guide/gateways-and-sub-devices)
 物联网平台支持设备直连，也支持设备挂载在网关上，作为网关的子设备，由网关直连。
 使用场景：适用于子设备不能直连或者需要拓扑关系管理的场景，例如接入 Wi-Fi 网关、蓝牙网关、ZigBee 网关等。
 （图片来自阿里云）

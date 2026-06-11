@@ -7,18 +7,18 @@
 微信小程序支付，使用 WxLitePayClient 客户端进行对接。
 下面，我们以 `yudao-mall-uniapp` 商城项目，演示微信小程序支付的接入流程。
 友情提示：
-- [http://yunai.natapp1.cc (opens new window)](http://yunai.natapp1.cc) 域名，是我后端项目的访问域名
+- [http://yunai.natapp1.cc](http://yunai.natapp1.cc) 域名，是我后端项目的访问域名
 所以，你的后端项目要使用 [《内网穿透》](/natapp/) 实现独立域名！！！
 ## # 1. 第一步，配置支付渠道
 访问 [支付管理 -> 应用信息] 菜单，点击“商城应用”对应的【微信小程序支付】，进入支付渠道的配置。如下图所示：
 ![支付渠道配置](../images/img_5261714b.png) 
-- 在 [https://pay.weixin.qq.com/index.php/core/account/info (opens new window)](https://pay.weixin.qq.com/index.php/core/account/info) 地址，可获取微信支付商户号
-- 在 [https://pay.weixin.qq.com/index.php/core/cert/api_cert#/ (opens new window)](https://pay.weixin.qq.com/index.php/core/cert/api_cert#/) 地址，可获取 API 证书、密钥
-- 注意！上图的“公众号 APPID”，实际指的是 [“小程序 APPID” (opens new window)](https://zhuanlan.zhihu.com/p/61511399) 哈，不要弄错了！
+- 在 [https://pay.weixin.qq.com/index.php/core/account/info](https://pay.weixin.qq.com/index.php/core/account/info) 地址，可获取微信支付商户号
+- 在 [https://pay.weixin.qq.com/index.php/core/cert/api_cert#/](https://pay.weixin.qq.com/index.php/core/cert/api_cert#/) 地址，可获取 API 证书、密钥
+- 注意！上图的“公众号 APPID”，实际指的是 [“小程序 APPID”](https://zhuanlan.zhihu.com/p/61511399) 哈，不要弄错了！
 友情提示：
-可以简单阅读下 [《微信官方文档 —— 小程序支付的接入前准备》 (opens new window)](https://pay.weixin.qq.com/doc/v3/partner/4012085810) 文章。
-目前建议使用微信支付的 V3 版本，并且使用[“微信支付公钥” (opens new window)](https://pay.weixin.qq.com/doc/v3/merchant/4012153196)！！！
-如果使用 V2 版本，最好参考 [https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT (opens new window)](https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT) 帖子，降低 `weixin-java` 组件的版本。
+可以简单阅读下 [《微信官方文档 —— 小程序支付的接入前准备》](https://pay.weixin.qq.com/doc/v3/partner/4012085810) 文章。
+目前建议使用微信支付的 V3 版本，并且使用[“微信支付公钥”](https://pay.weixin.qq.com/doc/v3/merchant/4012153196)！！！
+如果使用 V2 版本，最好参考 [https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT](https://gitee.com/zhijiantianya/yudao-cloud/issues/ICY1MT) 帖子，降低 `weixin-java` 组件的版本。
 ## # 2. 支付功能测试
 ① 使用微信开发者工具，访问小程序。随便找个商品下单，一路往下走，可以进入“收银台”界面（对应前端项目的 `pages/pay/index.vue` 文件）。如下图所示：
 ![收银台](../images/img_64aba61f.png) ② 选择“微信支付”，点击“立即支付”按钮，即可进行微信支付。如下图所示：

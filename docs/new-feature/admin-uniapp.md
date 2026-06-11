@@ -3,7 +3,7 @@
 友情提示：
 本文接 [《代码生成【单表】》](/new-feature/)，请务必先阅读。因为重复的内容，本文会不再赘述！
 在 [《代码生成【单表】》](/new-feature/) 文章中，我们已经基于代码生成器，在 `yudao-module-system` 模块中，开发一个【**用户组**】的功能。
-现在，我们将在 [yudao-ui-admin-uniapp (opens new window)](https://github.com/yudaocode/yudao-ui-admin-uniapp) 项目中，生成移动端的【用户组】功能。
+现在，我们将在 [yudao-ui-admin-uniapp](https://github.com/yudaocode/yudao-ui-admin-uniapp) 项目中，生成移动端的【用户组】功能。
 ## # 1. 数据库表结构设计（前文已操作）
 设计用户组的数据库表名为 `system_group`，其建表语句如下：
 CREATE TABLE `system_group` (

@@ -1,7 +1,7 @@
 # 支付宝、微信退款接入
 
 ## # 0. 概述
-在 `yudao-module-pay` 模块的 [`demo` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo) 模块，我们提供了一个 **退款** 接入的示例，它已支持支付宝、微信的所有退款方式。
+在 `yudao-module-pay` 模块的 [`demo`](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo) 模块，我们提供了一个 **退款** 接入的示例，它已支持支付宝、微信的所有退款方式。
 下面，我们以 `demo` 模块为例子，讲解如何接入退款。
 ## # 1. 第一步，创建支付订单
 ① 如果你是看支付宝退款接入，则需要先看完 [《支付宝支付接入》](/pay/alipay-pay-demo/) 文档
@@ -14,11 +14,11 @@
 cn.iocoder.boot
 yudao-module-pay
 ${revision}
-② 【后端】在 `demo` 模块的退款逻辑中，需要调用 PayRefundApi 的 [`#createRefund(...)` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/service/demo/PayDemoOrderServiceImpl.java#L190-L203) 方法，创建退款单。如下图所示：
+② 【后端】在 `demo` 模块的退款逻辑中，需要调用 PayRefundApi 的 [`#createRefund(...)`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/service/demo/PayDemoOrderServiceImpl.java#L190-L203) 方法，创建退款单。如下图所示：
 ![调用 PayRefundApi](../images/img_188ad5f1.png) 
 ## # 3. 第三步，实现回调接口【重要】
 友情提示：由于 demo 模块的退款接入已经实现，这里你只要看懂什么意思即可，不用操作。
-在 `demo` 模块所在的 `yudao-module-xx` 模块，实现一个支付回调的接口，提供给支付【中心】回调。对应的代码在 PayDemoOrderController 的 [`#updateDemoOrderRefunded(...)` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo/PayDemoOrderController.java#L68-L76) 方法中，如下图所示：
+在 `demo` 模块所在的 `yudao-module-xx` 模块，实现一个支付回调的接口，提供给支付【中心】回调。对应的代码在 PayDemoOrderController 的 [`#updateDemoOrderRefunded(...)`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo/PayDemoOrderController.java#L68-L76) 方法中，如下图所示：
 ![实现回调接口](../images/img_893d89e6.png) 
 ## # 4. 第四步，退款功能测试
 至此，我们已经完成了退款接入的所有步骤，接下来，我们来测试一下退款功能。

@@ -1,27 +1,27 @@
 # 【模型接入】MiniMax
 
-项目基于 Spring AI 提供的 [`spring-ai-minimax` (opens new window)](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-minimax)，实现 [MiniMax (opens new window)](https://minimaxi.com/) 的接入：
+项目基于 Spring AI 提供的 [`spring-ai-minimax`](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-minimax)，实现 [MiniMax](https://minimaxi.com/) 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
-| AI 对话 | [对话模型 (opens new window)](https://www.minimaxi.com/news/minimax-01-%E7%B3%BB%E5%88%97) | MiniMaxChatModel |
-| AI 绘画 | [生图模型 (opens new window)](https://platform.minimaxi.com/document/vffrKguXhEQoELeH2hVECJnd?key=67b03bdcdd0f18b80647241a) | 暂未接入 |
+| AI 对话 | [对话模型](https://www.minimaxi.com/news/minimax-01-%E7%B3%BB%E5%88%97) | MiniMaxChatModel |
+| AI 绘画 | [生图模型](https://platform.minimaxi.com/document/vffrKguXhEQoELeH2hVECJnd?key=67b03bdcdd0f18b80647241a) | 暂未接入 |
 ## # 1. 申请密钥
-MiniMax 有[开源版本 (opens new window)](https://www.minimaxi.com/news/minimax-01-%E7%B3%BB%E5%88%97)，性能比肩 GPT-4o，所以我们可以私有化部署。
+MiniMax 有[开源版本](https://www.minimaxi.com/news/minimax-01-%E7%B3%BB%E5%88%97)，性能比肩 GPT-4o，所以我们可以私有化部署。
 当然，我们也可以直接使用官方的 API 服务，提供了一定的免费额度，使用也比较方便
 下面，我们来看看这两种方式怎么申请（部署）？
 ### # 1.1 方式一：申请 MiniMax 密钥
-① 在 [MiniMax (opens new window)](https://www.minimaxi.com/) 上，注册一个账号。
-② 在 [MiniMax 开放平台 -> 账户管理 -> 接口密钥 (opens new window)](https://platform.minimaxi.com/user-center/basic-information/interface-key) 上，创建一个 API Key 密钥。
+① 在 [MiniMax](https://www.minimaxi.com/) 上，注册一个账号。
+② 在 [MiniMax 开放平台 -> 账户管理 -> 接口密钥](https://platform.minimaxi.com/user-center/basic-information/interface-key) 上，创建一个 API Key 密钥。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”，不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_26b27db6.png) 
 ### # 1.2 方式二：私有化部署
-参考 [https://github.com/MiniMax-AI/MiniMax-01 (opens new window)](https://github.com/MiniMax-AI/MiniMax-01) 进行部署
+参考 [https://github.com/MiniMax-AI/MiniMax-01](https://github.com/MiniMax-AI/MiniMax-01) 进行部署
 ## # 2. 模型配置
 友情提示：
 目前 `ai_model` 表中，已经预置了一些模型，可以直接使用！！！
 ### # 2.1 AI 对话
 使用 [《AI 对话》](/ai/chat/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的聊天模型。
-模型有：`MiniMax-Text-01`、`abab6.5s-chat`、`DeepSeek-R1` 等等，可以点击 [对话模型 (opens new window)](https://platform.minimaxi.com/document/ChatCompletion%20v2?key=66701d281d57f38758d581d0) 进行查看。
+模型有：`MiniMax-Text-01`、`abab6.5s-chat`、`DeepSeek-R1` 等等，可以点击 [对话模型](https://platform.minimaxi.com/document/ChatCompletion%20v2?key=66701d281d57f38758d581d0) 进行查看。
 注意，每个模型标识的 `max_tokens`（回复数 Token 数）一般是 4096 或 8192，具体也是看上述链接。
 ### # 2.2 AI 绘图
 TODO 等待 MiniMax ImageModel 客户端！

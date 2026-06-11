@@ -1,15 +1,15 @@
 # 多数据源（读写分离）、事务
 
-[`yudao-spring-boot-starter-mybatis` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mybatis/) 技术组件，除了提供 MyBatis 数据库操作，还提供了如下 2 种功能：
-- 数据连接池：基于 [Alibaba Druid (opens new window)](https://github.com/alibaba/druid) 实现，额外提供监控的能力。
-- 多数据源（读写分离）：基于 [Dynamic Datasource (opens new window)](https://github.com/baomidou/dynamic-datasource-spring-boot-starter) 实现，支持 Druid 连接池，可集成 [Seata (opens new window)](https://www.iocoder.cn/Seata/install/?yudao) 实现分布式事务。
+[`yudao-spring-boot-starter-mybatis`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mybatis/) 技术组件，除了提供 MyBatis 数据库操作，还提供了如下 2 种功能：
+- 数据连接池：基于 [Alibaba Druid](https://github.com/alibaba/druid) 实现，额外提供监控的能力。
+- 多数据源（读写分离）：基于 [Dynamic Datasource](https://github.com/baomidou/dynamic-datasource-spring-boot-starter) 实现，支持 Druid 连接池，可集成 [Seata](https://www.iocoder.cn/Seata/install/?yudao) 实现分布式事务。
 ## # 1. 数据连接池
 友情提示：
-如果你未学习过 Druid 数据库连接池，可以后续阅读 [《芋道 Spring Boot 数据库连接池入门》 (opens new window)](http://www.iocoder.cn/Spring-Boot/datasource-pool/?yudao) 文章。
+如果你未学习过 Druid 数据库连接池，可以后续阅读 [《芋道 Spring Boot 数据库连接池入门》](http://www.iocoder.cn/Spring-Boot/datasource-pool/?yudao) 文章。
 com.alibaba
 druid-spring-boot-starter
 ### # 1.1 Druid 监控配置
-在 [`application-local.yaml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-local.yaml) 配置文件中，通过 `spring.datasource.druid` 配置项，仅仅设置了 Druid **监控**相关的配置项目，具体数据库的设置需要使用 Dynamic Datasource 的配置项。如下图所示：
+在 [`application-local.yaml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-local.yaml) 配置文件中，通过 `spring.datasource.druid` 配置项，仅仅设置了 Druid **监控**相关的配置项目，具体数据库的设置需要使用 Dynamic Datasource 的配置项。如下图所示：
 ![ 配置项](/images/01.png) 
 ### # 1.2 Druid 监控界面
 ① 访问后端的 `/druid/index.html` 路径，例如说本地的 `http://127.0.0.1:48080/druid/index.html` 地址，可以查看到 Druid 监控界面。如下图所示：
@@ -23,21 +23,21 @@ druid-spring-boot-starter
 ![Druid 登录界面](/images/druid-security.png) 
 ## # 2. 多数据源
 友情提示：
-如果你未学习过多数据源，可以后续阅读 [《芋道 Spring Boot 多数据源（读写分离）入门》 (opens new window)](http://www.iocoder.cn/Spring-Boot/dynamic-datasource/?yudao) 文章。
+如果你未学习过多数据源，可以后续阅读 [《芋道 Spring Boot 多数据源（读写分离）入门》](http://www.iocoder.cn/Spring-Boot/dynamic-datasource/?yudao) 文章。
 com.baomidou
 dynamic-datasource-spring-boot-starter
 ### # 2.1 多数据源配置
-在 [`application-local.yaml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-local.yaml#L30-L58) 配置文件中，通过 `spring.datasource.dynamic` 配置项，配置了 Master-Slave 主从两个数据源。如下图所示：
+在 [`application-local.yaml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-local.yaml#L30-L58) 配置文件中，通过 `spring.datasource.dynamic` 配置项，配置了 Master-Slave 主从两个数据源。如下图所示：
 ![ 配置项](/images/04.png) 
 ### # 2.2 数据源切换
 #### # 2.2.1 @Master 注解
-在方法上添加 [`@Master` (opens new window)](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/Master.java) 注解，使用名字为 `master` 的数据源，即使用【主】库，一般适合【写】场景。示例如下图：
+在方法上添加 [`@Master`](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/Master.java) 注解，使用名字为 `master` 的数据源，即使用【主】库，一般适合【写】场景。示例如下图：
 ![@Master 注解](/images/05.png) 由于项目的 `spring.datasource.dynamic.primary` 为 `master`，默认使用【主】库，所以无需手动添加 `@Master` 注解。
 #### # 2.2.2 @Slave 注解
-在方法上添加 [`@Slave` (opens new window)](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/Slave.java) 注解，使用名字为 `slave` 的数据源，即使用【从】库，一般适合【读】场景。示例如下图：
+在方法上添加 [`@Slave`](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/Slave.java) 注解，使用名字为 `slave` 的数据源，即使用【从】库，一般适合【读】场景。示例如下图：
 ![@Slave 注解](/images/06.png) 
 #### # 2.2.3 @DS 注解
-在方法上添加 [`@DS` (opens new window)](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/DS.java) 注解，使用指定名字的数据源，适合多数据源的情况。示例如下图：
+在方法上添加 [`@DS`](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/DS.java) 注解，使用指定名字的数据源，适合多数据源的情况。示例如下图：
 ![@DS 注解](/images/07.png) 
 ## # 3. 事务相关
 事务一共有 3 种解决方案，分别是：
@@ -48,9 +48,9 @@ dynamic-datasource-spring-boot-starter
 大多数情况下，是单机 + 单个数据源的操作，只需要在方法上添加 Spring `@Transactional` 注解，声明事务即可。
 具体的使用，可以项目里搜 `@Transactional` 关键字，就可以看到非常多的使用示例。
 ### # 3.2 @DSTransactional 注解
-如果单机 + 多个数据源的操作，使用 `@Transactional` 声明的事务中，无法进行数据源的切换。此时，可以使用 Dynamic Datasource 提供的 [`@DSTransactional` (opens new window)](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/DSTransactional.java) 注解，支持多数据源的切换。
+如果单机 + 多个数据源的操作，使用 `@Transactional` 声明的事务中，无法进行数据源的切换。此时，可以使用 Dynamic Datasource 提供的 [`@DSTransactional`](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/DSTransactional.java) 注解，支持多数据源的切换。
 友情提示：
-`@DSTransactional` 注解，提供相对可靠的多数据源的事务一致性，但是不绝对，可学习 [《DSTransactional 实现源码分析 》 (opens new window)](https://www.yinxiang.com/everhub/note/ac0175c8-35f5-4d66-8cd3-c662d7a16441) 文章。
+`@DSTransactional` 注解，提供相对可靠的多数据源的事务一致性，但是不绝对，可学习 [《DSTransactional 实现源码分析 》](https://www.yinxiang.com/everhub/note/ac0175c8-35f5-4d66-8cd3-c662d7a16441) 文章。
 使用的示例，AService 调用 BService、CService，并且分别对应 a、b、c 各自的数据源，代码如下所示：
 public class AService {
 @Resource
@@ -83,10 +83,10 @@ public void createC() {
 问题 ②：b、c 数据源的方法，也添加 `@DSTransactional` 注解，会不会影响事务？
 - 答案：不会，可以放心大胆的加。
 ### # 3.3 分布式事务
-在多机分布式场景下，无论是单数据源、多数据源，本质上都是分布式事务，建议引入 Seata 框架，提供完整的分布式事务的解决方案，可学习 [《芋道 Seata 极简入门 》 (opens new window)](https://www.iocoder.cn/Seata/install/?yudao) 文章。
+在多机分布式场景下，无论是单数据源、多数据源，本质上都是分布式事务，建议引入 Seata 框架，提供完整的分布式事务的解决方案，可学习 [《芋道 Seata 极简入门 》](https://www.iocoder.cn/Seata/install/?yudao) 文章。
 不过如果你是单机项目，则可以不用关注着一点哈！
 ## # 4. 分库分表
-建议采用 ShardingSphere 的子项目 Sharding-JDBC 完成分库分表的功能，可阅读 [《芋道 Spring Boot 分库分表入门 》 (opens new window)](https://www.iocoder.cn/Spring-Boot/sharding-datasource/?yudao) 文章，学习如何整合进项目。
+建议采用 ShardingSphere 的子项目 Sharding-JDBC 完成分库分表的功能，可阅读 [《芋道 Spring Boot 分库分表入门 》](https://www.iocoder.cn/Spring-Boot/sharding-datasource/?yudao) 文章，学习如何整合进项目。
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [MyBatis 联表&分页查询](/mybatis-pro/) [Redis 缓存](/redis-cache/) 

@@ -11,12 +11,12 @@
 - 第二步，导入会员的 SQL 数据库脚本
 - 第三步，重启后端项目，确认功能是否生效
 ### # 2.1 开启模块
-① 修改根目录的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/pom.xml) 文件，取消 `yudao-module-member` 模块的注释。如下图所示：
-![取消 模块的注释](../images/img_fa1ff9ff.png) ② 修改 `yudao-server` 目录的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/pom.xml) 文件，引入 `yudao-module-member` 模块。如下图所示：
+① 修改根目录的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/pom.xml) 文件，取消 `yudao-module-member` 模块的注释。如下图所示：
+![取消 模块的注释](../images/img_fa1ff9ff.png) ② 修改 `yudao-server` 目录的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/pom.xml) 文件，引入 `yudao-module-member` 模块。如下图所示：
 ![引入 模块](../images/img_aa100cc7.png) ③ 点击 IDEA 右上角的【Reload All Maven Projects】，刷新 Maven 依赖。如下图所示：
 ![刷新 Maven 依赖](../images/img_feccec72.png) 
 ### # 2.2 第二步，导入 SQL
-点击 [`member-2024-01-18.sql.zip` (opens new window)](https://t.zsxq.com/16XkmImMO) 下载附件，解压出 SQL 文件，然后导入到数据库中。
+点击 [`member-2024-01-18.sql.zip`](https://t.zsxq.com/16XkmImMO) 下载附件，解压出 SQL 文件，然后导入到数据库中。
 友情提示：↑↑↑ member.sql 是可以点击下载的！ ↑↑↑
 重要说明：该 SQL 仅芋道星球成员可使用和商用，否则视为侵权（索赔 100 万，永久追溯）【下载即视为同意】。
 ### # 2.3 第三步，重启项目

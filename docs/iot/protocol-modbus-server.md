@@ -3,8 +3,8 @@
 推荐阅读：
 - [《设备接入（概述）》](/iot/protocol-overview/) — 建议先阅读，了解整体架构和消息格式
 - [《设备接入（Modbus Client）》](/iot/protocol-modbus-client/)
-- [《阿里云物联网 —— Modbus 设备通过边缘网关上云》 (opens new window)](https://help.aliyun.com/zh/iot-edge/user-guide/connect-modbus-devices-to-iot-platform-through-link-iot-edge)
-- [《阿里云物联网 —— 使用 Modbus TCP 连接 Modbus 从设备》 (opens new window)](https://www.alibabacloud.com/help/zh/iot-edge/support/connect-a-modbus-slave-device-to-an-edge-instance-over-modbus-tcp)
+- [《阿里云物联网 —— Modbus 设备通过边缘网关上云》](https://help.aliyun.com/zh/iot-edge/user-guide/connect-modbus-devices-to-iot-platform-through-link-iot-edge)
+- [《阿里云物联网 —— 使用 Modbus TCP 连接 Modbus 从设备》](https://www.alibabacloud.com/help/zh/iot-edge/support/connect-a-modbus-slave-device-to-an-edge-instance-over-modbus-tcp)
 Modbus Server 协议接入，由 `yudao-module-iot-gateway` 模块的 `protocol.modbus.tcpserver` 包实现，基于 Vert.x TCP Server，默认端口 503。
 网关作为 TCP **Server** 监听端口，设备扮演 TCP **Client** 主动连接网关。设备连接后需通过自定义功能码（FC65）进行认证，认证成功后网关作为 **Modbus 主站**主动轮询设备寄存器。
 适用场景：设备无固定 IP（如 4G/5G 设备），需要设备反向连接网关。
@@ -37,7 +37,7 @@ Modbus 标准保留了 **FC65-72** 供用户自定义功能码（User-Defined Fu
 - 自定义功能码可通过 `custom-function-code` 配置项修改（范围 65-72），默认 65
 ### # 1.4 连接认证流程
 提示
-关于 Modbus TCP 和 Modbus RTU 帧格式的基础知识，可参考 [《MODBUSTCP 和 MODBUSRTU 数据帧对比 》 (opens new window)](https://blog.csdn.net/qq_43460106/article/details/131579012) 。
+关于 Modbus TCP 和 Modbus RTU 帧格式的基础知识，可参考 [《MODBUSTCP 和 MODBUSRTU 数据帧对比 》](https://blog.csdn.net/qq_43460106/article/details/131579012) 。
 1. 【设备】TCP 连接到网关监听端口（默认 503）
 1. 【设备】发送 FC65 认证帧，Payload 为 JSON：{"method":"auth","params":{"clientId":"","username":"yyy&xxx","password":"..."}}
 1. 【网关 IotModbusTcpServerUpstreamHandler】校验三元组、验证帧格式与数据库配置一致、加载点位配置，认证成功后注册连接并发送设备上线消息
@@ -107,7 +107,7 @@ request-cleanup-interval: 10000 # Pending Request 清理间隔（毫秒，默认
 | MODBUS_TCP | IotModbusTcpServerTcpIntegrationTest |
 | MODBUS_RTU | IotModbusTcpServerRtuIntegrationTest |
 两个测试类分别模拟 MODBUS_TCP 和 MODBUS_RTU 格式的设备，完成 FC65 认证 → 响应轮询读请求 → 接收属性写入的完整流程。
-以 IotModbusTcpServerTcpIntegrationTest 为例，以内置的 id 为 80 的 [Modbus TCP Server + MODBUS_TCP 演示设备 (opens new window)](http://127.0.0.1/iot/device/detail/80) 为例进行测试。
+以 IotModbusTcpServerTcpIntegrationTest 为例，以内置的 id 为 80 的 [Modbus TCP Server + MODBUS_TCP 演示设备](http://127.0.0.1/iot/device/detail/80) 为例进行测试。
 ① 执行 `testPollingResponse()` 方法即可，该方法内部**已包含 FC65 认证流程**，认证成功后会持续监听网关下发的读请求并自动构造响应帧发回。测试类日志如下：
 // 日志说明：设备连接网关，发送 FC65 认证帧，网关返回认证成功（code=0）
 15:00:48.013 [main] INFO ...IotModbusTcpServerTcpIntegrationTest -- [sendAndReceive][发送帧, 长度=207]

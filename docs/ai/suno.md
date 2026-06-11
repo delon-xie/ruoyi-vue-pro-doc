@@ -1,10 +1,10 @@
 # 【模型接入】Suno
 
 Suno AI，简称 Suno，是一款生成式人工智能音乐创作程序，旨在产生人声与乐器相结合的逼真歌曲。2023 年 12 月 20 日，Suno AI 在推出网络应用程序并与微软建立合作关系后，开始广泛使用。
-由于 Suno 没有直接提供 API 接口，所以大家一般通过 [https://github.com/gcui-art/suno-api (opens new window)](https://github.com/gcui-art/suno-api) 项目，模拟用户操作，实现 API 形式调用 AI 生成音乐。
+由于 Suno 没有直接提供 API 接口，所以大家一般通过 [https://github.com/gcui-art/suno-api](https://github.com/gcui-art/suno-api) 项目，模拟用户操作，实现 API 形式调用 AI 生成音乐。
 也因此，Spring AI 肯定是不集成 Suno 的，所以我们实现的 `models/suno` 包下的 SunoApi 类，基于上述的 `suno-api` 代理，调用 Suno 实现音乐生成的功能。
 ## # 1. 申请密钥
-可参考 [https://github.com/gcui-art/suno-api/blob/main/README_CN.md (opens new window)](https://github.com/gcui-art/suno-api/blob/main/README_CN.md) 文档，申请 Suno 账号，并搭建 `suno-api` 代理。
+可参考 [https://github.com/gcui-art/suno-api/blob/main/README_CN.md](https://github.com/gcui-art/suno-api/blob/main/README_CN.md) 文档，申请 Suno 账号，并搭建 `suno-api` 代理。
 我是采用【本地运行】的方式，因为 Vercel 部署需要 VPN 访问，比较麻烦。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。需要填写“密钥” + “自定义 API URL”。如下图所示：
 ![私有的密钥配置](../images/img_4ea6658a.png) 

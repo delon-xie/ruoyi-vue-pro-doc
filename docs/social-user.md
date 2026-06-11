@@ -6,26 +6,26 @@
 ![管理后台](/images/01.png) 友情提示：为了表述方便，本文主要使用管理后台的三方登录作为示例。
 用户 App 也是支持该功能，你可以自己去体验一下。
 ## # 1. 表结构
-![](/images/02.png) ① 三方登录完成时，系统会将三方用户存储到 [`system_social_user` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/dal/dataobject/social/SocialUserDO.java) 表中，通过 [`type` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/enums/social/SocialTypeEnum.java) 标记对应的第三方平台。
-② 【未】关联本系统 User 的三方用户，需要在三方登录完成后，使用账号密码进行「**绑定登录**」，成功后记录到 [`system_social_user_bind` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/dal/dataobject/social/SocialUserBindDO.java) 表中。
+![](/images/02.png) ① 三方登录完成时，系统会将三方用户存储到 [`system_social_user`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/dal/dataobject/social/SocialUserDO.java) 表中，通过 [`type`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/enums/social/SocialTypeEnum.java) 标记对应的第三方平台。
+② 【未】关联本系统 User 的三方用户，需要在三方登录完成后，使用账号密码进行「**绑定登录**」，成功后记录到 [`system_social_user_bind`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/dal/dataobject/social/SocialUserBindDO.java) 表中。
 【已】关联本系统 User 的三方用户，在三方登录完成后，直接进入系统，即「**快捷登录**」。
 ## # 2. 绑定登录
-① 使用浏览器访问 [http://127.0.0.1:1024/login (opens new window)](http://127.0.0.1:1024/login) 地址，点击 [钉钉] 或者 [企业微信] 进行三方登录。此时，会调用 [`/admin-api/system/auth/social-auth-redirect` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L97-L106) 接口，获得第三方平台的登录地址，并进行跳转。
+① 使用浏览器访问 [http://127.0.0.1:1024/login](http://127.0.0.1:1024/login) 地址，点击 [钉钉] 或者 [企业微信] 进行三方登录。此时，会调用 [`/admin-api/system/auth/social-auth-redirect`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L97-L106) 接口，获得第三方平台的登录地址，并进行跳转。
 ![三方登录](/images/12.png) 然后，使用 [钉钉] 或者 [企业微信] 进行扫码，完成三方登录。
-② 三方登录成功后，跳转回 [http://127.0.0.1:1024/social-login (opens new window)](http://127.0.0.1:1024/social-login) 地址。此时，会调用 [`/admin-api/system/auth/social-login` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L149-L154) 接口，尝试「快捷登录」。由于该三方用户【未】关联管理后台的 AdminUser 用户，所以会看到 “未绑定账号，需要进行绑定” 报错。
-![三方登录页](/images/11.png) ③ 输入账号密码，点击 [提交] 按钮，进行「绑定登录」。此时，会调用 [`/admin-api/system/auth/login` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L61-L66) 接口（在账号密码登录的基础上，额外带上 `socialType` + `socialCode` + `socialState` 参数）。成功后，即可进入系统的首页。
+② 三方登录成功后，跳转回 [http://127.0.0.1:1024/social-login](http://127.0.0.1:1024/social-login) 地址。此时，会调用 [`/admin-api/system/auth/social-login`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L149-L154) 接口，尝试「快捷登录」。由于该三方用户【未】关联管理后台的 AdminUser 用户，所以会看到 “未绑定账号，需要进行绑定” 报错。
+![三方登录页](/images/11.png) ③ 输入账号密码，点击 [提交] 按钮，进行「绑定登录」。此时，会调用 [`/admin-api/system/auth/login`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L61-L66) 接口（在账号密码登录的基础上，额外带上 `socialType` + `socialCode` + `socialState` 参数）。成功后，即可进入系统的首页。
 ![三方登录页](/images/13.png) 
 ## # 3. 快捷登录
 退出系统，再进行一次三方登录的流程。
-【相同】① 使用浏览器访问 [http://127.0.0.1:1024/login (opens new window)](http://127.0.0.1:1024/login) 地址，点击 [钉钉] 或者 [企业微信] 进行三方登录。此时，会调用 [`/admin-api/system/auth/social-auth-redirect` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L97-L106) 接口，获得第三方平台的登录地址，并进行跳转。
-![三方登录](/images/12.png) 【不同】② 三方登录成功后，跳转回 [http://127.0.0.1:1024/social-login (opens new window)](http://127.0.0.1:1024/social-login) 地址。此时，会调用 [`/admin-api/system/auth/social-login` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L149-L154) 接口，尝试「快捷登录」。由于该三方用户【已】关联管理后台的 AdminUser 用户，所以直接进入系统的首页。
+【相同】① 使用浏览器访问 [http://127.0.0.1:1024/login](http://127.0.0.1:1024/login) 地址，点击 [钉钉] 或者 [企业微信] 进行三方登录。此时，会调用 [`/admin-api/system/auth/social-auth-redirect`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L97-L106) 接口，获得第三方平台的登录地址，并进行跳转。
+![三方登录](/images/12.png) 【不同】② 三方登录成功后，跳转回 [http://127.0.0.1:1024/social-login](http://127.0.0.1:1024/social-login) 地址。此时，会调用 [`/admin-api/system/auth/social-login`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L149-L154) 接口，尝试「快捷登录」。由于该三方用户【已】关联管理后台的 AdminUser 用户，所以直接进入系统的首页。
 ![三方登录页](/images/13.png) 
 ## # 4. 绑定与解绑
-访问 [http://127.0.0.1:1024/user/profile (opens new window)](http://127.0.0.1:1024/user/profile) 地址，选择 [社交信息] 选项，可以三方用户的绑定与解绑。
+访问 [http://127.0.0.1:1024/user/profile](http://127.0.0.1:1024/user/profile) 地址，选择 [社交信息] 选项，可以三方用户的绑定与解绑。
 ![绑定与解绑](/images/21.png) 
 ## # 5. 配置管理
 ### # 5.1 配置文件
-在 [`application-{env}.yaml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-local.yaml#L196-L211) 配置文件中，对应 `justauth` 配置项，填写你的第三方平台的配置信息。
+在 [`application-{env}.yaml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/resources/application-local.yaml#L196-L211) 配置文件中，对应 `justauth` 配置项，填写你的第三方平台的配置信息。
 ![配置文件](/images/31.png) 系统使用 JustAuth 组件，想要对接其它第三方平台，只需要新增对应的配置信息即可。
 ### # 5.2 数据库配置
 ① `system_social_client` 表，它本质上是 JustAuth 配置的 DB 存储。
@@ -57,13 +57,13 @@ PRIMARY KEY (`id`) USING BTREE
 ![三方应用](/images/img_8f2b65e0.png) 另外，在 [系统管理 -> 三方登录 -> 三方用户] 菜单下，可以进行**当前租户**的 `system_social_user` 三方用户表的查询。如下图所示：
 ![三方应用](/images/img_4c8af73d.png) 
 ## # 6. 第三方平台的申请
-- [阿里钉钉 (opens new window)](https://justauth.cn/guide/oauth/dingtalk/)
-- [企业微信扫码登录 (opens new window)](https://justauth.cn/guide/oauth/wechat_enterprise_qrcode/)
-- [微信开放平台 (opens new window)](https://justauth.cn/guide/oauth/wechat_open/)
+- [阿里钉钉](https://justauth.cn/guide/oauth/dingtalk/)
+- [企业微信扫码登录](https://justauth.cn/guide/oauth/wechat_enterprise_qrcode/)
+- [微信开放平台](https://justauth.cn/guide/oauth/wechat_open/)
 注意，如果第三方平台如果需要配置具体的授信地址，需要添加 `/social-login` 用于三方登录回调页、`/user/profile` 用于三方用户的绑定与解绑。
 ## # 666. 社区贡献相关
-- [《Pull Request：移除 justauth-spring-boot-starter，仅使用官方 JustAuth，并支持数据库配置》 (opens new window)](https://github.com/YunaiV/yudao-cloud/pull/238)、[前端部分 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/160)
-- 《Pull Request：微软社交登录支持》：[管理后台 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/801/)、[前端 (opens new window)](https://gitee.com/yudaocode/yudao-cloud-mini/)
+- [《Pull Request：移除 justauth-spring-boot-starter，仅使用官方 JustAuth，并支持数据库配置》](https://github.com/YunaiV/yudao-cloud/pull/238)、[前端部分](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/160)
+- 《Pull Request：微软社交登录支持》：[管理后台](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/801/)、[前端](https://gitee.com/yudaocode/yudao-cloud-mini/)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [用户体系](/user-center/) [OAuth 2.0（SSO 单点登录)](/oauth2/) 

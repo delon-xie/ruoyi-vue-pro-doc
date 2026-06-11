@@ -49,7 +49,7 @@ PRIMARY KEY (`id`) USING BTREE
 ③ 点击【转移】按钮，可以修改线索的负责人，如下图所示：
 ![转移线索](../images/img_11b46efa.png) 友情提示：客户、联系人、合同等其它模块的转移功能，也是类似的操作。
 ④ 点击【转化为客户】按钮，可以将线索转化为客户。转化后，会创建出一条客户记录，此时 `customer_id` 字段会指向客户的编号，如下图所示：
-![转化为客户](../images/img_ca792096.png) 如果你要批量转移线索，可参考 [#451 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/pull/451)、[#31 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/31)
+![转化为客户](../images/img_ca792096.png) 如果你要批量转移线索，可参考 [#451](https://github.com/YunaiV/ruoyi-vue-pro/pull/451)、[#31](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/31)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [功能开启](/crm/build/) [【客户】客户管理、公海客户](/crm/customer/) 

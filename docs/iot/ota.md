@@ -1,8 +1,8 @@
 # OTA 固件升级
 
 推荐阅读：
-- [《阿里云物联网平台 —— OTA 升级概述》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/ota-upgrade-overview)
-- [《阿里云物联网平台 —— OTA 升级》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/ota-update)
+- [《阿里云物联网平台 —— OTA 升级概述》](https://help.aliyun.com/zh/iot/user-guide/ota-upgrade-overview)
+- [《阿里云物联网平台 —— OTA 升级》](https://help.aliyun.com/zh/iot/user-guide/ota-update)
 OTA（Over-the-Air）固件升级模块，由 `yudao-module-iot` 后端模块的 `ota` 包实现。它支持对设备进行远程固件升级，包括固件版本管理、升级任务下发、设备升级进度追踪等功能。例如：
 - 上传新版固件，批量升级产品下的所有设备
 - 选择指定设备进行定向升级，实时查看每台设备的升级进度

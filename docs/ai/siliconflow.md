@@ -1,15 +1,15 @@
 # 【模型接入】硅基流动
 
-项目基于 Spring AI + 自己实现的 `models/siliconflow`，实现 [硅基流动 (opens new window)](https://siliconflow.cn/zh-cn/) 的接入：
+项目基于 Spring AI + 自己实现的 `models/siliconflow`，实现 [硅基流动](https://siliconflow.cn/zh-cn/) 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
-| AI 对话 | [对话模型 (opens new window)](https://cloud.siliconflow.cn/models?types=chat) | SiliconFlowChatModel |
-| AI 绘画 | [生图模型 (opens new window)](https://cloud.siliconflow.cn/models?types=to-image) | SiliconFlowImageModel |
+| AI 对话 | [对话模型](https://cloud.siliconflow.cn/models?types=chat) | SiliconFlowChatModel |
+| AI 绘画 | [生图模型](https://cloud.siliconflow.cn/models?types=to-image) | SiliconFlowImageModel |
 ## # 1. 申请密钥
 目前硅基流动主要是部署开源模型，所以需要去官网申请 API Key，然后通过 Spring AI 提供的客户端接入。
 ### # 1.1 申请密钥
-① 在 [硅基流动 (opens new window)](https://cloud.siliconflow.cn/i/bqIQQ4u4) 上，注册一个账号。
-② 在 [管理 -> API Key 管理 (opens new window)](https://cloud.siliconflow.cn/account/ak) 上，创建一个 API Key 密钥。
+① 在 [硅基流动](https://cloud.siliconflow.cn/i/bqIQQ4u4) 上，注册一个账号。
+② 在 [管理 -> API Key 管理](https://cloud.siliconflow.cn/account/ak) 上，创建一个 API Key 密钥。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”，不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_b1436129.png) 
 ## # 2. 模型配置
@@ -17,7 +17,7 @@
 目前 `ai_model` 表中，已经预置了一些模型，可以直接使用！！！
 ### # 2.1 AI 对话
 使用 [《AI 对话》](/ai/chat/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的聊天模型。
-模型有：`deepseek-ai/DeepSeek-R1-Distill-Qwen-7B`、`deepseek-ai/DeepSeek-R1` 等等，可以点击 [对话模型 (opens new window)](https://cloud.siliconflow.cn/models?types=chat) 进行查看。
+模型有：`deepseek-ai/DeepSeek-R1-Distill-Qwen-7B`、`deepseek-ai/DeepSeek-R1` 等等，可以点击 [对话模型](https://cloud.siliconflow.cn/models?types=chat) 进行查看。
 注意，每个模型标识的 `max_tokens`（回复数 Token 数）一般是 4096 或 8192，具体也是看上述链接。
 ### # 2.2 AI 绘图
 使用 [《AI 绘图》](/ai/image/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的图像模型。

@@ -7,7 +7,7 @@
 | 部门领导 | 所属部门的所有员工 |
 | HR 小姐姐 | 整个公司的所有员工 |
 上述的这个示例，使用硬编码是可以实现的，并且也非常简单。但是，在业务快速迭代的过程中，类似这种数据需求会越来越多，如果全部采用硬编码的方式，无疑会给我们带来非常大的开发与维护成本。
-因此，项目提供 [`yudao-spring-boot-starter-biz-data-permission` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/) 技术组件，只需要少量的编码，无需入侵到业务代码，即可实现数据权限。
+因此，项目提供 [`yudao-spring-boot-starter-biz-data-permission`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/) 技术组件，只需要少量的编码，无需入侵到业务代码，即可实现数据权限。
 友情提示：数据权限是否支持指定用户只能查看数据的某些字段？
 不支持。权限可以分成三类：功能权限、数据权限、字段权限。
 字段权限的控制，不属于数据权限，而是属于字段权限，会在未来提供，敬请期待。
@@ -24,7 +24,7 @@
 - `#processSelect(...)` 方法：处理 SELECT 语句的 WHERE 条件。
 - `#processUpdate(...)` 方法：处理 UPDATE 语句的 WHERE 条件。
 - `#processDelete(...)` 方法：处理 DELETE 语句的 WHERE 条件。
-主要还是基于 MyBatis Plus 的 [数据权限插件 (opens new window)](https://baomidou.com/plugins/data-permission/)。
+主要还是基于 MyBatis Plus 的 [数据权限插件](https://baomidou.com/plugins/data-permission/)。
 具体的条件生成，可见项目的 DataPermissionRuleHandler 类。
 友情提示：MyBatis Plus 的数据权限方案，在我们在 MyBatis XML 手写 SQL 时，是不生效的，即不会拼接 `WHERE` 数据权限条件！！！
 ## # 2. 基于部门的数据权限
@@ -37,9 +37,9 @@
 ### # 2.1 后台配置
 可通过管理后台的 [系统管理 -> 角色管理] 菜单，设置用户角色的数据权限。
 ![角色管理](/images/01.png) 实现代码？
-可见 [DeptDataPermissionRule (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/dept/DeptDataPermissionRule.java) 数据权限规则。
+可见 [DeptDataPermissionRule](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/dept/DeptDataPermissionRule.java) 数据权限规则。
 ### # 2.2 字段配置
-每个 Maven Module， 通过自定义 [DeptDataPermissionRuleCustomizer (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/dept/DeptDataPermissionRuleCustomizer.java) Bean，配置哪些表的哪些字段，进行数据权限的过滤。以 `yudao-module-system` 模块来举例子，代码如下：
+每个 Maven Module， 通过自定义 [DeptDataPermissionRuleCustomizer](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/dept/DeptDataPermissionRuleCustomizer.java) Bean，配置哪些表的哪些字段，进行数据权限的过滤。以 `yudao-module-system` 模块来举例子，代码如下：
 @Configuration(proxyBeanMethods = false)
 public class DataPermissionConfiguration {
 @Bean
@@ -58,9 +58,9 @@ rule.addUserColumn(AdminUserDO.class, "id"); // WHERE id = ?
 - 基于【部门】过滤数据权限的表，需要添加部门编号字段，例如说 `dept_id` 字段。
 - 基于【用户】过滤数据权限的表，需要添加部门用户字段，例如说 `user_id` 字段。
 ## # 3. @DataPermission 注解
-[`@DataPermission` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/annotation/DataPermission.java) 数据权限注解，可声明在类或者方法上，配置使用的数据权限规则。
+[`@DataPermission`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/annotation/DataPermission.java) 数据权限注解，可声明在类或者方法上，配置使用的数据权限规则。
 ① `enable` 属性：当前类或方法是否开启数据权限，默认是 `true` 开启状态，可设置 `false` 禁用状态。
-**也就是说，数据权限默认是开启的，无需添加 `@DataPermission` 注解** **也就是说，数据权限默认是开启的，无需添加 `@DataPermission` 注解** **也就是说，数据权限默认是开启的，无需添加 `@DataPermission` 注解** 使用示例如下，可见 [UserProfileController (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/user/UserProfileController.java#L59-L82) 类：
+**也就是说，数据权限默认是开启的，无需添加 `@DataPermission` 注解** **也就是说，数据权限默认是开启的，无需添加 `@DataPermission` 注解** **也就是说，数据权限默认是开启的，无需添加 `@DataPermission` 注解** 使用示例如下，可见 [UserProfileController](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/user/UserProfileController.java#L59-L82) 类：
 // UserProfileController.java
 @GetMapping("/get")
 @Operation(summary = "获得登录用户信息")
@@ -73,10 +73,10 @@ resp.setDept(UserConvert.INSTANCE.convert02(dept));
 }
 // .. 省略代码
 }
-② `includeRules` 属性，配置生效的 [DataPermissionRule (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/DataPermissionRule.java) 数据权限规则。例如说，项目里有 10 种 DataPermissionRule 规则，某个方法**只想**其中的 1 种生效，则可以使用该属性。
-③ `excludeRules` 属性，配置排除的 [DataPermissionRule (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/DataPermissionRule.java) 数据权限规则。例如说，项目里有 10 种 DataPermissionRule 规则，某个方法**不想**其中的 1 种生效，则可以使用该属性。
+② `includeRules` 属性，配置生效的 [DataPermissionRule](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/DataPermissionRule.java) 数据权限规则。例如说，项目里有 10 种 DataPermissionRule 规则，某个方法**只想**其中的 1 种生效，则可以使用该属性。
+③ `excludeRules` 属性，配置排除的 [DataPermissionRule](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/DataPermissionRule.java) 数据权限规则。例如说，项目里有 10 种 DataPermissionRule 规则，某个方法**不想**其中的 1 种生效，则可以使用该属性。
 ## # 4. 自定义的数据权限规则
-如果想要自定义数据权限规则，只需要实现 [DataPermissionRule (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/DataPermissionRule.java) 数据权限规则接口，并声明成 Spring Bean 即可。需要实现的只有两个方法：
+如果想要自定义数据权限规则，只需要实现 [DataPermissionRule](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-data-permission/src/main/java/cn/iocoder/yudao/framework/datapermission/core/rule/DataPermissionRule.java) 数据权限规则接口，并声明成 Spring Bean 即可。需要实现的只有两个方法：
 public interface DataPermissionRule {
 /**
 * 返回需要生效的表名数组
@@ -140,9 +140,9 @@ default: return null;
 可以使用 DataPermissionUtils 的 `#executeIgnore(...)` 方法，设置忽略数据权限。
 具体的案例，可以通过 IDEA 查找下项目里，哪些地方调用了这个方法噢！
 ## # 666. 社区贡献相关
-- [数据权限组件改进建议：改成更通用的，取消内置的部门数据权限 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/issues/477)
-- [推荐：通用的数据权限的具体实现及示例说明 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1158)
-- [基于 （租户/部门/用户）关联表 全局数据共享权限 规则 (opens new window)](https://github.com/YunaiV/yudao-cloud/pull/211)
+- [数据权限组件改进建议：改成更通用的，取消内置的部门数据权限](https://github.com/YunaiV/ruoyi-vue-pro/issues/477)
+- [推荐：通用的数据权限的具体实现及示例说明](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1158)
+- [基于 （租户/部门/用户）关联表 全局数据共享权限 规则](https://github.com/YunaiV/yudao-cloud/pull/211)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [功能权限](/resource-permission/) [用户体系](/user-center/) 

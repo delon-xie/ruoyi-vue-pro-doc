@@ -1,7 +1,7 @@
 # 设备管理
 
 推荐阅读：
-- [《阿里云物联网平台 —— 创建产品与设备》 (opens new window)](https://help.aliyun.com/zh/iot/getting-started/create-a-product-and-add-a-device)
+- [《阿里云物联网平台 —— 创建产品与设备》](https://help.aliyun.com/zh/iot/getting-started/create-a-product-and-add-a-device)
 设备模块，由 `yudao-module-iot` 后端模块的 `device` 包实现，主要有设备分组、设备信息等功能。如下图所示：
 ![设备模块](../images/img_0b2f6003.png) 
 ## # 1. 设备分组

@@ -6,14 +6,14 @@
 ![界面 —— 图文发表记录](../images/img_6af95b45.png) 
 ## # 1. 表结构
 暂无，全部基于微信公众号提供的 API 接口。
-- 图文草稿箱：[《微信公众号官方文档 —— 草稿箱》 (opens new window)](https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html)
-- 图文发表记录：[《微信公众号官方文档 —— 发布能力》 (opens new window)](https://developers.weixin.qq.com/doc/offiaccount/Publish/Publish.html)
+- 图文草稿箱：[《微信公众号官方文档 —— 草稿箱》](https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html)
+- 图文发表记录：[《微信公众号官方文档 —— 发布能力》](https://developers.weixin.qq.com/doc/offiaccount/Publish/Publish.html)
 ## # 2. 图文草稿箱界面
-- 前端：[/@views/mp/draft (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/mp/draft/index.vue)
-- 后端：[MpDraftController (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/controller/admin/news/MpDraftController.java)
+- 前端：[/@views/mp/draft](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/mp/draft/index.vue)
+- 后端：[MpDraftController](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/controller/admin/news/MpDraftController.java)
 ## # 3. 图文发表记录界面
-- 前端：[/@views/mp/freePublish (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/mp/freePublish/index.vue)
-- 后端：[MpFreePublishController (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/controller/admin/news/MpFreePublishController.java)
+- 前端：[/@views/mp/freePublish](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/mp/freePublish/index.vue)
+- 后端：[MpFreePublishController](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/controller/admin/news/MpFreePublishController.java)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [公众号素材](/mp/material/) [公众号统计](/mp/statistics/) 

@@ -1,10 +1,10 @@
 # HTTP 接口签名（防篡改）
 
-[`yudao-spring-boot-starter-protection` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/) 技术组件，由它的 [`signature` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/signature/) 包，提供 HTTP 接口签名特性，提高安全性。
+[`yudao-spring-boot-starter-protection`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/) 技术组件，由它的 [`signature`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-protection/src/main/java/cn/iocoder/yudao/framework/signature/) 包，提供 HTTP 接口签名特性，提高安全性。
 例如说：项目给第三方提供 HTTP 接口时，为了提高对接中数据传输的安全性（防止请求参数被篡改），同时校验调用方的有效性，通常都需要增加签名 sign。
 市面上也有非常多的案例，例如说：
-- [《微信支付 —— 安全规范》 (opens new window)](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_3)
-- [《支付宝 —— 签名 》 (opens new window)](https://opendocs.alipay.com/common/02khjm)
+- [《微信支付 —— 安全规范》](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_3)
+- [《支付宝 —— 签名 》](https://opendocs.alipay.com/common/02khjm)
 ## # 1. 实现原理
 在 Controller 的方法上，添加 `@ApiSignature` 注解，声明它需要签名。
 然后，通过 AOP 切面，ApiSignatureAspect 对这些方法进行拦截，校验签名是否正确。它的签名算法如下：

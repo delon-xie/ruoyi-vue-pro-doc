@@ -1,10 +1,10 @@
 # 如何去除 Redis 缓存
 
 在一些场景下，不希望有 Redis 依赖，也有很多用户提出类似的诉求：
-- [有大佬实现了不带 Redis 的版本了吗？ (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/issues/645)
-- [某个环境没有 Redis，所以需要把 Redis 给禁用掉？ (opens new window)](https://t.zsxq.com/6CCPX)
+- [有大佬实现了不带 Redis 的版本了吗？](https://github.com/YunaiV/ruoyi-vue-pro/issues/645)
+- [某个环境没有 Redis，所以需要把 Redis 给禁用掉？](https://t.zsxq.com/6CCPX)
 但是，项目大量使用了 Redis 作为缓存、分布式锁、幂等性等功能，所以直接去除 Redis 会导致项目无法正常运行。
-不过，我们可以换个思路，使用 [`jedis-mock` (opens new window)](https://github.com/fppt/jedis-mock) 库，在项目启动时，自动启动一个 Mock 的 Redis 服务，这样就可以实现不依赖 Redis 的运行。
+不过，我们可以换个思路，使用 [`jedis-mock`](https://github.com/fppt/jedis-mock) 库，在项目启动时，自动启动一个 Mock 的 Redis 服务，这样就可以实现不依赖 Redis 的运行。
 ## # 1. 如何启动？
 ① 在 `yudao-server` 模块的 `pom.xml` 文件中，添加 `jedis-mock` 依赖：
 com.github.fppt

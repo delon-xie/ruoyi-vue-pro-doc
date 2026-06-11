@@ -1,18 +1,18 @@
 # 【模型接入】讯飞星火
 
-项目基于 Spring AI + 自己实现的 `models/xinghu`，实现 [讯飞星火大模型 (opens new window)](https://xinghuo.xfyun.cn/sparkapi) 的接入：
+项目基于 Spring AI + 自己实现的 `models/xinghu`，实现 [讯飞星火大模型](https://xinghuo.xfyun.cn/sparkapi) 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
 | AI 对话 | generalv3、generalv3.5 等 | XingHuoChatModel |
 | AI 绘画 | 暂未接入 | 暂未支持 |
 补充说明：
-讯飞星火支持 [图片生成 (opens new window)](https://www.xfyun.cn/doc/spark/ImageGeneration.html)，未来我们也会进行集成。
+讯飞星火支持 [图片生成](https://www.xfyun.cn/doc/spark/ImageGeneration.html)，未来我们也会进行集成。
 ## # 1. 申请密钥
 由于讯飞星火是非开源的模型，所以无法私有化部署，需要去官网申请 API Key，然后通过 Spring AI 提供的客户端接入。
 ### # 1.1 申请讯飞密钥
-① 在 [讯飞星火 (opens new window)](https://xinghuo.xfyun.cn/sparkapi) 上，注册一个账号。
-② 在 [讯飞星火 (opens new window)](https://xinghuo.xfyun.cn/sparkapi) 上，点击【免费试用】按钮，创建一个应用。
-③ 在 [我的应用 (opens new window)](https://console.xfyun.cn/app/myapp) 里，点击该应用的名字，然后选择【Spark3.5 Max】菜单，获得到 APISecret、APIKey。
+① 在 [讯飞星火](https://xinghuo.xfyun.cn/sparkapi) 上，注册一个账号。
+② 在 [讯飞星火](https://xinghuo.xfyun.cn/sparkapi) 上，点击【免费试用】按钮，创建一个应用。
+③ 在 [我的应用](https://console.xfyun.cn/app/myapp) 里，点击该应用的名字，然后选择【Spark3.5 Max】菜单，获得到 APISecret、APIKey。
 ![创建应用](../images/img_353ccc75.png) 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”（`${appKey}|{secretKey}`），不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_be2a968f.png) 
 ## # 2. 模型配置
@@ -20,7 +20,7 @@
 目前 `ai_model` 表中，已经预置了一些模型，可以直接使用！！！
 ### # 2.1 AI 对话
 使用 [《AI 对话》](/ai/chat/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的聊天模型。
-模型有：`generalv3.5`、`generalv3` 等等，可通过 [《星火大模型 API》 (opens new window)](https://xinghuo.xfyun.cn/sparkapi) 查看。
+模型有：`generalv3.5`、`generalv3` 等等，可通过 [《星火大模型 API》](https://xinghuo.xfyun.cn/sparkapi) 查看。
 注意，每个模型标识的 `max_tokens`（回复数 Token 数）默认是 4096，最大 8192。
 ### # 2.2 AI 绘画
 TODO 等待 ImageModel 客户端！

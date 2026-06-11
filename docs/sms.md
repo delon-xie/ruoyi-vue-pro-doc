@@ -3,8 +3,8 @@
 本章节，介绍项目的短信功能。该功能提供统一的短信 API 给其它模块，使它们可以快速接入短信功能，无需关心不同短信平台的具体对接。
 短信采用异步发送，基于 [消息队列](/message-queue/event)，如下图所示：
 ![整体流程](/images/01.png) 该功能由 `yudao-module-system` 模块实现，其中：
-- [`service/sms` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/sms/)：短信【业务】，提供短信渠道、模板的配置，短信日志的查看，短信的发送等功能
-- [`frameowrk/sms` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms)：短信【组件】，封装阿里云、腾讯云、华为云、七牛云等短信平台的客户端。
+- [`service/sms`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/sms/)：短信【业务】，提供短信渠道、模板的配置，短信日志的查看，短信的发送等功能
+- [`frameowrk/sms`](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms)：短信【组件】，封装阿里云、腾讯云、华为云、七牛云等短信平台的客户端。
 ## # 1. 表结构
 ![表结构](/images/02.png) 
 ## # 2. 短信配置
@@ -21,7 +21,7 @@
 该类型使用钉钉机器人来模拟短信发送，用于日常调试。
 - 短信 API 的账号，对应机器人的 Webhook 的 `access_token` 参数
 - 短信 API 的密钥，对应机器人的安全设置的加签
-上图使用的配置，是艿艿自己的钉钉机器人。正式使用时，必须参考 [《钉钉开放平台 —— 自定义机器人接入 》 (opens new window)](https://open.dingtalk.com/document/group/custom-robot-access) 文档，申请自己的专属机器人。
+上图使用的配置，是艿艿自己的钉钉机器人。正式使用时，必须参考 [《钉钉开放平台 —— 自定义机器人接入 》](https://open.dingtalk.com/document/group/custom-robot-access) 文档，申请自己的专属机器人。
 疑问 2：可以选择其它渠道编码吗？
 当然可以，这里主要考虑部分同学暂时没有申请短信平台，所以使用【调试（钉钉）】渠道编码。
 不同短信平台的配置，可见 [「6. 短信平台附录」](#_6-%E7%9F%AD%E4%BF%A1%E5%B9%B3%E5%8F%B0%E9%99%84%E5%BD%95) 小节。
@@ -46,7 +46,7 @@
 因为你没配置短信回调 URL，导致短信平台无法回调我们的系统，所以一直等待结果。具体怎么配置，可见 [短信平台附录](#_6-%E7%9F%AD%E4%BF%A1%E5%B9%B3%E5%8F%B0%E9%99%84%E5%BD%95) 小节。
 ## # 3. 短信发送
 ### # 3.1 SmsSendApi
-使用 [SmsSendApi (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/sms/SmsSendApi.java) 进行短信的发送，支持多种用户类型。它的方法如下：
+使用 [SmsSendApi](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/sms/SmsSendApi.java) 进行短信的发送，支持多种用户类型。它的方法如下：
 ![短信发送](/images/21.png) 
 ### # 3.2 实战案例
 以工作流申请通过时，发送短信为例子，讲解 SmsSendApi 的使用。
@@ -57,49 +57,49 @@
 ![调用 SmsSendApi 方法](/images/24.png) 
 ## # 4. 验证码发送
 ### # 4.1 SmsCodeApi
-使用 [SmsCodeApi (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/sms/SmsCodeApi.java) 进行【验证码】短信的发送，例如说：用户手机验证码登录、用户忘记密码等等。它的方法如下：
-![短信发送](/images/21.png) 验证码使用 [`system_sms_code` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/dal/dataobject/sms/SmsCodeDO.java) 表进行存储，默认每天最多发送 10 条，每分钟发送 1 条，有效期为 10 分钟，可通过 `yudao.sms-code` 配置项进行自定义：
+使用 [SmsCodeApi](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/sms/SmsCodeApi.java) 进行【验证码】短信的发送，例如说：用户手机验证码登录、用户忘记密码等等。它的方法如下：
+![短信发送](/images/21.png) 验证码使用 [`system_sms_code`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/dal/dataobject/sms/SmsCodeDO.java) 表进行存储，默认每天最多发送 10 条，每分钟发送 1 条，有效期为 10 分钟，可通过 `yudao.sms-code` 配置项进行自定义：
 ![ 配置项](/images/32.png) 
 ### # 4.2 实战案例
 以会员用户手机验证码登录为例子，讲解 SmsCodeApi 的使用。
 ① 引入 `yudao-module-system` 依赖，如下图所示：
 图片纠错：最新版本引入 `yudao-module-system` 依赖即可，因为 `yudao-module-system-api` 已经合并到 `yudao-module-system` 中。
 ![ 依赖](/images/34.png) ② 新建对应的短信模板，如下图所示：
-![新建短信模板](/images/35.png) ③ 在 [SmsSceneEnum (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/enums/sms/SmsSceneEnum.java) 中，枚举会员用户的手机号登录的场景，如下图所示：
+![新建短信模板](/images/35.png) ③ 在 [SmsSceneEnum](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/enums/sms/SmsSceneEnum.java) 中，枚举会员用户的手机号登录的场景，如下图所示：
 ![SmsSceneEnum 枚举](/images/36.png) ④ 使用 Spring 注入 SmsCodeApi Bean，调用对应的短信验证码的发送与使用方法。如下图所示：
 ![调用 SmsCodeApi 方法](/images/33.png) 
 ## # 5. 短信客户端
-[`frameowrk/sms` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms) 短信【组件】，对接阿里云、腾讯云等短信平台，提供统一的短信客户端，提供给 [`service/sms` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/sms/) 短信【业务】模块来调用。
+[`frameowrk/sms`](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms) 短信【组件】，对接阿里云、腾讯云等短信平台，提供统一的短信客户端，提供给 [`service/sms`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/sms/) 短信【业务】模块来调用。
 ### # 5.1 SmsClient
-[SmsClient (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms/core/client/SmsClient.java) 接口，定义短信客户端的方法。代码如下：
+[SmsClient](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms/core/client/SmsClient.java) 接口，定义短信客户端的方法。代码如下：
 ![SmsClient 接口](/images/41.png) 每个短信平台，都对应一个 SmsClient 实现类。
 ![SmsClient 实现](/images/42.png) 
 ### # 5.2 对接其它短信平台
-如果你想要对接其它短信平台，自定义一个 SmsClient 实现类，并使用 [SmsClientFactoryImpl (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms/core/client/impl/SmsClientFactoryImpl.java#L73-L85) 进行创建。代码如下：
+如果你想要对接其它短信平台，自定义一个 SmsClient 实现类，并使用 [SmsClientFactoryImpl](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/framework/sms/core/client/impl/SmsClientFactoryImpl.java#L73-L85) 进行创建。代码如下：
 ![SmsClientFactoryImpl 创建客户端](/images/45.png) 
 ## # 6. 短信平台附录
 一般情况下，建议接入 2-3 个短信平台，避免某个短信平台故障时，影响业务的正常运行。
 例如说，手机验证码的短信平台 A 故障时，赶紧将短信验证码切换到短信平台 B 上，否则用户将无法正常登录或是注册。
 ### # 6.1 阿里云
-① 短信 API 的账号、密钥，可通过 [阿里云 —— AccessKey (opens new window)](https://ram.console.aliyun.com/manage/ak) 获取。
-② 短信发送回调 URL，可通过 [阿里云 —— 短信服务 —— 通用设置 (opens new window)](https://dysms.console.aliyun.com/general/upward) 配置。它对应的是 SmsCallbackController 的 `#receiveAliyunSmsStatus(...)` 地址。
+① 短信 API 的账号、密钥，可通过 [阿里云 —— AccessKey](https://ram.console.aliyun.com/manage/ak) 获取。
+② 短信发送回调 URL，可通过 [阿里云 —— 短信服务 —— 通用设置](https://dysms.console.aliyun.com/general/upward) 配置。它对应的是 SmsCallbackController 的 `#receiveAliyunSmsStatus(...)` 地址。
 ### # 6.2 腾讯云
-① 短信 API 的账号、密钥，可通过 [腾讯云 —— API 密钥管理 (opens new window)](https://console.cloud.tencent.com/cam/capi) 获取。
+① 短信 API 的账号、密钥，可通过 [腾讯云 —— API 密钥管理](https://console.cloud.tencent.com/cam/capi) 获取。
 注意！！！
-腾讯云需要额外使用 [SDKAppID (opens new window)](https://console.cloud.tencent.com/smsv2/app-manage) 参数，它的账号需要采用 `secretId SDKAppID` 格式。
+腾讯云需要额外使用 [SDKAppID](https://console.cloud.tencent.com/smsv2/app-manage) 参数，它的账号需要采用 `secretId SDKAppID` 格式。
 例如说：在“API 密钥管理”获得了 `SecretId` 为 `A`，`SecretKey` 为 `B`，在“SDKAppID”获得了 `SDKAppID` 为 `18`，则配置短信 API 的账号为 `A 18`，短信 API 的密钥为 `B`。
-② 短信发送回调 URL，可通过 [腾讯云 —— 短信 —— 基础配置 (opens new window)](https://console.cloud.tencent.com/smsv2/app-setting) 配置。它对应的是 SmsCallbackController 的 `#receiveTencentSmsStatus(...)` 地址。
+② 短信发送回调 URL，可通过 [腾讯云 —— 短信 —— 基础配置](https://console.cloud.tencent.com/smsv2/app-setting) 配置。它对应的是 SmsCallbackController 的 `#receiveTencentSmsStatus(...)` 地址。
 ### # 6.3 华为云
-① 短信 API 的账号、密钥，可通过 [华为云 —— 访问密钥 (opens new window)](https://console.huaweicloud.com/iam/?#/mine/accessKey) 获取。
+① 短信 API 的账号、密钥，可通过 [华为云 —— 访问密钥](https://console.huaweicloud.com/iam/?#/mine/accessKey) 获取。
 注意！！！
 华为云需要额外使用 sender 通道号，它的账号需要采用 `AccessKeyId sender` 格式。
 例如说：在“华为云访问密钥”获得了 `AccessKeyId` 为 `A`，`SecretAccessKey` 为 `B`，在“华为云签名”获得了 `sender` 为 `8824060312575`，则配置短信 API 的账号为 `A 8824060312575`，短信 API 的密钥为 `B`。
 ② 短信发送回调 URL，可以通过我们项目的 [系统管理 -> 消息中心 -> 短信管理 -> 短信渠道] 菜单，配置它的“短信发送回调 URL”字段即可。它对应的是 SmsCallbackController 的 `#receiveHuaweiSmsStatus(...)` 地址。
 补充说明：如果发送短信时，提示“405 鉴权失败”的话，怎么办？
-可参考 [https://gitee.com/zhijiantianya/yudao-cloud/issues/IASUWI (opens new window)](https://gitee.com/zhijiantianya/yudao-cloud/issues/IASUWI) 说明，我目前暂时没碰到过，不确定是不是这么解决是合理的~
+可参考 [https://gitee.com/zhijiantianya/yudao-cloud/issues/IASUWI](https://gitee.com/zhijiantianya/yudao-cloud/issues/IASUWI) 说明，我目前暂时没碰到过，不确定是不是这么解决是合理的~
 ### # 6.4 七牛云
-① 短信 API 的账号、密钥，可通过 [七牛云 —— 密钥管理 (opens new window)](https://portal.qiniu.com/developer/user/key) 获取。
-② 短信发送回调 URL，可通过 [七牛云 —— 云短信 —— 设置 (opens new window)](https://portal.qiniu.com/sms/settings) 配置。它对应的是 SmsCallbackController 的 `#receiveQiniuSmsStatus(...)` 地址。
+① 短信 API 的账号、密钥，可通过 [七牛云 —— 密钥管理](https://portal.qiniu.com/developer/user/key) 获取。
+② 短信发送回调 URL，可通过 [七牛云 —— 云短信 —— 设置](https://portal.qiniu.com/sms/settings) 配置。它对应的是 SmsCallbackController 的 `#receiveQiniuSmsStatus(...)` 地址。
 ### # 6.5 更多短信平台
 短信平台非常的多，欢迎给我们 pull request 贡献。
 例如说：合一、云片、京东云、容联云、亿美软通、天翼云、网易云等等。

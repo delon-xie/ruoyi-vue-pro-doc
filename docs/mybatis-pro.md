@@ -29,7 +29,7 @@ List selectPage01List(@Param("reqVO") UserPageReqVO reqVO);
 */
 Long selectPage01Count(@Param("reqVO") UserPageReqVO reqVO);
 }
-其中 [UserPageReqVO.java (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/user/vo/user/UserPageReqVO.java) 是分页查询的请求 VO。
+其中 [UserPageReqVO.java](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/user/vo/user/UserPageReqVO.java) 是分页查询的请求 VO。
 ③ 在 AdminUserServiceImplService 层，调用这两个方法，实现分页查询：
 @Service
 @Slf4j
@@ -76,8 +76,8 @@ return new PageResult<>(page.getRecords(), page.getTotal());
 ![分页案例 02 的效果](/images/02.png) 本质上，MyBatis Plus 是基于我们在 XML 编写的这条 SQL，计算出获得分页数量的 SQL。
 一般情况下，建议采用方案二：MyBatis Plus XML，因为它开发效率更高，并且在分页数量为 0 时，就不多余查询分页的列表，一定程度上可以提升性能。
 ## # 2. 联表查询
-对于需要链表查询的场景，建议也是写 MyBatis XML，使用方法比较简单，可以看下 [《MyBatis学习总结（三）—— 多表关联查询与动态 SQL》 (opens new window)](https://www.cnblogs.com/best/p/9723085.html) 文章。
-除了 XML 这种方式外，项目也集成了 [MyBatis Plus Join (opens new window)](https://mybatis-plus-join.github.io/) 框架，通过 Java 代码实现联表查询。
+对于需要链表查询的场景，建议也是写 MyBatis XML，使用方法比较简单，可以看下 [《MyBatis学习总结（三）—— 多表关联查询与动态 SQL》](https://www.cnblogs.com/best/p/9723085.html) 文章。
+除了 XML 这种方式外，项目也集成了 [MyBatis Plus Join](https://mybatis-plus-join.github.io/) 框架，通过 Java 代码实现联表查询。
 这里，以查询 `system_users` 和 `system_dept` 联表，查询部门名为 `芋道源码`、用户状态为开启的用户列表。
 ### # 2.1 案例一：字段平铺
 ① 创建 AdminUserDetailDO 类，继承 AdminUserDO 类，并添加 `deptName` 平铺。代码如下：
@@ -118,7 +118,7 @@ return selectJoinList(AdminUserDetail2DO.class, new MPJLambdaWrapper()
 }
 }
 ### # 2.3 总结
-MyBatis Plus Join 相比 MyBatis XML 来说，一开始肯定是需要多看看它的[文档 (opens new window)](https://mybatis-plus-join.github.io/pages/core/lambda/select/select.html)。
+MyBatis Plus Join 相比 MyBatis XML 来说，一开始肯定是需要多看看它的[文档](https://mybatis-plus-join.github.io/pages/core/lambda/select/select.html)。
 但是熟悉后，我还是更喜欢使用 MyBatis Plus Join 哈~
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}

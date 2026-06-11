@@ -1,11 +1,11 @@
 # 审批通过、不通过、驳回
 
 相关视频：
-- [16、如何实现我的待办任务列表？ (opens new window)](https://t.zsxq.com/04QZzjAme)
-- [17、如何实现我的已办任务列表？ (opens new window)](https://t.zsxq.com/04uj6AQJE)
-- [18、如何实现任务的审批通过？ (opens new window)](https://t.zsxq.com/04Q7UbqBM)
-- [19、如何实现任务的审批不通过？ (opens new window)](https://t.zsxq.com/04BQvJM7y)
-- [20、如何实现流程的审批记录？ (opens new window)](https://t.zsxq.com/04Ie2v7m2)
+- [16、如何实现我的待办任务列表？](https://t.zsxq.com/04QZzjAme)
+- [17、如何实现我的已办任务列表？](https://t.zsxq.com/04uj6AQJE)
+- [18、如何实现任务的审批通过？](https://t.zsxq.com/04Q7UbqBM)
+- [19、如何实现任务的审批不通过？](https://t.zsxq.com/04BQvJM7y)
+- [20、如何实现流程的审批记录？](https://t.zsxq.com/04Ie2v7m2)
 本文，我们围绕 [审批中心] 菜单下的 [待办任务]、[已办任务] 两个子菜单，讲解审批通过、审批不通过、驳回的操作流程。
 ## # 1. 待办任务
 待办任务，仅展示需要我审批的任务，对应 [审批中心 -> 待办任务] 菜单，如下图所示：
@@ -55,7 +55,7 @@
 该表是一种 Key-Value 的形式，可以存储任意类型的数据。例如说，项目中给 Task 增加了一个 `TASK_STATUS` 字段，表示任务状态，如下图所示：
 ![TASK_STATUS](../images/TASK_STATUS.png) 
 ### # 1.2 任务状态
-任务状态，由 [BpmTaskStatusEnum (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/enums/task/BpmTaskStatusEnum.java) 目前有 8 种，如下图所示：
+任务状态，由 [BpmTaskStatusEnum](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/enums/task/BpmTaskStatusEnum.java) 目前有 8 种，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![任务状态](../images/img_ca675992.png) 
 ### # 1.3 审批通过
@@ -131,7 +131,7 @@
 - 前端，对应 `/views/bpm/task/manager/index.vue` 实现界面
 由于它查询的是所有任务，所以读取的是 `ACT_HI_TASKINST` 表，而不是 `ACT_RU_TASK` 表。
 ## # 666. 更多功能
-- [《自动跳过、自动审批》 (opens new window)](https://t.zsxq.com/9fXWS)
+- [《自动跳过、自动审批》](https://t.zsxq.com/9fXWS)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [流程发起、取消、重新发起](/bpm/process-instance/) [审批加签、减签](/bpm/sign/) 

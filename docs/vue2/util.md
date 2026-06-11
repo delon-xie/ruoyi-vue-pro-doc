@@ -2,7 +2,7 @@
 
 本小节，分享前端项目的常用方法。
 ## # 1. `$tab` 对象
-`@tab` 对象，由 [`plugins/tab.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/tab.js) 实现，用于 Tab 标签相关的操作。它有如下方法：
+`@tab` 对象，由 [`plugins/tab.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/tab.js) 实现，用于 Tab 标签相关的操作。它有如下方法：
 ① 打开页签 this.$tab.openPage("用户管理", "/system/user");
 this.$tab.openPage("用户管理", "/system/user").then(() => {
 // 执行结束的逻辑
@@ -54,7 +54,7 @@ this.$tab.closeOtherPage(obj).then(() => {
 // 执行结束的逻辑
 })
 ## # 2. `$modal` 对象
-`@modal` 对象，由 [`plugins/modal.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/modal.js) 实现，用于做消息提示、通知提示、对话框提醒、二次确认、遮罩等。它有如下方法：
+`@modal` 对象，由 [`plugins/modal.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/modal.js) 实现，用于做消息提示、通知提示、对话框提醒、二次确认、遮罩等。它有如下方法：
 ① 提供成功、警告和错误等反馈信息 this.$modal.msg("默认反馈");
 this.$modal.msgError("错误反馈");
 this.$modal.msgSuccess("成功反馈");
@@ -77,7 +77,7 @@ this.$modal.loading("正在导出数据，请稍后...");
 // 关闭遮罩层
 this.$modal.closeLoading();
 ## # 3. `$auth` 对象
-`@auth` 对象，由 [`plugins/auth.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/auth.js) 实现，用于验证用户是否拥有某（些）权限或角色。它有如下方法：
+`@auth` 对象，由 [`plugins/auth.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/auth.js) 实现，用于验证用户是否拥有某（些）权限或角色。它有如下方法：
 ① 验证用户权限 // 验证用户是否具备某权限
 this.$auth.hasPermi("system:user:add");
 // 验证用户是否含有指定权限，只需包含其中一个
@@ -91,11 +91,11 @@ this.$auth.hasRoleOr(["admin", "common"]);
 // 验证用户是否含有指定角色，必须全部拥有
 this.$auth.hasRoleAnd(["admin", "common"]);
 ## # 4. `$cache` 对象
-`@auth` 对象，由 [`plugins/cache.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/cache.js) 实现，基于 session 或 local 实现不同级别的缓存。它有如下方法：
+`@auth` 对象，由 [`plugins/cache.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/cache.js) 实现，基于 session 或 local 实现不同级别的缓存。它有如下方法：
 | 对象名称 | 缓存类型 |
 | --- | --- |
-| session | 会话级缓存，通过 [sessionStorage (opens new window)](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage) 实现 |
-| local | 本地级缓存，通过 [localStorage (opens new window)](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage) 实现 |
+| session | 会话级缓存，通过 [sessionStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage) 实现 |
+| local | 本地级缓存，通过 [localStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage) 实现 |
 ① 读写 String 缓存 // local 普通值
 this.$cache.local.set('key', 'local value')
 console.log(this.$cache.local.get('key')) // 输出 'local value'
@@ -112,13 +112,13 @@ console.log(this.$cache.session.getJSON('jsonKey')) // 输出 '{sessionProp: 1}'
 ③ 删除缓存 this.$cache.local.remove('key')
 this.$cache.session.remove('key')
 ## # 5. `$download` 对象
-`$download` 对象，由 [`plugins/download.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/download.js) 实现，用于各种类型的文件下载。它有如下方法：
+`$download` 对象，由 [`plugins/download.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/plugins/download.js) 实现，用于各种类型的文件下载。它有如下方法：
 方法列表 this.$download.excel(data, fileName);
 this.$download.word(data, fileName);
 this.$download.zip(data, fileName);
 this.$download.html(data, fileName);
 this.$download.markdown(data, fileName);
-在 [`user/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/user/index.vue#L581-L594) 页面中，导出 Excel 文件的代码如下图：
+在 [`user/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/user/index.vue#L581-L594) 页面中，导出 Excel 文件的代码如下图：
 ![导出 Excel 文件](../images/01.png) 
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}

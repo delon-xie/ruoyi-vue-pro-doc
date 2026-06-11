@@ -3,36 +3,36 @@
 项目使用 Junit5 + Mockito 实现单元测试，提升代码质量、重复测试效率、部署可靠性等。
 截止目前，项目已经有 500+ 测试用例。
 内容推荐
-如果你想系统学习单元测试，可以阅读[《有效的单元测试》 (opens new window)](https://www.iocoder.cn/Architecture/books-recommended/?yudao)这本书，非常适合 Java 工程师。
-如果只是想学习 Spring Boot Test 的话，可以阅读 [《芋道 Spring Boot 单元测试 Test 入门 》 (opens new window)](https://www.iocoder.cn/Spring-Boot/Unit-Test/?yudao) 文章。
+如果你想系统学习单元测试，可以阅读[《有效的单元测试》](https://www.iocoder.cn/Architecture/books-recommended/?yudao)这本书，非常适合 Java 工程师。
+如果只是想学习 Spring Boot Test 的话，可以阅读 [《芋道 Spring Boot 单元测试 Test 入门 》](https://www.iocoder.cn/Spring-Boot/Unit-Test/?yudao) 文章。
 ## # 1.测试组件
-[`yudao-spring-boot-starter-test` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/) 是项目提供的测试组件，用于单元测试、集成测试等等。
+[`yudao-spring-boot-starter-test`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/) 是项目提供的测试组件，用于单元测试、集成测试等等。
 ### # 1.1 快速测试的基类
 测试组件提供了 4 种单元测试的基类，通过继承它们，可以快速的构建单元测试的环境。
 | 基类 | 作用 |
 | --- | --- |
-| [BaseMockitoUnitTest (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseMockitoUnitTest.java) | 纯 Mockito 的单元测试 |
-| [BaseDbUnitTest (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseDbUnitTest.java) | 使用内嵌的 H2 数据库的单元测试 |
-| [BaseRedisUnitTest (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseRedisUnitTest.java) | 使用内嵌的 Redis 缓存的单元测试 |
-| [BaseDbAndRedisUnitTest (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseDbAndRedisUnitTest.java) | 使用内嵌的 H2 数据库 + Redis 缓存的单元测试 |
+| [BaseMockitoUnitTest](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseMockitoUnitTest.java) | 纯 Mockito 的单元测试 |
+| [BaseDbUnitTest](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseDbUnitTest.java) | 使用内嵌的 H2 数据库的单元测试 |
+| [BaseRedisUnitTest](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseRedisUnitTest.java) | 使用内嵌的 Redis 缓存的单元测试 |
+| [BaseDbAndRedisUnitTest](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/ut/BaseDbAndRedisUnitTest.java) | 使用内嵌的 H2 数据库 + Redis 缓存的单元测试 |
 疑问：什么是内嵌的 Redis 缓存？
-基于 [jedis-mock (opens new window)](https://github.com/fppt/jedis-mock) 开源项目，通过 [RedisTestConfiguration (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/config/RedisTestConfiguration.java) 配置类，启动一个 Redis 进程。一般情况下，会使用 16379 端口。
+基于 [jedis-mock](https://github.com/fppt/jedis-mock) 开源项目，通过 [RedisTestConfiguration](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/config/RedisTestConfiguration.java) 配置类，启动一个 Redis 进程。一般情况下，会使用 16379 端口。
 ### # 1.2 测试工具类
-① [RandomUtils (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/util/RandomUtils.java) 基于 [podam (opens new window)](https://github.com/mtedone/podam) 开源项目，实现 Bean 对象的随机生成。
-② [AssertUtils (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/util/AssertUtils.java) 封装 Junit 的 Assert 断言，实现 Bean 对象的断言，支持忽略部分属性。
+① [RandomUtils](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/util/RandomUtils.java) 基于 [podam](https://github.com/mtedone/podam) 开源项目，实现 Bean 对象的随机生成。
+② [AssertUtils](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-test/src/main/java/cn/iocoder/yudao/framework/test/core/util/AssertUtils.java) 封装 Junit 的 Assert 断言，实现 Bean 对象的断言，支持忽略部分属性。
 ## # 2. BaseDbUnitTest 实战案例
-以字典类型模块的 [DictTypeServiceImpl (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/dict/DictDataServiceImpl.java) 为例子，讲解它的 [DictTypeServiceTest (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/java/cn/iocoder/yudao/module/system/service/dict/DictDataServiceImplTest.java) 单元测试的编写实现。
+以字典类型模块的 [DictTypeServiceImpl](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/service/dict/DictDataServiceImpl.java) 为例子，讲解它的 [DictTypeServiceTest](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/java/cn/iocoder/yudao/module/system/service/dict/DictDataServiceImplTest.java) 单元测试的编写实现。
 ### # 2.1 引入依赖
 在 `yudao-module-system` 模块中，引入 `yudao-spring-boot-starter-test` 技术组件。如下所示：
 cn.iocoder.boot
 yudao-spring-boot-starter-test
 test
 ### # 2.2 新建 ut 配置文件
-在 [`test/resources` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/) 目录，新建单元测试的 [`application-unit-test.yaml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/application-unit-test.yaml) 配置文件，内容如下：
+在 [`test/resources`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/) 目录，新建单元测试的 [`application-unit-test.yaml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/application-unit-test.yaml) 配置文件，内容如下：
 ![application-unit-test.yaml` 配置文件](/images/02.png) 
 ### # 2.3 添加 H2 SQL 脚本
-修改 [`test/resources/sql` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/sql/) 目录的两个 H2 SQL 脚本：
-① 在 [`create_tables.sql` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/sql/create_tables.sql) 文件中，添加 `system_dict_type` 的 H2 建表语句。SQL 如下：
+修改 [`test/resources/sql`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/sql/) 目录的两个 H2 SQL 脚本：
+① 在 [`create_tables.sql`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/sql/create_tables.sql) 文件中，添加 `system_dict_type` 的 H2 建表语句。SQL 如下：
 CREATE TABLE IF NOT EXISTS "system_dict_type" (
 "id" bigint NOT NULL GENERATED BY DEFAULT AS IDENTITY,
 "name" varchar(100) NOT NULL DEFAULT '',
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS "system_dict_type" (
 PRIMARY KEY ("id")
 ) COMMENT '字典类型表';
 注意，H2 和 MySQL 的建表语句有区别，需要手动进行转换。如果你不想进行转换，可以使用 [基础设置 -> 代码生成] 菜单的代码生成器功能，如下图所示：
-![基础设置 -> 代码生成](/images/03.png) ② 在 [`clean.sql` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/sql/clean.sql) 文件中，添加 `system_dict_type` 的清空数据的语句。SQL 如下：
+![基础设置 -> 代码生成](/images/03.png) ② 在 [`clean.sql`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/resources/sql/clean.sql) 文件中，添加 `system_dict_type` 的清空数据的语句。SQL 如下：
 DELETE FROM "system_dict_type";
 每次单元测试的方法执行完后，会执行 `clean.sql` 脚本，进行数据的清理，保证每个单元测试的方法的数据隔离性。
 ### # 2.3 新建 DictTypeServiceTest 类
@@ -71,7 +71,7 @@ DELETE FROM "system_dict_type";
 ### # 2.8 分页查询方法的单测
 ![](/images/09.png) 
 ## # 3. BaseMockitoUnitTest 实战案例
-一些类由于不依赖 MySQL 和 Redis，可以通过继承 BaseMockitoUnitTest 基类，实现纯 Mockito 的单元测试。例如说 [SmsSendServiceTest (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/java/cn/iocoder/yudao/module/system/service/sms/SmsSendServiceImplTest.java) 单元测试类，代码如下：
+一些类由于不依赖 MySQL 和 Redis，可以通过继承 BaseMockitoUnitTest 基类，实现纯 Mockito 的单元测试。例如说 [SmsSendServiceTest](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/test/java/cn/iocoder/yudao/module/system/service/sms/SmsSendServiceImplTest.java) 单元测试类，代码如下：
 ![](/images/10.png) 具体 SmsSendServiceTest 的每个测试方法，和 DictTypeServiceTest 并没有什么差别，还是 Mock 模拟 + Assert 断言 + Verify 调用，你可以自己花点时间瞅瞅。
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}

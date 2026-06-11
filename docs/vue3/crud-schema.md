@@ -6,13 +6,13 @@ CRUD 组件，比较适合开发简单的 CRUD 功能。如果是复杂的功能
 | 部分 | 组件 | 示例 |
 | --- | --- | --- |
 | 列表 | Search + Table | ![列表](../images/img_90765db6.png) 新增 / 修改 | Form | ![表单](../images/img_f2d0eddc.png) 详情 | Descriptions | ![详情](../images/img_7cce6f38.png) ## # 1. 基础组件 涉及到 4 个前端基础组件，如下所示： 组件 | 文档 |
-| [Search (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Search/src/Search.vue) | [查询组件 (opens new window)](https://element-plus-admin-doc.cn/components/search.html) |
-| [Table (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Table/src/Table.vue) | [表格组件 (opens new window)](https://element-plus-admin-doc.cn/components/table.html) |
-| [Form (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Form/src/Form.vue) | [表单组件 (opens new window)](https://element-plus-admin-doc.cn/components/form.html) |
-| [Descriptions (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Descriptions/src/Descriptions.vue) | [描述组件 (opens new window)](https://element-plus-admin-doc.cn/components/descriptions.html) |
+| [Search](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Search/src/Search.vue) | [查询组件](https://element-plus-admin-doc.cn/components/search.html) |
+| [Table](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Table/src/Table.vue) | [表格组件](https://element-plus-admin-doc.cn/components/table.html) |
+| [Form](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Form/src/Form.vue) | [表单组件](https://element-plus-admin-doc.cn/components/form.html) |
+| [Descriptions](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Descriptions/src/Descriptions.vue) | [描述组件](https://element-plus-admin-doc.cn/components/descriptions.html) |
 ## # 2. CRUD 组件
 由于以上 4 个组件都需要 Schema 或者 `columns` 的字段，如果每个组件都写一遍的话，会造成大量重复代码，所以提供 useCrudSchemas 来进行统一的数据生成。
-① useCrudSchemas：位于 [src/hooks/web/useCrudSchemas.ts (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/hooks/web/useCrudSchemas.ts) 内
+① useCrudSchemas：位于 [src/hooks/web/useCrudSchemas.ts](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/hooks/web/useCrudSchemas.ts) 内
 ② useCrudSchemas 可以理解成一个 JSON 配置，示例如下：
 useCrudSchemas 示例 
 import { CrudSchema, useCrudSchemas } from '@/hooks/web/useCrudSchemas'
@@ -132,14 +132,14 @@ show: false
 }
 ])
 const { allSchemas } = useCrudSchemas(crudSchemas)
-③ 字段的详细说明，可见 [useCrudSchemas 文档 (opens new window)](https://element-plus-admin-doc.cn/hooks/useCrudSchemas.html)。
+③ 字段的详细说明，可见 [useCrudSchemas 文档](https://element-plus-admin-doc.cn/hooks/useCrudSchemas.html)。
 ## # 3. 实战案例
 项目的 [系统管理 -> 邮箱管理] 相关的功能，都使用 CRUD 实现，你可以自己去学习。
 | 功能 | 代码 |
 | --- | --- |
-| 邮箱账号 | [src/views/system/mail/account (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/account/) |
-| 邮箱模版 | [src/views/system/mail/template (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/template/) |
-| 邮箱记录 | [src/views/system/mail/log (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/log/) |
+| 邮箱账号 | [src/views/system/mail/account](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/account/) |
+| 邮箱模版 | [src/views/system/mail/template](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/template/) |
+| 邮箱记录 | [src/views/system/mail/log](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/log/) |
 ## # 4. 常见问题
 ### # 4.1 如何隐藏某个字段？
 如 `formSchema` 不需要 `field` 为 `createTime` 的字段，可以使用 `form: { show: false }` 或 `isForm: false` 进行过滤，其他组件同理。

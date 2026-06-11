@@ -80,7 +80,7 @@ PRIMARY KEY (`id`) USING BTREE
 对应 [CRM 系统 -> 系统配置 -> 合同配置] 菜单，对应 `yudao-ui-admin-vue3` 项目的 `@/views/contract/config` 目录。
 ![合同配置](../images/img_edbe73f8.png) 
 ## # 666. 社区贡献相关
-- [《Pull Request：编码规则配置，根据配置的规则生成业务单据编号》 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1016/)
+- [《Pull Request：编码规则配置，根据配置的规则生成业务单据编号》](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1016/)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [【商机】商机管理、商机状态](/crm/business/) [【回款】回款管理、回款计划](/crm/receivable/) 

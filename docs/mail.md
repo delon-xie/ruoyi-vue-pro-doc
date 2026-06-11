@@ -11,9 +11,9 @@
 邮件功能提供统一的 API 给其它模块，使它们可以快速实现发送邮件的功能，无需关心不同邮件平台的具体对接。
 邮件采用异步发送，基于 [消息队列](/message-queue/event)，如下图所示：
 ![实现原理](/images/img_816e4aa6.png) 
-- 前端代码：[views/system/mail (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/mail/)
-- 后端代码：[controller/admin/mail (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/mail/)
-最终使用 Hutool 的 [MailUtil (opens new window)](https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/mail/MailUtil.html) 发送邮件。
+- 前端代码：[views/system/mail](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/mail/)
+- 后端代码：[controller/admin/mail](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/mail/)
+最终使用 Hutool 的 [MailUtil](https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/mail/MailUtil.html) 发送邮件。
 ## # 3. 邮箱配置
 本小节，讲解如何配置邮件功能，整个过程如下：
 1. 新建一个邮箱【账号】，配置邮件的发送账号
@@ -23,7 +23,7 @@
 ① 点击 [系统管理 -> 消息中心 -> 邮件管理 -> 邮箱账号] 菜单，查看邮箱账号的列表。如下图所示：
 ![邮箱账号](/images/img_71e388ea.png) ② 点击 [新增] 按钮，添加一个邮箱账号，并填写信息如下图：
 ![新增邮箱账号](/images/img_1213cb5e.png) 友情提示：
-邮件发送基于 [SMTP (opens new window)](https://baike.baidu.com/item/SMTP/175887) 协议实现，需要开通账号的 SMTP 服务。例如说：
+邮件发送基于 [SMTP](https://baike.baidu.com/item/SMTP/175887) 协议实现，需要开通账号的 SMTP 服务。例如说：
 ![网易 163 邮箱的 SMTP 服务](/images/img_8f79df06.png) 不同邮件平台的 SMTP 配置，可见 [「5. 邮箱平台附录」](#_5-%E9%82%AE%E7%AE%B1%E5%B9%B3%E5%8F%B0%E9%99%84%E5%BD%95) 小节。
 ③ 新增完成后，确认你的邮箱账号是否可以发送邮件，可通过如下代码：
 import cn.hutool.extra.mail.MailAccount;
@@ -56,11 +56,11 @@ System.out.println("发送结果：" + messageId);
 ![邮件发送日志](/images/img_9462e35c.png) 
 ## # 4. 邮件发送
 ### # 4.1 MailSendApi
-[邮箱配置](#_3-%E9%82%AE%E7%AE%B1%E9%85%8D%E7%BD%AE)完成后，可使用 [MailSendApi (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/mail/MailSendApi.java) 进行邮件的发送，支持多种用户类型。它的方法如下：
+[邮箱配置](#_3-%E9%82%AE%E7%AE%B1%E9%85%8D%E7%BD%AE)完成后，可使用 [MailSendApi](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/mail/MailSendApi.java) 进行邮件的发送，支持多种用户类型。它的方法如下：
 ![MailSendApi](/images/img_cb5c7c0c.png) 
 ### # 4.2 接入示例
 以 `yudao-module-bpm` 模块，需要发邮件为例子，讲解 MailSendApi 的使用。
-① 在 `yudao-module-bpm` 模块的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/pom.xml) 引入 `yudao-module-system` 依赖，如所示：
+① 在 `yudao-module-bpm` 模块的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/pom.xml) 引入 `yudao-module-system` 依赖，如所示：
 cn.iocoder.boot
 yudao-module-system
 ${revision}
@@ -82,9 +82,9 @@ mailSendApi.sendSingleMailToAdmin(new MailSendSingleToUserReqDTO()
 }
 }
 ## # 5. 邮箱平台附录
-- [《QQ 邮箱的 SMTP 设置》 (opens new window)](http://t.zoukankan.com/kimsbo-p-10671851.html)
-- [《网易 163 邮箱的 SMTP 设置》 (opens new window)](https://blog.csdn.net/qq_39933045/article/details/126957074)
-- [《QQ 邮箱、网易邮箱、腾讯企业邮箱、网易企业邮箱的 SMTP 设置》 (opens new window)](https://zhuanlan.zhihu.com/p/551399559)
+- [《QQ 邮箱的 SMTP 设置》](http://t.zoukankan.com/kimsbo-p-10671851.html)
+- [《网易 163 邮箱的 SMTP 设置》](https://blog.csdn.net/qq_39933045/article/details/126957074)
+- [《QQ 邮箱、网易邮箱、腾讯企业邮箱、网易企业邮箱的 SMTP 设置》](https://zhuanlan.zhihu.com/p/551399559)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [短信配置](/sms/) [站内信配置](/notify/) 

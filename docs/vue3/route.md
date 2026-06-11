@@ -1,7 +1,7 @@
 # 菜单路由
 
-前端项目基于 vue-element-plus-admin 实现，它的 [路由和侧边栏 (opens new window)](https://element-plus-admin-doc.cn/guide/router.html) 是组织起一个后台应用的关键骨架。
-侧边栏和路由是绑定在一起的，所以你只有在 [@/router/index.js (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/router/index.ts) 下面配置对应的路由，侧边栏就能动态的生成了，大大减轻了手动重复编辑侧边栏的工作量。
+前端项目基于 vue-element-plus-admin 实现，它的 [路由和侧边栏](https://element-plus-admin-doc.cn/guide/router.html) 是组织起一个后台应用的关键骨架。
+侧边栏和路由是绑定在一起的，所以你只有在 [@/router/index.js](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/router/index.ts) 下面配置对应的路由，侧边栏就能动态的生成了，大大减轻了手动重复编辑侧边栏的工作量。
 当然，这样就需要在配置路由的时候，遵循一些约定的规则。
 ## # 1. 路由配置
 首先，我们了解一下本项目配置路由时，提供了哪些配置项：
@@ -109,16 +109,16 @@ meta: { name: 'Link', title: '芋道源码' }
 项目的路由分为两种：静态路由、动态路由。
 ### # 2.1 静态路由
 静态路由，代表那些不需要动态判断权限的路由，如登录页、404、个人中心等通用页面。
-在 [@/router/modules/remaining.ts (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/tree/master/src/router/modules/remaining.ts) 的 `remainingRouter`，就是配置对应的公共路由。如下图所示：
+在 [@/router/modules/remaining.ts](https://github.com/yudaocode/yudao-ui-admin-vue3/tree/master/src/router/modules/remaining.ts) 的 `remainingRouter`，就是配置对应的公共路由。如下图所示：
 ![静态路由](../images/01.png) 
 ### # 2.2 动态路由
-动态路由，代表那些需要根据用户动态判断权限，并通过 [addRoutes (opens new window)](https://router.vuejs.org/guide/advanced/dynamic-routing.html#adding-routes) 动态添加的页面，如用户管理、角色管理等功能页面。
-在用户登录成功后，会触发 [`@/store/modules/permission.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/store/modules/permission.ts#L35-L66) 请求后端的菜单 RESTful API 接口，获取用户**有权限**的菜单列表，并转化添加到路由中。如下图所示：
+动态路由，代表那些需要根据用户动态判断权限，并通过 [addRoutes](https://router.vuejs.org/guide/advanced/dynamic-routing.html#adding-routes) 动态添加的页面，如用户管理、角色管理等功能页面。
+在用户登录成功后，会触发 [`@/store/modules/permission.ts`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/store/modules/permission.ts#L35-L66) 请求后端的菜单 RESTful API 接口，获取用户**有权限**的菜单列表，并转化添加到路由中。如下图所示：
 ![动态路由](../images/02.png) 友情提示：
-1. 动态路由可以在 [系统管理 -> 菜单管理] 进行新增和修改操作，请求的后端 RESTful API 接口是 [`/admin-api/system/auth/get-permission-info` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L107-L110)
-1. 动态路由在生产环境下会默认使用路由懒加载，实现方式参考 [import.meta.glob('../views/**/*.{vue,tsx}') (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/utils/routerHelper.ts#L6) 方法的判断
+1. 动态路由可以在 [系统管理 -> 菜单管理] 进行新增和修改操作，请求的后端 RESTful API 接口是 [`/admin-api/system/auth/get-permission-info`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.java#L107-L110)
+1. 动态路由在生产环境下会默认使用路由懒加载，实现方式参考 [import.meta.glob('../views/**/*.{vue,tsx}')](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/utils/routerHelper.ts#L6) 方法的判断
 补充说明：
-最新的代码，部分逻辑重构到 [`@/permission.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/permission.ts#L44-L48)
+最新的代码，部分逻辑重构到 [`@/permission.ts`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/permission.ts#L44-L48)
 ### # 2.3 路由跳转
 使用 `router.push` 方法，可以实现跳转到不同的页面。
 const { push } = useRouter()
@@ -143,11 +143,11 @@ push('/bpm/process-instance/detail?id=' + row.processInstance.id)
 友情提示：前端的权限控制，主要是提升用户体验，避免操作后发现没有权限。
 最终在请求到后端时，还是会进行一次权限的校验。
 ### # 4.1 v-hasPermi 指令
-[`v-hasPermi` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/directives/permission/hasPermi.ts) 指令，基于权限字符，进行权限的控制。
+[`v-hasPermi`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/directives/permission/hasPermi.ts) 指令，基于权限字符，进行权限的控制。
 存在权限字符串才能看到
 包含权限字符串才能看到
 ### # 4.2 v-hasRole 指令
-[`v-hasRole` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/directives/permission/hasRole.ts) 指令，基于角色标识，机进行的控制。
+[`v-hasRole`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/directives/permission/hasRole.ts) 指令，基于角色标识，机进行的控制。
 管理员才能看到
 包含角色才能看到
 ### # 4.3 结合 v-if 指令
@@ -169,7 +169,7 @@ checkRole
 - 路由对应的组件加上 `name`，与路由设置的 `name` 保持一致
 友情提示：页面缓存是什么？
 简单来说，Tab 切换时，开启页面缓存的 Tab 保持原本的状态，不进行刷新。
-详细可见 [Vue 文档 —— KeepAlive (opens new window)](https://vuejs.org/guide/built-ins/keep-alive.html)
+详细可见 [Vue 文档 —— KeepAlive](https://vuejs.org/guide/built-ins/keep-alive.html)
 ### # 5.1 静态路由的示例
 ① router 路由的 `name` 声明如下：
 {

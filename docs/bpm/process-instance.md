@@ -1,9 +1,9 @@
 # 流程发起、取消、重新发起
 
 相关视频：
-- [11、如何实现流程的发起？ (opens new window)](https://t.zsxq.com/04jyvNfqj)
-- [12、如何实现我的流程列表？ (opens new window)](https://t.zsxq.com/046UFqRzz)
-- [13、如何实现流程的取消？ (opens new window)](https://t.zsxq.com/04aM72rzv)
+- [11、如何实现流程的发起？](https://t.zsxq.com/04jyvNfqj)
+- [12、如何实现我的流程列表？](https://t.zsxq.com/046UFqRzz)
+- [13、如何实现流程的取消？](https://t.zsxq.com/04aM72rzv)
 本文的内容比较简单，主要围绕 [审批中心] 菜单下的 [我的流程]、[发起流程] 子菜单，讲解流程的发起、取消、重新发起的操作流程。
 ## # 1. 发起流程
 发起流程，对应 [审批中心 -> 发起流程] 菜单，如下图所示：
@@ -61,7 +61,7 @@
 该表是一种 Key-Value 的形式，可以存储任意类型的数据。例如说，项目中给 ProcessInstance 增加了一个 `PROCESS_STATUS` 字段，表示流程状态，如下图所示：
 ![PROCESS_STATUS](../images/PROCESS_STATUS.png) 
 ### # 1.2 流程状态
-流程状态，由 [BpmProcessInstanceStatusEnum (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/enums/task/BpmProcessInstanceStatusEnum.java) 目前有 4 种，如下图所示：
+流程状态，由 [BpmProcessInstanceStatusEnum](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/enums/task/BpmProcessInstanceStatusEnum.java) 目前有 4 种，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![流程状态](../images/img_1dea02e0.png) 
 ### # 1.3 具体实现
@@ -121,7 +121,7 @@
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![取消流程的实现](../images/img_d8a4ce7f.png) 
 - 最核心的，就是调用 Flowable 的 `RuntimeService#deleteProcessInstance(...)` 方法，取消流程实例。
-可能你会有疑问，哪里将流程状态更新为 `CANCEL` 已取消呢？答案在 [BpmProcessInstanceEventListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/BpmProcessInstanceEventListener.java) 监听器，它会监听到流程实例变更为取消，然后调用 BpmProcessInstanceController 的 `#updateProcessInstanceWhenCancel(...)` 方法，进行更新。如下图所示：
+可能你会有疑问，哪里将流程状态更新为 `CANCEL` 已取消呢？答案在 [BpmProcessInstanceEventListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/BpmProcessInstanceEventListener.java) 监听器，它会监听到流程实例变更为取消，然后调用 BpmProcessInstanceController 的 `#updateProcessInstanceWhenCancel(...)` 方法，进行更新。如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![更新流程为已取消](../images/img_77e21208.png) 
 ### # 2.2 重新发起流程

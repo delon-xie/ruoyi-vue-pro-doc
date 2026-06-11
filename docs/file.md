@@ -5,7 +5,7 @@
 1. 磁盘存储：本地、FTP 服务器、SFTP 服务器。
 1. 数据库存储：MySQL、Oracle、PostgreSQL、SQL Server 等等。
 技术选型？
-- 优先，✔ 推荐方案 1。如果无法使用云服务，可以自己搭建一个 MinIO 服务。参见 [《芋道 Spring Boot 对象存储 MinIO 入门 》 (opens new window)](https://www.iocoder.cn/Spring-Boot/MinIO/?yudao) 文章。
+- 优先，✔ 推荐方案 1。如果无法使用云服务，可以自己搭建一个 MinIO 服务。参见 [《芋道 Spring Boot 对象存储 MinIO 入门 》](https://www.iocoder.cn/Spring-Boot/MinIO/?yudao) 文章。
 - 其次，推荐方案 3。数据库的主从机制可以实现高可用，备份也方便，少量小文件问题不大。
 - 最后，× 不推荐方案 2。主要是实现高可用比较困难，无法实现故障转移。
 ## # 1. 快速入门
@@ -26,8 +26,8 @@
 上述七牛云的配置，是艿艿为了大家方便体验，请勿在测试或生产环境体验。
 也就是说，测试或生产环境下，请换成自己的七牛、阿里云、腾讯云等等的配置！！！
 疑问：MinIO 做了 Nginx 反向代理（提供了独立域名），需要怎么配置？
-可见 [https://t.zsxq.com/wKmMW (opens new window)](https://t.zsxq.com/wKmMW) 帖子，有 2 种解决方案。
-比较推荐的方式，是把“是否 Path Style”设置为 `true` 启用，原因是 [https://www.inlighting.org/archives/aws-s3-virtual-hosted-style-vs-path-style (opens new window)](https://www.inlighting.org/archives/aws-s3-virtual-hosted-style-vs-path-style) 文档。
+可见 [https://t.zsxq.com/wKmMW](https://t.zsxq.com/wKmMW) 帖子，有 2 种解决方案。
+比较推荐的方式，是把“是否 Path Style”设置为 `true` 启用，原因是 [https://www.inlighting.org/archives/aws-s3-virtual-hosted-style-vs-path-style](https://www.inlighting.org/archives/aws-s3-virtual-hosted-style-vs-path-style) 文档。
 ③ 添加完后，点击该配置所在行的 [测试] 按钮，测试配置是否正确。
 ![测试配置](/images/03.png) ④ 测试通过后，点击该配置所在行的 [主配置] 按钮，设置它为**默认**的配置，后续使用它进行文件的上传。
 ![测试配置](/images/07.png) 
@@ -39,7 +39,7 @@
 ## # 2. 文件上传
 项目提供了 2 种文件上传的方式，分别适合前端、后端使用。
 ### # 2.1 方式一：前端上传
-[FileController (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/file/FileController.java) 提供了 `/admin-api/infra/file/upload` RESTful API，用于前端直接上传文件。
+[FileController](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/file/FileController.java) 提供了 `/admin-api/infra/file/upload` RESTful API，用于前端直接上传文件。
 // FileController.java
 @PostMapping("/upload")
 @Operation(summary = "上传文件")
@@ -50,10 +50,10 @@ return success(fileService.createFile(file.getOriginalFilename(), path,
 IoUtil.readBytes(file.getInputStream())));
 }
 前端上传文件的代码如何实现，可见：
-- 文件列表，文件上传 [`index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/infra/file/index.vue#L59-L76)
-- 个人中心，头像修改 [`userAvatar.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/user/profile/userAvatar.vue#L122-L135)
+- 文件列表，文件上传 [`index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/infra/file/index.vue#L59-L76)
+- 个人中心，头像修改 [`userAvatar.vue`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/user/profile/userAvatar.vue#L122-L135)
 ### # 2.2 方式二：后端上传
-`yudao-module-infra` 的 [FileApi (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/api/file/FileApi.java) 提供了 `#createFile(...)` 方法，用于后端需要上传文件的逻辑。
+`yudao-module-infra` 的 [FileApi](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/api/file/FileApi.java) 提供了 `#createFile(...)` 方法，用于后端需要上传文件的逻辑。
 // FileApi.java
 /**
 * 保存文件，并返回文件的访问路径
@@ -71,10 +71,10 @@ cn.iocoder.boot
 yudao-module-infra
 ${revision}
 ## # 3. 文件下载
-文件上传成功后，返回的是**完整的 URL 访问路径**，例如说 [http://test.yudao.iocoder.cn/822aebded6e6414e912534c6091771a4.jpg (opens new window)](http://test.yudao.iocoder.cn/822aebded6e6414e912534c6091771a4.jpg) 。
+文件上传成功后，返回的是**完整的 URL 访问路径**，例如说 [http://test.yudao.iocoder.cn/822aebded6e6414e912534c6091771a4.jpg](http://test.yudao.iocoder.cn/822aebded6e6414e912534c6091771a4.jpg) 。
 不同的文件存储器，返回的 URL 路径的规则是不同的：
 ① 当存储器是【S3 对象存储】时，支持 HTTP 访问，所以直接使用 S3 对象存储返回的 URL 路径即可。
-② 当存储器是【数据库】【本地磁盘】等时，它们只支持存储，所以需要 [FileController (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/file/FileController.java) 提供的 `/admin-api/infra/file/{configId}/get/{path}` RESTful API，读取文件内容后返回。
+② 当存储器是【数据库】【本地磁盘】等时，它们只支持存储，所以需要 [FileController](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/file/FileController.java) 提供的 `/admin-api/infra/file/{configId}/get/{path}` RESTful API，读取文件内容后返回。
 // FileController.java
 @GetMapping("/{configId}/get/**")
 @PermitAll
@@ -98,7 +98,7 @@ return;
 ServletUtils.writeAttachment(response, path, content);
 }
 ## # 4. 文件客户端
-在 `yudao-module-infra` 模块中，它的 [`framework/file` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/framework/file/package-info.java) 包下，定义了 [FileClient (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/framework/file/core/client/FileClient.java) 接口，抽象了文件客户端的方法。代码如下所示：
+在 `yudao-module-infra` 模块中，它的 [`framework/file`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/framework/file/package-info.java) 包下，定义了 [FileClient](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/framework/file/core/client/FileClient.java) 接口，抽象了文件客户端的方法。代码如下所示：
 public interface FileClient {
 /**
 * 获得客户端编号
@@ -132,7 +132,7 @@ FileClient 有 5 个实现类，使用不同存储器进行文件的上传与下
 ![](/images/09.png) 文件上传的调用的 UML 时序图如下所示：
 ![](/images/10.png) 
 ## # 5. S3 对象存储的配置
-做的不错的云存储服务，都是兼容 S3 协议的。如何获取对应的 S3 配置，艿艿整理到了 [S3FileClientConfig (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/framework/file/core/client/FileClientConfig.java) 配置类。
+做的不错的云存储服务，都是兼容 S3 协议的。如何获取对应的 S3 配置，艿艿整理到了 [S3FileClientConfig](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/framework/file/core/client/FileClientConfig.java) 配置类。
 有一点要注意，云存储服务的 Bucket 需要设置为**公共读**，不然 URL 无法访问到文件。
 并且，最好使用自定义域名，方便迁移到不同的云存储服务。
 ## # 6. 前端直传 S3 存储【推荐】
@@ -145,9 +145,9 @@ FileClient 有 5 个实现类，使用不同存储器进行文件的上传与下
 ![新增配置](/images/img_1182359a.png) 实际上，这个步骤和「2.1 新增步骤」是一样的哈！
 ### # 6.2 配置 S3 跨域
 友情提示：这个步骤，是为了解决前端直传 S3 存储器的跨域问题。
-- 七牛云的跨域配置：参见 [《设置跨域资源共享 》 (opens new window)](https://developer.qiniu.com/kodo/6094/set-cors)
-- 阿里云的跨域配置：参见 [《阿里云 OSS 设置跨域访问》 (opens new window)](https://developer.aliyun.com/article/1168029)
-- 腾讯云的跨域配置：参见 [《设置跨域访问》 (opens new window)](https://cloud.tencent.com/document/product/436/13318)
+- 七牛云的跨域配置：参见 [《设置跨域资源共享 》](https://developer.qiniu.com/kodo/6094/set-cors)
+- 阿里云的跨域配置：参见 [《阿里云 OSS 设置跨域访问》](https://developer.aliyun.com/article/1168029)
+- 腾讯云的跨域配置：参见 [《设置跨域访问》](https://cloud.tencent.com/document/product/436/13318)
 如下是七牛云的跨域配置截图：
 ![跨域配置](/images/img_93670613.png) 
 ### # 6.3 配置前端直传
@@ -166,13 +166,13 @@ FileClient 有 5 个实现类，使用不同存储器进行文件的上传与下
 ③ 数据新增或修改时，提交的 URL 地址是预签名的 Query 参数，可以后端通过 HttpUtils 的 `#removeUrlQuery(url)` 方法进行移除。
 因为，预签名 URL 的 Query 参数是有过期时间的，过期后就无法访问了，并且往往比较长，超过了数据库的字段长度。
 ## # 666. 社区贡献的文件相关
-- 文件存储支持相对路径：[#1334 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1344)、[#778 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/778)
-- [支持 Hbase 文件存储格式 (opens new window)](https://github.com/YunaiV/yudao-cloud/pull/210/)
-- [《Pull Request：增加图片自动压缩》 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/663)
-- [《Pull Request：实现流式文件上传与下载，支持大文件上传》 (opens new window)](https://gitee.com/zhijiantianya/yudao-cloud/pulls/212)
-- [《Pull Request：upload first file item from clipboard》 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/176)
-- [《Pull Request：增加 minio 的专属客户端、使用 minio 客户端实现断点续传的功能》 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1410)
-- S3 文件客户端支持基础路径，可作为腾讯云 COS 桶下的自定义虚拟根路径：[#1502 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1502)、[#855 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/855)
+- 文件存储支持相对路径：[#1334](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1344)、[#778](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/778)
+- [支持 Hbase 文件存储格式](https://github.com/YunaiV/yudao-cloud/pull/210/)
+- [《Pull Request：增加图片自动压缩》](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/663)
+- [《Pull Request：实现流式文件上传与下载，支持大文件上传》](https://gitee.com/zhijiantianya/yudao-cloud/pulls/212)
+- [《Pull Request：upload first file item from clipboard》](https://github.com/yudaocode/yudao-ui-admin-vue3/pull/176)
+- [《Pull Request：增加 minio 的专属客户端、使用 minio 客户端实现断点续传的功能》](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1410)
+- S3 文件客户端支持基础路径，可作为腾讯云 COS 桶下的自定义虚拟根路径：[#1502](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1502)、[#855](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/855)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [VO 对象转换、数据翻译](/vo/) [Excel 导入导出](/excel-import-and-export/) 

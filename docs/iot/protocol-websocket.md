@@ -48,9 +48,9 @@ idle-timeout-seconds: 60         # 空闲超时时间（秒，默认 60）
 | 直连设备 | IotDirectDeviceWebSocketProtocolIntegrationTest |
 | 网关设备 | IotGatewayDeviceWebSocketProtocolIntegrationTest |
 | 网关子设备 | IotGatewaySubDeviceWebSocketProtocolIntegrationTest |
-也可以使用浏览器开发者工具、[Postman (opens new window)](https://www.postman.com/) 或 [websocat (opens new window)](https://github.com/vi/websocat) 等 WebSocket 客户端工具手动测试。
+也可以使用浏览器开发者工具、[Postman](https://www.postman.com/) 或 [websocat](https://github.com/vi/websocat) 等 WebSocket 客户端工具手动测试。
 ## # 4. 手工测试（直连设备）
-下面会用 [websocat (opens new window)](https://github.com/vi/websocat) 命令行工具，以内置的 id 为 25 的 [演示设备 (opens new window)](http://127.0.0.1/iot/device/detail/25) 为例进行测试。
+下面会用 [websocat](https://github.com/vi/websocat) 命令行工具，以内置的 id 为 25 的 [演示设备](http://127.0.0.1/iot/device/detail/25) 为例进行测试。
 当然，你也可以使用浏览器 JavaScript、Postman 等工具。
 ### # 4.1 连接认证
 ① 建立 WebSocket 连接并发送认证消息：

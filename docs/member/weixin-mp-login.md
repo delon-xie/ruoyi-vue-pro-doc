@@ -3,11 +3,11 @@
 前置阅读文章：
 - [《用户体系》](/user-center/)
 - [《三方登录》](/social-user/)
-本文是 [《三方登录》](/social-user/) 的延伸，讲解 [`yudao-mall-uniapp` (opens new window)](https://github.com/yudaocode/yudao-mall-uniapp) 商城小程序如何实现微信 **公众号** 登录的功能。
+本文是 [《三方登录》](/social-user/) 的延伸，讲解 [`yudao-mall-uniapp`](https://github.com/yudaocode/yudao-mall-uniapp) 商城小程序如何实现微信 **公众号** 登录的功能。
 ## # 1. 公众号准备
 友情提示：
 本文，我们以“测试公众号”举例子，方便大家操作，认证一个公众号太难了！！！
-① 参考 [微信公众平台接口测试帐号申请 (opens new window)](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login) 链接，申请一个测试公众号。
+① 参考 [微信公众平台接口测试帐号申请](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login) 链接，申请一个测试公众号。
 ② 将 `appID` 和 `appSecret` 配置，设置到后端项目 `application-local.yaml` 的 `wx.mp` 配置项中。如下图所示：
 ![测试公众号 - 密钥](../images/img_6f23012c.png) ![ 配置项](../images/img_615ec62d.png) ③ 修改“JS接口安全域名”，设置为前端的访问地址。例如说，现在本地是 `http://127.0.0.1:3000`。如下图所示：
 ![JS 接口安全域名.png](../images/img_dd1ddd3a.png) 注意：自己需要关注下自己的测试公众号！！！
@@ -21,10 +21,10 @@
 ## # 2. 代码实现
 ### # 2.1 项目启动
 ① 参考 [《快速启动【前端】》](/quick-start-front/) 文档的「2. uni-app 商城移动端」小节，将 `yudao-mall-uniapp` 商城项目跑起来。
-② 下载 [微信开发者工具 (opens new window)](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，并进行安装。安装后，选择「公众号网页项目」。如下图所示：
+② 下载 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，并进行安装。安装后，选择「公众号网页项目」。如下图所示：
 ![公众号网页项目](../images/img_4fa2c092.png) 
 ### # 2.2 微信 JSSDK
-访问 `http://127.0.0.1:3000/` 地址（其它地址也可以），它会触发 [微信 JSSDK (opens new window)](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 初始化的逻辑，对应前端 `sheep/libs/sdk-h5-weixin.js` 文件的 `#init(...)` 方法中。
+访问 `http://127.0.0.1:3000/` 地址（其它地址也可以），它会触发 [微信 JSSDK](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html) 初始化的逻辑，对应前端 `sheep/libs/sdk-h5-weixin.js` 文件的 `#init(...)` 方法中。
 微信 JSSDK 所需要的签名，由后端的 AppAuthController 的 `#createWeixinMpJsapiSignature(...)` 方法所提供。
 友情提示：为什么出现微信 JSSDK 初始化失败：`{errMsg: "config:fail,invalid signature"}`？
 可能是 `jsApiList` 里的部分权限你没有，可以尝试先全部移除，只保留 `chooseWXPay` 一个，确保初始化成功。
@@ -32,7 +32,7 @@
 友情提示：为什么微信公众号 H5 在手机上分享功能不生效？
 ### # 2.3 登录流程
 友情提示：
-可以简单阅读下 [《微信官方文档 —— 网页授权》 (opens new window)](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html) 文章。
+可以简单阅读下 [《微信官方文档 —— 网页授权》](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html) 文章。
 ① 访问 `http://127.0.0.1:3000/#/pages/user/info` 地址，触发弹出“登录窗口”，对应前端 `sheep/components/s-auth-modal/s-auth-modal.vue` 组件。如下图所示：
 ![登录弹窗](../images/img_e4ac9d64.png) ② 点击「微信登录」图标，触发微信公众号登录。前端核心实现都在 `sheep/platform/provider/wechat/officialAccount.js` 的 `#login(...)` 方法中。它一共包含 2 个步骤。
 ③ 【第一步】前端调用后端的 AppAuthController 的 `#socialAuthRedirect(...)` 方法，获得微信公众号的登录地址，并进行跳转。效果如下图：

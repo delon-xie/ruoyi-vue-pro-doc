@@ -8,8 +8,8 @@
 ## # 1. 表结构
 ![表结构](/images/img_3dfe2f1c.png) 
 ## # 2. 实现代码
-- 前端代码：[views/system/notify (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/notify/)
-- 后端代码：[controller/admin/notify (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/notify/)
+- 前端代码：[views/system/notify](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/system/notify/)
+- 后端代码：[controller/admin/notify](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/notify/)
 ## # 3. 站内信配置
 本小节，讲解如何配置站内信功能，整个过程如下：
 1. 新建一个站内信【模版】，配置站内信的内容模版
@@ -32,11 +32,11 @@
 ![站内信接收日志](/images/img_0ae263b9.png) 
 ## # 4. 站内信发送
 ### # 4.1 NotifyMessageSendApi
-[站内信配置](/#_3-站内信配置)完成后，可使用 [NotifyMessageSendApi (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/notify/NotifyMessageSendApi.java) 进行站内信的发送，支持多种用户类型。它的方法如下：
+[站内信配置](/#_3-站内信配置)完成后，可使用 [NotifyMessageSendApi](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/api/notify/NotifyMessageSendApi.java) 进行站内信的发送，支持多种用户类型。它的方法如下：
 ![NotifyMessageSendApi](/images/img_d7239e1b.png) 
 ### # 4.2 接入示例
 以 `yudao-module-bpm` 模块，需要发站内信为例子，讲解 NotifyMessageSendApi 的使用。
-① 在 `yudao-module-bpm` 模块的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/pom.xml) 引入 `yudao-module-system` 依赖，如所示：
+① 在 `yudao-module-bpm` 模块的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/pom.xml) 引入 `yudao-module-system` 依赖，如所示：
 cn.iocoder.boot
 yudao-module-system
 ${revision}

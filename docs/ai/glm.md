@@ -1,16 +1,16 @@
 # 【模型接入】智谱 GLM
 
-项目基于 Spring AI 提供的 [`spring-ai-zhipuai` (opens new window)](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-zhipuai)，实现 [智谱 GLM (opens new window)](https://zhipuai.cn/) 的接入：
+项目基于 Spring AI 提供的 [`spring-ai-zhipuai`](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-zhipuai)，实现 [智谱 GLM](https://zhipuai.cn/) 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
-| AI 对话 | GLM-4、GLM-3-Turbo 等 | [ZhiPuAiChatModel (opens new window)](https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-zhipuai/src/main/java/org/springframework/ai/zhipuai/ZhiPuAiChatModel.java) |
-| AI 绘画 | [CogView (opens new window)](https://github.com/THUDM/CogView) | [ZhiPuAiImageModel (opens new window)](https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-zhipuai/src/main/java/org/springframework/ai/zhipuai/ZhiPuAiImageModel.java) |
+| AI 对话 | GLM-4、GLM-3-Turbo 等 | [ZhiPuAiChatModel](https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-zhipuai/src/main/java/org/springframework/ai/zhipuai/ZhiPuAiChatModel.java) |
+| AI 绘画 | [CogView](https://github.com/THUDM/CogView) | [ZhiPuAiImageModel](https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-zhipuai/src/main/java/org/springframework/ai/zhipuai/ZhiPuAiImageModel.java) |
 ## # 1. 申请密钥
 智谱 AI 有开源模型，可以私有化部署。
-不过它最新、最强的模型 [GLM-4 (opens new window)](https://zhipuai.cn/news/5) 是没有开源的，所以只能通过官方的 API 服务接入。
+不过它最新、最强的模型 [GLM-4](https://zhipuai.cn/news/5) 是没有开源的，所以只能通过官方的 API 服务接入。
 ### # 1.1 申请智谱 AI 密钥
-① 在 [智谱 AI 开放平台 (opens new window)](https://bigmodel.cn/) 上，注册一个账号。目前，默认注册就送 2500w tokens，还是蛮爽的。
-② 在 [API keys (opens new window)](https://open.bigmodel.cn/usercenter/apikeys) 菜单，复制系统默认 API key 即可。
+① 在 [智谱 AI 开放平台](https://bigmodel.cn/) 上，注册一个账号。目前，默认注册就送 2500w tokens，还是蛮爽的。
+② 在 [API keys](https://open.bigmodel.cn/usercenter/apikeys) 菜单，复制系统默认 API key 即可。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”，不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_779f1e59.png) 
 ## # 2. 模型配置
@@ -18,11 +18,11 @@
 目前 `ai_model` 表中，已经预置了一些模型，可以直接使用！！！
 ### # 2.1 AI 对话
 使用 [《AI 对话》](/ai/chat/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的聊天模型。
-模型有：`GLM-4`、`GLM-3-Turbo` 等等，可通过 [模型广场 (opens new window)](https://open.bigmodel.cn/console/modelcenter/square) 查看。
+模型有：`GLM-4`、`GLM-3-Turbo` 等等，可通过 [模型广场](https://open.bigmodel.cn/console/modelcenter/square) 查看。
 注意，每个模型标识的 `max_tokens`（回复数 Token 数）默认 1024，最大是 4095。
 ### # 2.2 AI 绘画
 使用 [《AI 对话》](/ai/chat/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的聊天模型。
-模型有：`cogview-3` 等等，可通过 [模型广场 (opens new window)](https://open.bigmodel.cn/console/modelcenter/square) 查看。
+模型有：`cogview-3` 等等，可通过 [模型广场](https://open.bigmodel.cn/console/modelcenter/square) 查看。
 ## # 3. 如何使用？
 ① 如果你的项目里需要直接通过 `@Resource` 注入 ZhiPuAiChatModel、ZhiPuAiImageModel 等对象，需要把 `application.yaml` 配置文件里的 `yudao.ai.zhipuai` 配置项，替换成你的！
 spring:

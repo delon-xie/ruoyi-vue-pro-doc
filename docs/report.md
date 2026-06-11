@@ -5,9 +5,9 @@
 ![报表设计器](/images/img_b3ca8edb.gif) 在项目中，通过集成市面上的报表引擎，实现了报表设计器的能力。目前使用如下：
 |  | 是否集成 | 是否开源 |
 | --- | --- | --- |
-| [JimuReport (opens new window)](https://github.com/jeecgboot/JimuReport) | 已集成 | 不开源 |
-| [AJ-Report (opens new window)](https://gitee.com/anji-plus/report) | 集成中 | 开源 |
-| [UReport2 (opens new window)](https://github.com/youseries/ureport) | 不集成 | 开源 |
+| [JimuReport](https://github.com/jeecgboot/JimuReport) | 已集成 | 不开源 |
+| [AJ-Report](https://gitee.com/anji-plus/report) | 集成中 | 开源 |
+| [UReport2](https://github.com/youseries/ureport) | 不集成 | 开源 |
 为什么不使用 UReport2 报表引擎呢？
 UReport2 基本处于不维护的状态，最后发版时间是 2018 年！
 ## # 1. 功能开启
@@ -17,12 +17,12 @@ UReport2 基本处于不维护的状态，最后发版时间是 2018 年！
 - 第三步，启动后端项目，确认功能是否生效
 - 第四步，启动报表设计器的前端项目
 ### # 1.1 第一步，开启模块
-① 修改根目录的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/pom.xml) 文件，取消 `yudao-module-report` 模块的注释。
-![引入 模块](/images/img_1261abff.png) ② 修改 `yudao-server` 目录的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/pom.xml) 文件，引入 `yudao-module-report` 模块。如下图所示：
+① 修改根目录的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/pom.xml) 文件，取消 `yudao-module-report` 模块的注释。
+![引入 模块](/images/img_1261abff.png) ② 修改 `yudao-server` 目录的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/pom.xml) 文件，引入 `yudao-module-report` 模块。如下图所示：
 ![引入 依赖](/images/img_a91e096a.png) ③ 点击 IDEA 右上角的【Reload All Maven Projects】，刷新 Maven 依赖。如下图所示：
 ![刷新 Maven 依赖](/images/img_feccec72.png) 
 ### # 1.2 第二步，导入 SQL
-下载 [`jimureport.mysql5.7.create.sql` (opens new window)](https://raw.gitcode.com/jeecgboot/jimureport/raw/master/db/jimureport.mysql5.7.create.sql) 脚本，并导入数据库，初始化 JimuReport 相关的表结构和数据。如果你是 Oracle、PostgreSQL 等其它数据库，需要自己使用 Navicat 进行转换。
+下载 [`jimureport.mysql5.7.create.sql`](https://raw.gitcode.com/jeecgboot/jimureport/raw/master/db/jimureport.mysql5.7.create.sql) 脚本，并导入数据库，初始化 JimuReport 相关的表结构和数据。如果你是 Oracle、PostgreSQL 等其它数据库，需要自己使用 Navicat 进行转换。
 友情提示：↑↑↑ jimureport.mysql5.7.create.sql 是可以点击下载的！ ↑↑↑
 ![导入 SQL 脚本](/images/img_32da36e2.png) 
 ### # 1.3 第三步，启动后端项目
@@ -38,15 +38,15 @@ TODO 开发中，预计 4 月份左右。
 TODO 开发中，预计 4 月份左右。
 ### # 2.2 JimuReport 报表设计器
 可以查看 JimuReport 的官方文档，主要是：
-- [快速入门 (opens new window)](http://report.jeecg.com/2075805)
-- [操作手册（报表设计器） (opens new window)](https://help.jimureport.com/base/new)
-注意，JimuReport 是商业化的产品，分成免费版、商业版，需要关注下它的 [价格 (opens new window)](https://jimureport.com/vip) ！！！
+- [快速入门](http://report.jeecg.com/2075805)
+- [操作手册（报表设计器）](https://help.jimureport.com/base/new)
+注意，JimuReport 是商业化的产品，分成免费版、商业版，需要关注下它的 [价格](https://jimureport.com/vip) ！！！
 集成 JimuReport 的代码实现？
-① 后端：在 [`jmreport` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-report/src/main/java/cn/iocoder/yudao/module/report/framework/jmreport) 包下，进行 JimuReport 的集成。
-② 前端：在 [`@/views/report/jmreport/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/report/jmreport/index.vue) 文件，通过 IFrame 嵌入 JimuReport 界面。
+① 后端：在 [`jmreport`](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-report/src/main/java/cn/iocoder/yudao/module/report/framework/jmreport) 包下，进行 JimuReport 的集成。
+② 前端：在 [`@/views/report/jmreport/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/report/jmreport/index.vue) 文件，通过 IFrame 嵌入 JimuReport 界面。
 星球里，不错的问题：
-- [《我想问下积木报表集成里，官方的 yaml 配置参数维护在哪里呀？》 (opens new window)](https://t.zsxq.com/19s87CV2J)
-- [《GoView 使用全局配置设置请求地址为第三方时，出现 404 的 BUG？》 (opens new window)](https://t.zsxq.com/Mg9GM)
+- [《我想问下积木报表集成里，官方的 yaml 配置参数维护在哪里呀？》](https://t.zsxq.com/19s87CV2J)
+- [《GoView 使用全局配置设置请求地址为第三方时，出现 404 的 BUG？》](https://t.zsxq.com/Mg9GM)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [流程审批通知](/bpm/message/) [大屏设计器](/report/screen/) 

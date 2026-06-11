@@ -14,31 +14,28 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   srcExclude: [
-    '**/images/**',
-    '**/intro.md'
   ],
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
+      { text: '首页', link: '/intro' },
       { text: '项目简介', link: '/project-intro' },
-      { text: 'AI', link: '/ai/' },
-      { text: 'BPM', link: '/bpm/' },
-      { text: 'CRM', link: '/crm/' },
-      { text: 'ERP', link: '/erp/' },
-      { text: 'Mall', link: '/mall/' },
-      { text: 'WMS', link: '/wms/' },
-      { text: 'MES', link: '/mes/' },
-      { text: 'IoT', link: '/iot/' },
-      { text: 'MP', link: '/mp/' },
-      { text: 'IM', link: '/im/' },
-      { text: 'Member', link: '/member/' },
-      { text: 'Pay', link: '/pay/' },
-      { text: '消息队列', link: '/message-queue/' },
-      { text: '报表', link: '/report/' },
-      { text: 'Vue3', link: '/vue3/' },
-      { text: 'Vue2', link: '/vue2/' },
-      { text: 'Vben5', link: '/vben5/' },
-      { text: '更新日志', link: '/changelog/' }
+      { text: 'AI大模型', link: '/ai/ai-preview' },
+      { text: 'BPM', link: '/bpm/bpm-preview' },
+      { text: 'CRM', link: '/crm/build' },
+      { text: 'ERP', link: '/erp/build' },
+      { text: 'Mall', link: '/mall/build' },
+      { text: 'WMS', link: '/wms/build' },
+      { text: 'MES', link: '/mes/build' },
+      { text: 'IoT', link: '/iot/build' },
+      { text: '微信', link: '/mp/build' },
+      { text: '即时通讯', link: '/im/build' },
+      { text: '会员', link: '/member/build' },
+      { text: '支付', link: '/pay/build' },
+      { text: '消息中间件', link: '/message-queue/event' },
+      { text: '报表', link: '/report/screen' },
+      { text: 'Vue3', link: '/vue3/dev-spec' },
+      { text: 'Vue2', link: '/vue2/dev-spec' },
+      { text: 'Vben5', link: '/vben5/dev-spec' }
     ],
     sidebar: {
       '/ai/': [

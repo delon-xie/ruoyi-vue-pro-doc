@@ -1,8 +1,8 @@
 # 功能开启
 
 进度说明：
-- 管理后台，请使用 [https://gitee.com/yudaocode/yudao-ui-admin-vue3 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3) 仓库的 `master` 分支
-- 后端项目，请使用 [https://gitee.com/zhijiantianya/ruoyi-vue-pro (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro) 仓库的 `master`（JDK8） 或 `master-jdk17`（JDK17/21） 分支
+- 管理后台，请使用 [https://gitee.com/yudaocode/yudao-ui-admin-vue3](https://gitee.com/yudaocode/yudao-ui-admin-vue3) 仓库的 `master` 分支
+- 后端项目，请使用 [https://gitee.com/zhijiantianya/ruoyi-vue-pro](https://gitee.com/zhijiantianya/ruoyi-vue-pro) 仓库的 `master`（JDK8） 或 `master-jdk17`（JDK17/21） 分支
 IM 即时通讯系统，后端由 `yudao-module-im` 模块实现，前端由 `yudao-ui-admin-vue3` 的 `im` 目录实现。
 考虑到编译速度，默认 `yudao-module-im` 模块是关闭的，需要手动开启。步骤如下：
 - 第一步，开启 `yudao-module-im` 模块
@@ -11,12 +11,12 @@ IM 即时通讯系统，后端由 `yudao-module-im` 模块实现，前端由 `yu
 - 第四步，重启后端项目，确认功能是否生效
 - 第五步，配置音视频通话（可选）
 ## # 1. 第一步，开启模块
-① 修改根目录的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/pom.xml) 文件，取消 `yudao-module-im` 模块的注释。如下图所示：
-![取消 模块的注释](../images/img_1261abff.png) ② 修改 `yudao-server` 目录的 [`pom.xml` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/pom.xml) 文件，引入 `yudao-module-im` 模块。如下图所示：
+① 修改根目录的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/pom.xml) 文件，取消 `yudao-module-im` 模块的注释。如下图所示：
+![取消 模块的注释](../images/img_1261abff.png) ② 修改 `yudao-server` 目录的 [`pom.xml`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/pom.xml) 文件，引入 `yudao-module-im` 模块。如下图所示：
 ![引入 模块](../images/img_a91e096a.png) ③ 点击 IDEA 右上角的【Reload All Maven Projects】，刷新 Maven 依赖。如下图所示：
 ![刷新 Maven 依赖](../images/img_feccec72.png) 
 ## # 2. 第二步，导入 SQL
-点击 [`im.sql.zip` (opens new window)](https://t.zsxq.com/FuVgX) 下载附件，解压出 SQL 文件，然后导入到数据库中。
+点击 [`im.sql.zip`](https://t.zsxq.com/FuVgX) 下载附件，解压出 SQL 文件，然后导入到数据库中。
 友情提示：↑↑↑ im.sql 是可以点击下载的！ ↑↑↑
 重要说明：该 SQL 仅芋道星球成员可使用和商用，否则视为侵权（索赔 100 万，永久追溯）【下载即视为同意】。
 导入后，以 `im_` 作为前缀的表，就是 IM 模块的业务表，一共 **16** 张，按业务模块分为：
@@ -57,7 +57,7 @@ enabled: false
 ① 本地开发时，可以参考 `script/livekit-poc/docker-compose.yml` 启动 LiveKit Server：
 cd script/livekit-poc
 docker compose up -d
-你也可以参考 [livekit/livekit (opens new window)](https://github.com/livekit/livekit) 部署 LiveKit Server。
+你也可以参考 [livekit/livekit](https://github.com/livekit/livekit) 部署 LiveKit Server。
 ② 修改 `application-local.yaml` 配置：
 yudao:
 im:

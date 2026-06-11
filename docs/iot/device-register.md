@@ -2,7 +2,7 @@
 
 推荐阅读：
 - [《设备接入（概述）》](/iot/protocol-overview/) — 了解设备认证基础
-- [《阿里云物联网平台 —— 一型一密》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/unique-certificate-per-product-verification)
+- [《阿里云物联网平台 —— 一型一密》](https://help.aliyun.com/zh/iot/user-guide/unique-certificate-per-product-verification)
 设备动态注册（一型一密）功能，允许设备在出厂时不预置 DeviceSecret，而是通过 ProductKey + ProductSecret 动态获取 DeviceSecret，简化设备的批量生产和安全接入。
 ## # 1. 动态注册概述
 ### # 1.1 认证方式对比

@@ -3,14 +3,14 @@
 本章节，讲解 SaaS 租户的 DATASOURCE 模式，实现数据库级别的隔离。
 注意，需要前置阅读 [《SaaS 多租户【字段隔离】》](/saas-tenant) 文档。
 ## # 0. 极速体验
-① 克隆 [https://gitee.com/zhijiantianya/ruoyi-vue-pro (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro) 仓库，并切换到 `feature/dev-yunai` 分支。
+① 克隆 [https://gitee.com/zhijiantianya/ruoyi-vue-pro](https://gitee.com/zhijiantianya/ruoyi-vue-pro) 仓库，并切换到 `feature/dev-yunai` 分支。
 ② 创建 `ruoyi-vue-pro-master`、`ruoyi-vue-pro-tenant-a`、`ruoyi-vue-pro-tenant-b` 三个数据库。
 ③ 下载 [`多租户多db.zip`](/file/%E5%A4%9A%E7%A7%9F%E6%88%B7%E5%A4%9Adb.zip) 并解压，将 SQL 导入到对应的数据库中。
 友情提示：
 随着版本的迭代，SQL 脚本可能过期。如果碰到问题，可以在星球给我反馈下。
 ④ 启动前端和后端项目，即可愉快的体验了。
 ## # 1. 实现原理
-DATASOURCE 模式，基于 [dynamic-datasource (opens new window)](https://github.com/baomidou/dynamic-datasource-spring-boot-starter) 进行拓展实现。
+DATASOURCE 模式，基于 [dynamic-datasource](https://github.com/baomidou/dynamic-datasource-spring-boot-starter) 进行拓展实现。
 核心：每次对数据库操作时，动态切换到该租户所在的数据源，然后执行 SQL 语句。
 ## # 2. 功能演示
 **我们来新增一个租户，使用 DATASOURCE 模式。**
@@ -43,7 +43,7 @@ system_users
 ### # 3.1 主库
 ① 存放所有租户共享的表。例如说：菜单表、定时任务表等等。如下图所示：
 ![主库](../images/img_08a098bc.png) ② 对应 `master` 数据源，配置在 `application-{env}.yaml` 配置文件。如下图所示：
-![ 数据源](../images/img_f4f59681.png) ③ 每个主库对应的 Mapper，必须添加 [`@Master` (opens new window)](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/Master.java) 注解。例如说：
+![ 数据源](../images/img_f4f59681.png) ③ 每个主库对应的 Mapper，必须添加 [`@Master`](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/Master.java) 注解。例如说：
 ![ 注解](../images/img_9663d7be.png) 
 ### # 3.2 租户库
 ① 存放每个租户的表。例如说：用户表、角色表等等。
@@ -54,20 +54,20 @@ system_users
 ① 考虑到拓展性，在使用 DATASOURCE 模式时，默认会叠加 COLUMN 模式，即还有 `tenant_id` 租户字段：
 - 在 `INSERT` 操作时，会自动记录租户编号到 `tenant_id` 字段。
 - 在 `SELECT` 操作时，会自动添加 `WHERE tenant_id = ?` 查询条件。
-如果你不需要，可以直接删除 [TenantDatabaseInterceptor (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-tenant/src/main/java/cn/iocoder/yudao/framework/tenant/core/db/TenantDatabaseInterceptor.java) 类，以及它的 Bean 自动配置。
+如果你不需要，可以直接删除 [TenantDatabaseInterceptor](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-biz-tenant/src/main/java/cn/iocoder/yudao/framework/tenant/core/db/TenantDatabaseInterceptor.java) 类，以及它的 Bean 自动配置。
 拓展性，指的是部分【大】租户独立数据库，部分【小】租户共享数据。
 ② 也因为叠加了 COLUMN 模式，**主库**的表需要根据情况添加 `tenant_id` 字段。
 - 情况一：不需要添加 `tenant_id` 字段。例如说：菜单表、定时任务表等等。注意，需要把表名添加到 `yudao.tenant.ignore-tables` 配置项中。
 - 情况二：需要 `tenant_id` 字段。例如说：访问日志表、异常日志表等等。目的，排查是哪个租户的系统级别的日志。
 ## # 4. 多数据源事务
 使用 DATASOURCE 模式后，可能一个操作涉及到多个数据源。例如说：创建租户时，即需要操作主库，也需要操作租户库。
-考虑到多数据的数据一致性，我们会采用事务的方式，而使用 Spring 事务时，会存在多数据库无法切换的问题。不了解的胖友，可以阅读 [《MyBatis Plus 的多数据源 `@DS` 切换不起作用了，谁的锅 》 (opens new window)](https://zhuanlan.zhihu.com/p/410915221) 文章。
+考虑到多数据的数据一致性，我们会采用事务的方式，而使用 Spring 事务时，会存在多数据库无法切换的问题。不了解的胖友，可以阅读 [《MyBatis Plus 的多数据源 `@DS` 切换不起作用了，谁的锅 》](https://zhuanlan.zhihu.com/p/410915221) 文章。
 多数据源的事务方案，是一个老生常谈的问题。比较主流的，有如下两种，都是相对重量级的方案：
-1. 使用 [Atomikos (opens new window)](https://cloud.tencent.com/developer/article/1436662) 实现 JTA 分布式事务，配置复杂，性能较差。
-1. 使用 [Seata (opens new window)](https://www.iocoder.cn/Seata/install/) 实现分布式事务，使用简单，性能不错，但是需要额外引入 Seata Server 服务。
+1. 使用 [Atomikos](https://cloud.tencent.com/developer/article/1436662) 实现 JTA 分布式事务，配置复杂，性能较差。
+1. 使用 [Seata](https://www.iocoder.cn/Seata/install/) 实现分布式事务，使用简单，性能不错，但是需要额外引入 Seata Server 服务。
 ### # 4.1 本地事务
-考虑到项目是单体架构，不适合采用重量级的事务，因此采用 [dynamic-datasource (opens new window)](https://github.com/baomidou/dynamic-datasource-spring-boot-starter) 提供的 **“本地事务”** 轻量级方案。
-它的实现原理是：自定义 [`@DSTransactional` (opens new window)](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/DSTransactional.java) 事务注解，替代 Spring `@Transactional` 事务注解。
+考虑到项目是单体架构，不适合采用重量级的事务，因此采用 [dynamic-datasource](https://github.com/baomidou/dynamic-datasource-spring-boot-starter) 提供的 **“本地事务”** 轻量级方案。
+它的实现原理是：自定义 [`@DSTransactional`](https://github.com/baomidou/dynamic-datasource/blob/master/dynamic-datasource-spring/src/main/java/com/baomidou/dynamic/datasource/annotation/DSTransactional.java) 事务注解，替代 Spring `@Transactional` 事务注解。
 - 在逻辑执行成功时，循环提交每个数据源的事务。
 - 在逻辑执行失败时，循环回滚每个数据源的事务。
 但是它存在一个风险点，如果数据库发生异常（例如说宕机），那么本地事务就可能会存在数据不一致的问题。例如说：

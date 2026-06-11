@@ -2,14 +2,14 @@
 
 ## # 1. 演示地址
 ### # 1.1 CRM 管理后台
-- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/ (opens new window)](http://dashboard-vue3.yudao.iocoder.cn/)
+- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/](http://dashboard-vue3.yudao.iocoder.cn/)
 - 菜单：“CRM 系统”下的「待办事项」「线索管理」「客户管理」「联系人管理」「客户公海」「商机管理」「合同管理」「回款计划」「还款管理」「产品管理」「数据统计」
-- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `crm` 目录，基于 Vue3 + Element Plus 实现
+- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `crm` 目录，基于 Vue3 + Element Plus 实现
 ![管理后台](/images/img_6a5934bf.png) 
 ### # 1.2 CRM 后端
 支持 Spring Boot 单体、Spring Cloud 微服务架构
-- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-crm` 模块
-- 微服务仓库： [https://github.com/YunaiV/yudao-cloud (opens new window)](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-crm` 服务
+- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-crm` 模块
+- 微服务仓库： [https://github.com/YunaiV/yudao-cloud](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-crm` 服务
 ## # 2. CRM 启动
 参见 [《CRM 手册 —— 功能开启》](/crm/build/) 文档，一般 3 分钟就可以启动完成。
 ## # 3. CRM 交流

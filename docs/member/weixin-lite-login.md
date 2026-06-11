@@ -3,17 +3,17 @@
 前置阅读文章：
 - [《用户体系》](/user-center/)
 - [《三方登录》](/social-user/)
-本文是 [《三方登录》](/social-user/) 的延伸，讲解 [`yudao-mall-uniapp` (opens new window)](https://github.com/yudaocode/yudao-mall-uniapp) 商城小程序如何实现微信 **小程序** 登录的功能。
+本文是 [《三方登录》](/social-user/) 的延伸，讲解 [`yudao-mall-uniapp`](https://github.com/yudaocode/yudao-mall-uniapp) 商城小程序如何实现微信 **小程序** 登录的功能。
 ## # 1. 小程序准备
 友情提示：
 本文，我们以“测试小程序”举例子，方便大家操作，认证一个小程序太难了！！！
-① 参考 [微信小程序测试号申请 (opens new window)](https://developers.weixin.qq.com/miniprogram/dev/devtools/sandbox.html) 链接，申请一个测试小程序。
+① 参考 [微信小程序测试号申请](https://developers.weixin.qq.com/miniprogram/dev/devtools/sandbox.html) 链接，申请一个测试小程序。
 ② 将 `AppID` 和 `AppSecret` 配置，设置到后端项目 `application-local.yaml` 的 `wx.miniapp` 配置项中。如下图所示：
 ![测试小程序 - 密钥](../images/img_3257a06d.png) ![ 配置项](../images/img_615ec62d.png) ③ 使用 HBuilder 打开 `yudao-mall-uniapp` 项目根目录的 `manifest.json` 文件，将微信小程序配置的 AppID 改成你自己的。如下图所示：
 ![配置小程序](../images/img_50d04463.png) 
 ## # 2. 代码实现
 ### # 2.1 项目启动
-① 下载 [微信开发者工具 (opens new window)](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，并进行安装。
+① 下载 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，并进行安装。
 ② 参考 [《快速启动【前端】》](/quick-start-front/) 文档的「2. uni-app 商城移动端」小节，将 `yudao-mall-uniapp` 商城项目跑起来。
 不过要注意，HBuilder 运行时，选择「微信开发者工具」。如下图所示：
 ![微信开发者工具运行](../images/img_d4f65b17.png) ③ 运行成功后，可以在微信开发者工具中，看到如下界面：
@@ -23,7 +23,7 @@
 ![添加开发者成员](../images/img_e18cbc54.png) 否则，使用 HBuilder 运行时，会报“[微信小程序开发者工具] [error] Error: Fail to open IDE”！
 ### # 2.2 登录流程
 ① 点击「我的」菜单，再随便点个子菜单，例如说“拼团订单”，触发弹出“登录窗口”，对应前端 `sheep/components/s-auth-modal/s-auth-modal.vue` 组件。如下图所示：
-![登录弹窗](../images/img_e4ac9d64.png) 有两种登录方式：[微信小程序登录 (opens new window)](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)、[手机快速验证登录 (opens new window)](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html)
+![登录弹窗](../images/img_e4ac9d64.png) 有两种登录方式：[微信小程序登录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)、[手机快速验证登录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html)
 ② 方式一：【微信小程序登录】点击「微信登录」图标，触发微信小程序登录。前端核心实现都在 `sheep/platform/provider/wechat/miniProgram.js` 的 `#login(...)` 方法中。
 此时，前端调用微信小程序获得“临时” `code` 授权码参数，之后调用后端的 AppAuthController 的 `#socialLogin(...)` 方法，进行登录逻辑。注意：
 - 情况一：如果该微信用户已经绑定会员用户，则直接进行登录

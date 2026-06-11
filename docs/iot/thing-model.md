@@ -1,8 +1,8 @@
 # 物模型配置
 
 推荐阅读：
-- [《阿里云物联网平台 —— 为产品定义物模型》 (opens new window)](https://help.aliyun.com/zh/iot/getting-started/define-a-tsl-model-for-a-product)
-- [《阿里云物联网平台 —— 什么是物模型》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/what-is-a-tsl-model)
+- [《阿里云物联网平台 —— 为产品定义物模型》](https://help.aliyun.com/zh/iot/getting-started/define-a-tsl-model-for-a-product)
+- [《阿里云物联网平台 —— 什么是物模型》](https://help.aliyun.com/zh/iot/user-guide/what-is-a-tsl-model)
 物模型功能，由 `yudao-module-iot` 后端模块的 `thingmodel` 包实现，由 IotThingModelController 提供接口。
 ![物模型功能](../images/img_0b2f6003.png) 
 ## # 1. 物模型

@@ -2,7 +2,7 @@
 
 在 [基础设施 -> 配置管理] 菜单，可以查看和管理配置，适合业务上需要动态的管理某个配置。
 例如说：创建用户时，需要配置用户的默认密码，这个密码是不会变的，但是有时候需要修改这个默认密码，这个时候就可以通过配置管理来修改。
-![配置中心](/images/01.png) 对应的后端代码是 `yudao-module-infra` 的 [`config` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/service/config/) 业务模块。
+![配置中心](/images/01.png) 对应的后端代码是 `yudao-module-infra` 的 [`config`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/service/config/) 业务模块。
 ## # 1. 配置的表结构
 `infra_config` 的表结构如下：
 CREATE TABLE `infra_config` (
@@ -26,7 +26,7 @@ PRIMARY KEY (`id`) USING BTREE
 调用 ConfigApi 的 `#getConfigValueByKey(String key)` 方法，可以读取指定 `key` 的参数值。
 具体案例，可见 AdminUserServiceImpl 的 `#importUserList(...)` 方法，在导入 Excel 用户时，它会读取 `system.user.init-password` 作为用户初始化密码。
 ## # 4. 前端案例
-后端提供了 [`/admin-api/infra/config/get-value-by-key` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/config/ConfigController.java#L70-L82) RESTful API 接口，返回指定配置项的值。前端的使用示例如下图：
+后端提供了 [`/admin-api/infra/config/get-value-by-key`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/config/ConfigController.java#L70-L82) RESTful API 接口，返回指定配置项的值。前端的使用示例如下图：
 ![前端案例](/images/07-vue2.png) 
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}

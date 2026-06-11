@@ -22,7 +22,7 @@ PRIMARY KEY (`id`) USING BTREE
 ![移动端 - 商品分类](../images/img_08ac04d7.png) 分类目前有 `first_one`、`first_two`、`second_one` 三种展示风格，可以手动进行修改。如下图所示：
 ![移动端 - 商品分类 - 展示样式](../images/img_22e67046.png) 
 ## # 666. 社区贡献相关
-- 《Pull Request：调整商品分类层级限制并优化校验逻辑》：[后端 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1456)、[管理后台 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/833)、[小程序 (opens new window)](https://gitee.com/yudaocode/yudao-mall-uniapp/pulls/163)
+- 《Pull Request：调整商品分类层级限制并优化校验逻辑》：[后端](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1456)、[管理后台](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/833)、[小程序](https://gitee.com/yudaocode/yudao-mall-uniapp/pulls/163)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [在线客服](/mall/kefu/) [【商品】商品属性](/mall/product-property/) 

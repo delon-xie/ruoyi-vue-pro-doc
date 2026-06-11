@@ -2,8 +2,8 @@
 
 推荐阅读：
 - [《设备接入（概述）》](/iot/protocol-overview/) — 建议先阅读，了解整体架构和消息格式
-- [《阿里云物联网平台 —— 使用 Alink 协议自主接入》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/alink-protocol-1)
-- [《芋道物联网 —— MQTT 协议接入设备（早期版本）》 (opens new window)](https://haohaomt.notion.site/MQTT-24e9a2260ce58093ad10f42661f99b4f)
+- [《阿里云物联网平台 —— 使用 Alink 协议自主接入》](https://help.aliyun.com/zh/iot/user-guide/alink-protocol-1)
+- [《芋道物联网 —— MQTT 协议接入设备（早期版本）》](https://haohaomt.notion.site/MQTT-24e9a2260ce58093ad10f42661f99b4f)
 MQTT 协议接入，由 `yudao-module-iot-gateway` 模块的 `protocol.mqtt` 包实现，基于 Vert.x MQTT Server，默认端口 1883。
 与 HTTP 不同，MQTT 是**长连接**协议，支持**上行 + 下行**双向通信。
 ## # 1. 整体架构
@@ -51,9 +51,9 @@ connect-timeout-seconds: 60    # 连接超时时间（秒，默认 60）
 | 直连设备 | IotDirectDeviceMqttProtocolIntegrationTest |
 | 网关设备 | IotGatewayDeviceMqttProtocolIntegrationTest |
 | 网关子设备 | IotGatewaySubDeviceMqttProtocolIntegrationTest |
-也可以使用 [MQTTX (opens new window)](https://mqttx.app/) 等第三方 MQTT 客户端工具手动测试。
+也可以使用 [MQTTX](https://mqttx.app/) 等第三方 MQTT 客户端工具手动测试。
 ## # 4. 手工测试（直连设备）
-下面使用 [MQTTX (opens new window)](https://mqttx.app/) 客户端，以内置的 id 为 25 的 [演示设备 (opens new window)](http://127.0.0.1/iot/device/detail/25) 为例进行测试。
+下面使用 [MQTTX](https://mqttx.app/) 客户端，以内置的 id 为 25 的 [演示设备](http://127.0.0.1/iot/device/detail/25) 为例进行测试。
 ### # 4.1 连接认证
 ① 使用设备三元组创建 MQTT 连接：
 ![MQTTX 连接配置](../images/mqttx-connect.png) clientId: 4aymZgOTOOCrDKRT.small

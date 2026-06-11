@@ -4,7 +4,7 @@
 ![配置管理](../images/01.png) 提示
 对应 [《后端手册 —— 配置中心》](/config-center/) 文档。
 ## # 1. 读取配置
-前端调用 [`#/api/infra/config/index.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/src/api/infra/config/index.ts#L36-L41) 的 `getConfigKey(configKey)` 方法，获取指定 key 对应的配置的值。代码如下：
+前端调用 [`#/api/infra/config/index.ts`](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/src/api/infra/config/index.ts#L36-L41) 的 `getConfigKey(configKey)` 方法，获取指定 key 对应的配置的值。代码如下：
 /** 根据参数键名查询参数值 */
 export function getConfigKey(configKey: string) {
 return requestClient.get(
@@ -12,7 +12,7 @@ return requestClient.get(
 );
 }
 ## # 2. 实战案例
-在 [`apps/web-antd/src/views/infra/skywalking/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/src/views/infra/skywalking/index.vue) 页面中，获取 key 为 `"url.skywalking"` 的配置的值。代码如下：
+在 [`apps/web-antd/src/views/infra/skywalking/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/src/views/infra/skywalking/index.vue) 页面中，获取 key 为 `"url.skywalking"` 的配置的值。代码如下：
 ![Skywalking 配置](../images/02.png) 
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}

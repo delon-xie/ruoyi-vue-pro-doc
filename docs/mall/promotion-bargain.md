@@ -2,7 +2,7 @@
 
 友情提示：
 uni-app Vue3 版本，砍价暂未迁移完成，目前只缺：砍价商品详情页。
-如果你着急的话，可以参考 [uni-app Vue2 版本 (opens new window)](https://gitee.com/yudaocode/yudao-mall-uniapp/tree/master-vue2/) 迁移过来，相关的后端接口都已经完成。
+如果你着急的话，可以参考 [uni-app Vue2 版本](https://gitee.com/yudaocode/yudao-mall-uniapp/tree/master-vue2/) 迁移过来，相关的后端接口都已经完成。
 不过有一点要注意！微信现在基本不允许砍价业务，所以不太建议使用砍价功能。
 砍价功能，主要由 `yudao-module-promotion` 后端模块的 `bargain` 实现，包括三部分：砍价活动、砍价助力。如下图所示：
 ![表关系](../images/img_0b2f6003.png) 

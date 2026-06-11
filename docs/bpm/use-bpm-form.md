@@ -1,9 +1,9 @@
 # 审批接入（流程表单）
 
 相关视频：
-- [02、如何实现动态的流程表单？ (opens new window)](https://t.zsxq.com/04nun2RRz)
-- [03、如何实现流程表单的保存？ (opens new window)](https://t.zsxq.com/04uneeaUb)
-- [04、如何实现流程表单的展示？ (opens new window)](https://t.zsxq.com/04jiMrjAm)
+- [02、如何实现动态的流程表单？](https://t.zsxq.com/04nun2RRz)
+- [03、如何实现流程表单的保存？](https://t.zsxq.com/04uneeaUb)
+- [04、如何实现流程表单的展示？](https://t.zsxq.com/04jiMrjAm)
 项目基于 Flowable 实现了工作流的功能，提供两种方式接入：
 - ① 【流程表单】：在线配置动态表单，无需建表与开发
 - ② 【业务表单】：业务需建立独立的数据库表，并开发对应的表单、详情界面
@@ -102,10 +102,10 @@ PRIMARY KEY (`id`) USING BTREE
 对应表单设计器的【组件配置】部分。如下图所示：
 ![组件配置](../images/img_d82d19e3.png) 
 ### # 2.2 前端组件
-基于 [https://github.com/xaboy/form-create (opens new window)](https://github.com/xaboy/form-create) 实现，支持 element-plus、ant-design-vue、naive-ui、arco-design、tdesign 等前端组件，还是非常不错的！
-中文文档：[https://www.form-create.com/v3/guide/ (opens new window)](https://www.form-create.com/v3/guide/)
+基于 [https://github.com/xaboy/form-create](https://github.com/xaboy/form-create) 实现，支持 element-plus、ant-design-vue、naive-ui、arco-design、tdesign 等前端组件，还是非常不错的！
+中文文档：[https://www.form-create.com/v3/guide/](https://www.form-create.com/v3/guide/)
 #### # 2.2.1 表单设计器
-上文看到的“表单设计器”，在 [`bpm/form/editor/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/form/editor/index.vue) 实现，使用 [form-create-designer (opens new window)](https://github.com/xaboy/form-create-designer) 实现。
+上文看到的“表单设计器”，在 [`bpm/form/editor/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/form/editor/index.vue) 实现，使用 [form-create-designer](https://github.com/xaboy/form-create-designer) 实现。
 #### # 2.2.2 表单预览
 点击「详情」按钮，可进行表单的预览，如下图所示：
 ![表单预览](../images/img_bbf1c4cc.png) 实现的逻辑，就是读取后端 `bpm_form` 表的 `conf` 和 `fields` 字段，然后使用 `form-create` 渲染。如下图所示：
@@ -121,7 +121,7 @@ PRIMARY KEY (`id`) USING BTREE
 ![流程表单数据存储](../images/img_582c65c0.png) 
 ## # 666. 常见问题？
 ① 流程中表单里面的附件上传，除了 pdf 这几种格式，可以支持别的格式的附件吗？
-回答：[https://t.zsxq.com/bKzyd (opens new window)](https://t.zsxq.com/bKzyd)
+回答：[https://t.zsxq.com/bKzyd](https://t.zsxq.com/bKzyd)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [工作流（达梦适配）](/bpm/dameng/) [审批接入（业务表单）](/bpm/use-business-form/) 

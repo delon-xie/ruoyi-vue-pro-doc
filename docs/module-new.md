@@ -3,7 +3,7 @@
 本章节，将介绍如何新建名字为 `yudao-module-demo` 的示例模块，并添加 RESTful API 接口。
 虽然内容看起来比较长，是因为艿艿写的比较详细，大量截图，保姆级教程！其实只有五个步骤，保持耐心，跟着艿艿一点点来。🙂 完成之后，你会对整个 [项目结构](/project-intro/) 有更充分的了解。
 ## # 👍 相关视频教程
-- [从零开始 06：如何 5 分钟，创建一个新模块？ (opens new window)](https://t.zsxq.com/07EUrZrNV)
+- [从零开始 06：如何 5 分钟，创建一个新模块？](https://t.zsxq.com/07EUrZrNV)
 ## # 1. 新建 Maven 模块
 ### # 1.1 新建 demo 模块
 ① 选择 File -> New -> Module 菜单，如下图所示：
@@ -95,14 +95,14 @@ return success("true");
 class cn.iocoder.yudao.module.demo.controller.admin.DemoTestController生效啦！！！
 class cn.iocoder.yudao.module.demo.controller.app.AppDemoTestController生效啦！！！
 ## # 4. 测试接口
-使用浏览器打开 [http://127.0.0.1:48080/doc.html (opens new window)](http://127.0.0.1:48080/doc.html) 地址，进入 Swagger 接口文档。
+使用浏览器打开 [http://127.0.0.1:48080/doc.html](http://127.0.0.1:48080/doc.html) 地址，进入 Swagger 接口文档。
 ① 打开“管理后台 - Test”接口，进行 `/admin-api/demo/test/get` 接口的调试，如下图所示：
 ![测试 接口](/images/img_e5f96d66.png) ② 打开“用户 App - Test”接口，进行 `/app-api/demo/test/get` 接口的调试，如下图所示：
 ![测试  接口](/images/img_61adb80b.png) 
 ## # 5. 常见问题
 ### # 5.1 访问接口返回 404？
 请检查，你新建的模块的 `package` 包名是不是在 `cn.iocoder.yudao.module` 下！
-如果不是，修改 [YudaoServerApplication (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/java/cn/iocoder/yudao/server/YudaoServerApplication.java) 类，增加新建的模块的 `package` 包名。例如说：
+如果不是，修改 [YudaoServerApplication](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server/src/main/java/cn/iocoder/yudao/server/YudaoServerApplication.java) 类，增加新建的模块的 `package` 包名。例如说：
 @SpringBootApplication(scanBasePackages = {"${yudao.info.base-package}.server", "${yudao.info.base-package}.module",
 "xxx.yyy.zzz"}) // xxx.yyy.zzz 是你新建的模块的 `package` 包名
 ### # 5.2 接口分组
@@ -112,10 +112,10 @@ class cn.iocoder.yudao.module.demo.controller.app.AppDemoTestController生效啦
 如果你希望新模块的 MyBatis 查询会打印 SQL 日志，需要在 `logging.level` 配置对应的 Logger。如下图所示：
 ![MyBatis 日志](/images/img_e76033d2.png) 
 ### # 5.4 如何自定义 API 前缀
-- [https://t.zsxq.com/B64Q2 (opens new window)](https://t.zsxq.com/B64Q2)
-- [https://t.zsxq.com/6xS5q (opens new window)](https://t.zsxq.com/6xS5q)
+- [https://t.zsxq.com/B64Q2](https://t.zsxq.com/B64Q2)
+- [https://t.zsxq.com/6xS5q](https://t.zsxq.com/6xS5q)
 ### # 5.5 每个模块，独立工程
-- [https://t.zsxq.com/73b2Q (opens new window)](https://t.zsxq.com/73b2Q)
+- [https://t.zsxq.com/73b2Q](https://t.zsxq.com/73b2Q)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [项目外包](/waibao/) [代码生成【单表】（新增功能）](/new-feature/) 

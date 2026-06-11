@@ -2,17 +2,17 @@
 
 ## # 1. 演示地址
 ### # 1.1 商城移动端
-- 演示地址：[http://mall.yudao.iocoder.cn/ (opens new window)](http://mall.yudao.iocoder.cn/)
+- 演示地址：[http://mall.yudao.iocoder.cn/](http://mall.yudao.iocoder.cn/)
 - 账号：可使用账号 15601691300，验证码 9999 进行登录
-- 仓库：[https://github.com/yudaocode/yudao-mall-uniapp (opens new window)](https://github.com/yudaocode/yudao-mall-uniapp) 仓库，目前是基于 Vue3 + uni-app 实现
+- 仓库：[https://github.com/yudaocode/yudao-mall-uniapp](https://github.com/yudaocode/yudao-mall-uniapp) 仓库，目前是基于 Vue3 + uni-app 实现
 ### # 1.2 商城管理后台
-- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/ (opens new window)](http://dashboard-vue3.yudao.iocoder.cn/)
+- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/](http://dashboard-vue3.yudao.iocoder.cn/)
 - 菜单：「会员中心」「商品中心」「订单中心」「营销中心」「统计中心」「支付中心」
-- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3)，基于 Vue3 + Element Plus 实现
+- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3](https://github.com/yudaocode/yudao-ui-admin-vue3)，基于 Vue3 + Element Plus 实现
 ### # 1.3 商城后端
 支持 Spring Boot 单体、Spring Cloud 微服务架构
-- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro)
-- 微服务仓库： [https://github.com/YunaiV/yudao-cloud (opens new window)](https://github.com/YunaiV/yudao-cloud)
+- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro](https://github.com/YunaiV/ruoyi-vue-pro)
+- 微服务仓库： [https://github.com/YunaiV/yudao-cloud](https://github.com/YunaiV/yudao-cloud)
 ## # 2. 商城启动
 参见 [《商城手册 —— 功能开启》](/mall/build/) 文档，一般 3 分钟就可以启动完成。
 ## # 3. 商城交流

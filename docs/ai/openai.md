@@ -1,10 +1,10 @@
 # 【模型接入】OpenAI
 
-项目基于 Spring AI 提供的 [`spring-ai-openai` (opens new window)](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-openai)，实现 OpenAI 的接入：
+项目基于 Spring AI 提供的 [`spring-ai-openai`](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-openai)，实现 OpenAI 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
-| AI 对话 | gpt3.5、gpt4.0 等 | [OpenAIChatModel (opens new window)](https://docs.spring.io/spring-ai/reference/api/chat/openai-chat.html) |
-| AI 绘画 | [DALL (opens new window)](https://en.wikipedia.org/wiki/DALL-E) | [OpenAIImageModel (opens new window)](https://docs.spring.io/spring-ai/reference/api/image/openai-image.html) |
+| AI 对话 | gpt3.5、gpt4.0 等 | [OpenAIChatModel](https://docs.spring.io/spring-ai/reference/api/chat/openai-chat.html) |
+| AI 绘画 | [DALL](https://en.wikipedia.org/wiki/DALL-E) | [OpenAIImageModel](https://docs.spring.io/spring-ai/reference/api/image/openai-image.html) |
 友情提示：
 如果你使用的是微软 Azure 提供的 OpenAI 服务，可阅读 [《【模型接入】微软 OpenAI》](/ai/azure-openai/) 文档。
 ## # 1. 申请密钥
@@ -15,14 +15,14 @@
 中转人卖给你一个 API KEY 令牌，你就可以把 AI 请求发送到他的池子：池子采取一定的算法选取一个 API 账号帮你把请求发送到大模型后端，然后再把大模型返回的结果转发给你。
 下面，我们来看看这两种方式怎么申请？
 ### # 1.1 方式一：官方 API 申请
-可以参考 [《OpenAI API keys 的申请和测试小结 》 (opens new window)](https://www.cnblogs.com/klchang/p/17352911.html) 进行申请。
+可以参考 [《OpenAI API keys 的申请和测试小结 》](https://www.cnblogs.com/klchang/p/17352911.html) 进行申请。
 会略微麻烦一些，我自己是直接采用了“方式二：中转 API 申请”。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”，不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_4fbcf7a4.png) 友情提示：官方的 API 禁止国内直接访问，需要有 VPN 代理~
 ### # 1.2 方式二：中转 API 申请
 提供中转 API 服务的有很多，也可以 Google 直接搜索“openai API 中转”，例如说：
-- [https://aihubmix.com (opens new window)](https://aihubmix.com?aff=E13A) 【目前使用的比较多，胖友们反馈也非常不错！】
-- [毫秒 API (opens new window)](https://api.holdai.top/register?aff=EcRu) 【临时体验，可少量充值体验】
+- [https://aihubmix.com](https://aihubmix.com?aff=E13A) 【目前使用的比较多，胖友们反馈也非常不错！】
+- [毫秒 API](https://api.holdai.top/register?aff=EcRu) 【临时体验，可少量充值体验】
 友情提示：少量购买，可以使用体验即可！
 购买完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。需要填写“密钥” + “自定义 API URL”（因为让 Spring AI 使用该地址）。如下图所示：
 ![中转的密钥配置](../images/img_3dc5adfb.png) 

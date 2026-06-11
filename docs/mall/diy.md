@@ -184,8 +184,8 @@ PRIMARY KEY (`id`) USING BTREE
 | 底部导航栏 | ui/su-tabbar/su-tabbar.vue | DiyEditor/components/mobile/TabBar |
 “顶部导航栏”会有遮挡问题？
 如果你选择他的样式是「沉浸式」，就会出现这个情况，这个是符合预期的。想要解决，就换成「标准」。具体如下几个帖子，也有提到：
-- [https://t.zsxq.com/o7s2Y (opens new window)](https://t.zsxq.com/o7s2Y)
-- [https://t.zsxq.com/DhPZF (opens new window)](https://t.zsxq.com/DhPZF)
+- [https://t.zsxq.com/o7s2Y](https://t.zsxq.com/o7s2Y)
+- [https://t.zsxq.com/DhPZF](https://t.zsxq.com/DhPZF)
 另外，顶部导航是常态存在的，不会随着滚动下面进行隐藏。如果需要隐藏，需要自己二次开发。
 ### # 基础组件
 |  | uni-app 地址 | 管理后台地址 |
@@ -227,7 +227,7 @@ PRIMARY KEY (`id`) USING BTREE
 | 优惠劵 | components/s-coupon-block/s-coupon-block.vue | DiyEditor/components/mobile/CouponCard |
 | 营销文章 | components/s-richtext-block/s-richtext-block.vue | DiyEditor/components/mobile/PromotionArticle |
 ## # 666. 社区贡献相关
-- 《Pull Request：装修模板新增平台参数，支持区分多端装修》：[后端 (opens new window)](https://gitee.com/zhijiantianya/yudao-cloud/pulls/227)、[管理后台 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/847)、[小程序 (opens new window)](https://gitee.com/yudaocode/yudao-mall-uniapp/pulls/174)
+- 《Pull Request：装修模板新增平台参数，支持区分多端装修》：[后端](https://gitee.com/zhijiantianya/yudao-cloud/pulls/227)、[管理后台](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/847)、[小程序](https://gitee.com/yudaocode/yudao-mall-uniapp/pulls/174)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [功能开启](/mall/build/) [在线客服](/mall/kefu/) 

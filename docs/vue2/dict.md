@@ -8,16 +8,16 @@
 这样，前端在使用到字典数据时，无需重复请求后端，提升用户体验。
 不过，缓存暂时未提供刷新，所以在字典数据发生变化时，需要用户刷新浏览器，进行重新加载。
 ## # 2. DICT_TYPE
-在 [`dict.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/utils/dict.js#L8-L58) 文件中，使用 `DICT_TYPE` 枚举了字典的 KEY。如下图所示：
+在 [`dict.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/utils/dict.js#L8-L58) 文件中，使用 `DICT_TYPE` 枚举了字典的 KEY。如下图所示：
 ![枚举](../images/03.png)
 后续如果有新的字典 KEY，需要你自己进行添加。
 ## # 3. DictTag 字典标签
-[`DictTag` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/components/DictTag/index.vue) 组件，翻译字段对应的字典展示文本，并根据 `colorType`、`cssClass` 进行高亮。使用示例如下：
+[`DictTag`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/components/DictTag/index.vue) 组件，翻译字段对应的字典展示文本，并根据 `colorType`、`cssClass` 进行高亮。使用示例如下：
 ```vue
 <DictTag :value="status" dictType="system_user_common_status" />
 ```
 ## # 4. 字典工具类
-在 [`dict.js` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/utils/dict.js#L8-L58) 文件中，提供了字典工具类，方法如下：
+在 [`dict.js`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/utils/dict.js#L8-L58) 文件中，提供了字典工具类，方法如下：
 ```javascript
 // 获取 dictType 对应的数据字典数组
 export function getDictDatas(dictType) { /** 省略代码 */ }

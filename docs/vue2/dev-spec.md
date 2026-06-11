@@ -1,13 +1,13 @@
 # 开发规范
 
 ## # 1. view 页面
-在 [`@views` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/views) 目录下，每个模块对应一个目录，它的所有功能的 `.vue` 都放在该目录里。
+在 [`@views`](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/views) 目录下，每个模块对应一个目录，它的所有功能的 `.vue` 都放在该目录里。
 ![ 目录](../images/01.png) 一般来说，一个路由对应一个 `.vue` 文件。
 ## # 2. api 请求
-在 [`@/api` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/api) 目录下，每个模块对应一个 `.api` 文件。
+在 [`@/api`](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/api) 目录下，每个模块对应一个 `.api` 文件。
 ![ 目录](../images/02.png) 每个 API 方法，会调用 `request` 方法，发起对后端 RESTful API 的调用。
 ### # 2.1 请求封装
-[`@/utils/request` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/utils/request.js) 基于 [axios (opens new window)](http://axios-js.com/zh-cn/docs/index.html) 封装，统一处理 GET、POST 方法的请求参数、请求头，以及错误提示信息等。
+[`@/utils/request`](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/utils/request.js) 基于 [axios](http://axios-js.com/zh-cn/docs/index.html) 封装，统一处理 GET、POST 方法的请求参数、请求头，以及错误提示信息等。
 #### # 2.1.1 创建 axios 实例
 - `baseURL` 基础路径
 - `timeout` 超时时间
@@ -172,11 +172,11 @@ baseURL: 'https://www.iocoder.cn' // 自定义
 })
 }
 ## # 3. component 组件
-① 在 [`@/components` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/components) 目录下，实现**全局**组件，被所有模块所公用。例如说，富文本编辑器、各种各搜索组件、封装的分页组件等等。
+① 在 [`@/components`](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/components) 目录下，实现**全局**组件，被所有模块所公用。例如说，富文本编辑器、各种各搜索组件、封装的分页组件等等。
 ![全局组件](../images/04.png) ② 每个模块的业务组件，可实现在 `views` 目录下，自己模块的目录的 `components` 目录下，避免单个 `.vue` 文件过大，降低维护成功。例如说，`@/views/pay/app/components/xxx.vue`。
 ![业务组件](../images/05.png) 
 ## # 4. style 样式
-① 在 [`@/styles` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/styles) 目录下，实现**全局**样式，被所有页面所公用。
+① 在 [`@/styles`](https://github.com/yudaocode/yudao-ui-admin-vue2/tree/master/src/styles) 目录下，实现**全局**样式，被所有页面所公用。
 ![全局样式](../images/06.png) ② 每个 `.vue` 页面，可在 `` 标签中添加样式，注意需要添加 `scoped` 表示只作用在当前页面里，避免造成全局的样式污染。
 ![业务样式](../images/07.png) 
 .pageB img{width:80px!important;}

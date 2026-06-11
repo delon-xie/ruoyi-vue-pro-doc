@@ -12,46 +12,46 @@
 - 启动事件的结束，和结束事件的启动
 总结来说，可以监听的事件只有 start 开始、end 结束。
 学习文档：
-- [《Flowable BPMN 用户手册 (v 6.3.0) —— 执行监听器》 (opens new window)](https://tkjohn.github.io/flowable-userguide/#executionListeners)
-- [《Flowable 服务任务执行的三种方式》 (opens new window)](https://developer.aliyun.com/article/1233153)
-- [《Flowable 服务任务类，表达式，委托表达式（代理表达式）》 (opens new window)](https://blog.csdn.net/CCCout/article/details/132454867)
+- [《Flowable BPMN 用户手册 (v 6.3.0) —— 执行监听器》](https://tkjohn.github.io/flowable-userguide/#executionListeners)
+- [《Flowable 服务任务执行的三种方式》](https://developer.aliyun.com/article/1233153)
+- [《Flowable 服务任务类，表达式，委托表达式（代理表达式）》](https://blog.csdn.net/CCCout/article/details/132454867)
 我们可以在 BPMN 设计流程图时，给某个节点添加执行监听器，监听器可以是 Java 类、表达式、委托表达式。如下图所示：
 ![执行监听器](../images/img_f7bc29f6.png) 这三种监听器怎么使用呢？我们逐个来看看。
 ### # 1.1 Java 类监听器
-① 新建一个 [DemoDelegateClassExecutionListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/exection/DemoDelegateClassExecutionListener.java) 类，需要实现 `org.flowable.engine.delegate.JavaDelegate` 接口，如下图所示：
+① 新建一个 [DemoDelegateClassExecutionListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/exection/DemoDelegateClassExecutionListener.java) 类，需要实现 `org.flowable.engine.delegate.JavaDelegate` 接口，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![DemoDelegateClassExecutionListener](../images/DemoDelegateClassExecutionListener.png) ② 在 BPMN 流程图中，配置 Java 类监听器，如下图所示：
 ![配置监听器](../images/DemoDelegateClassExecutionListenerConfig.png) 注意，图中填写的是 `cn.iocoder.yudao.module.bpm.framework.flowable.core.listener.demo.exection.DemoDelegateClassExecutionListener` 全路径。
 ### # 1.2 委托表达式监听器
-① 新建一个 [DemoDelegateExpressionExecutionListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/exection/DemoDelegateExpressionExecutionListener.java) 类，也需要实现 `org.flowable.engine.delegate.JavaDelegate` 接口，如下图所示：
+① 新建一个 [DemoDelegateExpressionExecutionListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/exection/DemoDelegateExpressionExecutionListener.java) 类，也需要实现 `org.flowable.engine.delegate.JavaDelegate` 接口，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![DemoDelegateExpressionExecutionListener](../images/DemoDelegateExpressionExecutionListener.png) 并且，需要声明成 Spring Bean！本质上，“委托表达式”是“Java 类”的特例，和 Spring 做了集成。
 ② 在 BPMN 流程图中，配置委托表达式监听器，如下图所示：
 ![配置监听器](../images/DemoDelegateExpressionExecutionListenerConfig.png) 注意，图中填写的是 `${demoDelegateExpressionExecutionListener}`，这个是 Spring Bean 的名称。
 ### # 1.3 Spring 表达式监听器
-① 新建一个 [DemoSpringExpressionExecutionListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/exection/DemoSpringExpressionExecutionListener.java) 类，只需要声明成 Spring Bean，如下图所示：
+① 新建一个 [DemoSpringExpressionExecutionListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/exection/DemoSpringExpressionExecutionListener.java) 类，只需要声明成 Spring Bean，如下图所示：
 ![DemoSpringExpressionExecutionListener](../images/DemoSpringExpressionExecutionListener.png) ② 在 BPMN 流程图中，配置 Spring 表达式监听器，如下图所示：
 ![配置监听器](../images/DemoSpringExpressionExecutionListenerConfig.png) 注意，图中填写的是 `${demoSpringExpressionExecutionListener.execute(execution)}`，这个就是通过 Spring EL 表达式，实现对某个 Bean 的某个方法的调用。
 ## # 2. 任务监听器
 任务监听器（task listener），用于在特定的任务相关事件发生时，执行自定义的 Java 逻辑或表达式。
 相比执行器来说，它只能监听 UserTask 用户任务，但是事件有 create 创建、assignment 指派、complete 完成、delete 删除、update 更新、timeout 超时。
 学习文档：
-- [《Flowable BPMN 用户手册 (v 6.3.0) —— 任务监听器》 (opens new window)](https://tkjohn.github.io/flowable-userguide/#taskListeners)
+- [《Flowable BPMN 用户手册 (v 6.3.0) —— 任务监听器》](https://tkjohn.github.io/flowable-userguide/#taskListeners)
 我们可以在 BPMN 设计流程图时，给某个节点添加任务监听器，监听器可以是 Java 类、表达式、委托表达式。如下图所示：
 友情提示：任务监听器，和执行监听器的使用基本是一致的。
 ### # 2.1 Java 类监听器
-① 新建一个 [DemoDelegateClassTaskListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/task/DemoDelegateClassTaskListener.java) 类，需要实现 `org.flowable.engine.delegate.TaskListener` 接口，如下图所示：
+① 新建一个 [DemoDelegateClassTaskListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/task/DemoDelegateClassTaskListener.java) 类，需要实现 `org.flowable.engine.delegate.TaskListener` 接口，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![DemoDelegateClassTaskListener](../images/DemoDelegateClassTaskListener.png) ② 在 BPMN 流程图中，配置 Java 类监听器，如下图所示：
 ![配置监听器](../images/DemoDelegateClassTaskListenerConfig.png) 注意，图中填写的是 `cn.iocoder.yudao.module.bpm.framework.flowable.core.listener.demo.task.DemoDelegateClassTaskListener` 全路径。
 ### # 2.2 委托表达式监听器
-① 新建一个 [DemoDelegateExpressionTaskListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/task/DemoDelegateExpressionTaskListener.java) 类，也需要实现 `org.flowable.engine.delegate.TaskListener` 接口，如下图所示：
+① 新建一个 [DemoDelegateExpressionTaskListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/task/DemoDelegateExpressionTaskListener.java) 类，也需要实现 `org.flowable.engine.delegate.TaskListener` 接口，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![DemoDelegateExpressionTaskListener](../images/DemoDelegateExpressionTaskListener.png) 并且，需要声明成 Spring Bean！本质上，“委托表达式”是“Java 类”的特例，和 Spring 做了集成。
 ② 在 BPMN 流程图中，配置委托表达式监听器，如下图所示：
 ![配置监听器](../images/DemoDelegateExpressionTaskListenerConfig.png) 注意，图中填写的是 `${demoDelegateExpressionTaskListener}`，这个是 Spring Bean 的名称。
 ### # 2.3 Spring 表达式监听器
-① 新建一个 [DemoSpringExpressionTaskListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/task/DemoSpringExpressionTaskListener.java) 类，只需要声明成 Spring Bean，如下图所示：
+① 新建一个 [DemoSpringExpressionTaskListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/listener/demo/task/DemoSpringExpressionTaskListener.java) 类，只需要声明成 Spring Bean，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![DemoSpringExpressionTaskListener](../images/DemoSpringExpressionTaskListener.png) ② 在 BPMN 流程图中，配置 Spring 表达式监听器，如下图所示：
 ![配置监听器](../images/DemoSpringExpressionTaskListenerConfig.png) 注意，图中填写的是 `${demoSpringExpressionTaskListener.notify(task)}`，这个就是通过 Spring EL 表达式，实现对某个 Bean 的某个方法的调用。

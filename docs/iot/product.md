@@ -1,7 +1,7 @@
 # 产品管理
 
 推荐阅读：
-- [《阿里云物联网平台 —— 创建产品与设备》 (opens new window)](https://help.aliyun.com/zh/iot/getting-started/create-a-product-and-add-a-device)
+- [《阿里云物联网平台 —— 创建产品与设备》](https://help.aliyun.com/zh/iot/getting-started/create-a-product-and-add-a-device)
 产品模块，由 `yudao-module-iot` 后端模块的 `product` 包实现，主要有产品分类、产品信息等功能。如下图所示：
 ![产品模块](../images/img_0b2f6003.png) 
 ## # 1. 产品分类

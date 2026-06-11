@@ -8,8 +8,8 @@
 系统分成两个版本：
 | 版本 | JDK 8 + Spring Boot 2.7 | JDK 17/21 + Spring Boot 3.5 |
 | --- | --- | --- |
-| 【完整版】[ruoyi-vue-pro (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro) | [`master` (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/) 分支 | [`master-jdk17` (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master-jdk17/) 分支 |
-| 【精简版】[yudao-boot-mini (opens new window)](https://gitee.com/yudaocode/yudao-boot-mini) | [`master` (opens new window)](https://gitee.com/yudaocode/yudao-boot-mini/tree/master/) 分支 | [`master-jdk17` (opens new window)](https://gitee.com/yudaocode/yudao-boot-mini/tree/master-jdk17/) 分支 |
+| 【完整版】[ruoyi-vue-pro](https://gitee.com/zhijiantianya/ruoyi-vue-pro) | [`master`](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/) 分支 | [`master-jdk17`](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master-jdk17/) 分支 |
+| 【精简版】[yudao-boot-mini](https://gitee.com/yudaocode/yudao-boot-mini) | [`master`](https://gitee.com/yudaocode/yudao-boot-mini/tree/master/) 分支 | [`master-jdk17`](https://gitee.com/yudaocode/yudao-boot-mini/tree/master-jdk17/) 分支 |
 - 【完整版】：包括系统功能、基础设施、会员中心、数据报表、工作流程、商城系统、微信公众号、CRM、ERP、WMS、MES、IM 即时通讯、AI 大模型、IoT 物联网等功能
 - 【精简版】：只包括系统功能、基础设施功能，不包括会员中心、数据报表、工作流程、商城系统、微信公众号、CRM、ERP、WMS、MES、IM 即时通讯、AI 大模型、IoT 物联网等功能
 参考本文档，只需要 5-10 分钟，即可将【完整版】按需迁移到【精简版】。只需要完成以下 3 个步骤：
@@ -72,7 +72,7 @@
 ## # 2. 前端代码清理
 前端仓库，不区分【完整版】【精简版】，因为它本身就比较简单。只需要删除 `api` 和 `views` 下面对应的模块即可。如下图所示：
 ![前端代码清理](/images/img_86aaaefd.png) 前端 `api` 和 `views` 下面的模块，对应后端的 `yudao-module-xxx` 模块。所以后端没有迁移的模块，前端也需要删除。
-如果碰到 `remaining.ts` 路由报错，可见 [https://t.zsxq.com/69GWJ (opens new window)](https://t.zsxq.com/69GWJ) 帖子！
+如果碰到 `remaining.ts` 路由报错，可见 [https://t.zsxq.com/69GWJ](https://t.zsxq.com/69GWJ) 帖子！
 ## # 3. 数据库清理
 数据库的迁移，只设计到两份“配置”表：
 - 菜单相关：`system_menu`

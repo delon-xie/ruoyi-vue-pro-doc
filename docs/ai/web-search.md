@@ -5,10 +5,10 @@
 AiWebSearchClient 是一个接口，定义了联网搜索的能力，定义了 `#search(...)` 方法，用于执行网页搜索。
 友情提示：除了网页搜索，后续也会增加图片、视频等搜索能力，进一步增强 AI 的知识面。
 它目前的实现类有：
-- AiBoChaWebSearchClient：对接 [博查 (opens new window)](https://open.bochaai.com/overview) 的搜索 API 。
+- AiBoChaWebSearchClient：对接 [博查](https://open.bochaai.com/overview) 的搜索 API 。
 后续，你也可以按需实现自己的搜索客户端，例如说：
-- [《LangChain-SearXNG：AI Q&A Search Engine ➡️ 基于LangChain和SearXNG打造的开源AI搜索引擎》 (opens new window)](https://github.com/ptonlix/LangChain-SearXNG)
-- [《阿里云 —— 联网搜索》 (opens new window)](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/web-search)
+- [《LangChain-SearXNG：AI Q&A Search Engine ➡️ 基于LangChain和SearXNG打造的开源AI搜索引擎》](https://github.com/ptonlix/LangChain-SearXNG)
+- [《阿里云 —— 联网搜索》](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/web-search)
 ## # 2. 如何配置？
 ① 在 `application.yaml` 中，配置 `yudao.ai.web-search` 配置项，开启和配置对应的 API KEY ，如下所示：
 yudao:

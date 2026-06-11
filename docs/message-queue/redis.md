@@ -1,18 +1,18 @@
 # 消息队列（Redis）
 
-[`yudao-spring-boot-starter-mq` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 Redis 实现分布式消息队列：
-- 使用 [Stream (opens new window)](http://www.redis.cn/topics/streams-intro.html) 特性，提供【集群】消费的能力。
-- 使用 [Pub/Sub (opens new window)](http://www.redis.cn/topics/pubsub.html) 特性，提供【广播】消费的能力。
+[`yudao-spring-boot-starter-mq`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 Redis 实现分布式消息队列：
+- 使用 [Stream](http://www.redis.cn/topics/streams-intro.html) 特性，提供【集群】消费的能力。
+- 使用 [Pub/Sub](http://www.redis.cn/topics/pubsub.html) 特性，提供【广播】消费的能力。
 疑问：什么是【广播】消费？什么是【集群】消费？
-参见[《阿里云 —— 集群消费和广播消费 》 (opens new window)](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-4-x-series/developer-reference/clustering-consumption-and-broadcasting-consumption)文档
+参见[《阿里云 —— 集群消费和广播消费 》](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-4-x-series/developer-reference/clustering-consumption-and-broadcasting-consumption)文档
 ## # 1. 集群消费
 集群消费，是指消息发送到 Redis 时，有且只会被一个消费者（应用 JVM 实例）收到，然后消费成功。如下图所示：
 ![集群消费](../images/img_15b832dd.png) 友情提示：
 如果你需要使用到【集群】消费，必须使用 Redis 5.0.0 以上版本，因为 Stream 特性是在该版本之后才引入噢！
 ### # 1.1 使用场景
 集群消费在项目中的使用场景，主要是提供可靠的、可堆积的异步任务的能力。例如说：
-- 短信模块，使用它[异步 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/mq/consumer/sms/SmsSendConsumer.java)发送短信。
-- 邮件模块，使用它[异步 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/mq/consumer/mail/MailSendConsumer.java)发送邮件。
+- 短信模块，使用它[异步](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/mq/consumer/sms/SmsSendConsumer.java)发送短信。
+- 邮件模块，使用它[异步](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/mq/consumer/mail/MailSendConsumer.java)发送邮件。
 相比 [《开发指南 —— 异步任务》](/async-task) 来说，Spring Async 在 JVM 实例重启时，会导致未执行完的任务丢失。而集群消费，因为消息是存储在 Redis 中，所以不会存在该问题。
 ### # 1.2 实现源码
 集群消费基于 Redis Stream 实现：
@@ -114,7 +114,7 @@ smsSendService.doSendSms(message);
 ### # 2.3 实战案例
 参见 [《开发指南 —— 本地缓存》](/local-cache)
 ## # 666. 社区贡献相关
-- [《Pull Request：实现重试消费、坏消息（死信）逻辑》 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/pull/922)
+- [《Pull Request：实现重试消费、坏消息（死信）逻辑》](https://github.com/YunaiV/ruoyi-vue-pro/pull/922)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [消息队列（内存）](/message-queue/event/) [消息队列（RocketMQ）](/message-queue/rocketmq/) 

@@ -2,14 +2,14 @@
 
 ## # 1. 演示地址
 ### # 1.1 WMS 管理后台
-- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/ (opens new window)](http://dashboard-vue3.yudao.iocoder.cn/)
+- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/](http://dashboard-vue3.yudao.iocoder.cn/)
 - 菜单："WMS 系统"下的「基础数据」「库存管理」「入库管理」「出库管理」「移库管理」「盘库管理」
-- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `wms` 目录，基于 Vue3 + Element Plus 实现
+- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `wms` 目录，基于 Vue3 + Element Plus 实现
 ![管理后台](/images/wms-preview.png) 
 ### # 1.2 WMS 后端
 支持 Spring Boot 单体、Spring Cloud 微服务架构
-- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-wms` 模块
-- 微服务仓库： [https://github.com/YunaiV/yudao-cloud (opens new window)](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-wms` 服务
+- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-wms` 模块
+- 微服务仓库： [https://github.com/YunaiV/yudao-cloud](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-wms` 服务
 ## # 2. WMS 启动
 参见 [《WMS 手册 —— 功能开启》](/wms/build/) 文档，一般 3 分钟就可以启动完成。
 ## # 3. WMS 交流

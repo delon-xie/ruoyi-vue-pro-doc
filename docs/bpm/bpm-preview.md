@@ -3,43 +3,43 @@
 友情提示：BPM 全称是，业务流程管理（Business Process Management），实现工作流的功能
 ## # 1. 演示地址
 ### # 1.1 BPM 管理后台
-- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/ (opens new window)](http://dashboard-vue3.yudao.iocoder.cn/)
+- 演示地址：[http://dashboard-vue3.yudao.iocoder.cn/](http://dashboard-vue3.yudao.iocoder.cn/)
 - 菜单：“工作流程”下的「流程管理」「审批菜单」「OA 实例」等
-- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3 (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `bpm` 目录，基于 Vue3 + Element Plus 实现
+- 仓库：[https://github.com/yudaocode/yudao-ui-admin-vue3](https://github.com/yudaocode/yudao-ui-admin-vue3) 的 `bpm` 目录，基于 Vue3 + Element Plus 实现
 ![管理后台](/images/img_6a5934bf.png) 
 ### # 1.2 BPM 后端
 支持 Spring Boot 单体、Spring Cloud 微服务架构
-- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-bpm` 模块
-- 微服务仓库： [https://github.com/YunaiV/yudao-cloud (opens new window)](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-bpm` 服务
+- 单体仓库： [https://github.com/YunaiV/ruoyi-vue-pro](https://github.com/YunaiV/ruoyi-vue-pro) 的 `yudao-module-bpm` 模块
+- 微服务仓库： [https://github.com/YunaiV/yudao-cloud](https://github.com/YunaiV/yudao-cloud) 的 `yudao-module-bpm` 服务
 ## # 2. 工作流启动
 参见 [《工作流手册 —— 功能开启》](/bpm/) 文档，一般 3 分钟就可以启动完成。
 ## # 3. 工作流交流
 专属交流社区，欢迎扫码加入。
 ![示例流程](/images/zsxq_bpm.png) 微信扫描上方二维码，加入后可观看视频！
-- [01、如何集成 Flowable 框架？ (opens new window)](https://t.zsxq.com/04aqfIiY3)
-- [02、如何实现动态的流程表单？ (opens new window)](https://t.zsxq.com/04nun2RRz)
-- [03、如何实现流程表单的保存？ (opens new window)](https://t.zsxq.com/04uneeaUb)
-- [04、如何实现流程表单的展示？ (opens new window)](https://t.zsxq.com/04jiMrjAm)
-- [05、如何实现流程模型的新建？ (opens new window)](https://t.zsxq.com/04iynUF6e)
-- [06、如何实现流程模型的流程图的设计？ (opens new window)](https://t.zsxq.com/04rNVbEQB)
-- [07、如何实现流程模型的流程图的预览？ (opens new window)](https://t.zsxq.com/042neybYz)
-- [08、如何实现流程模型的分配规则？ (opens new window)](https://t.zsxq.com/04uburRvZ)
-- [09、如何实现流程模型的发布？ (opens new window)](https://t.zsxq.com/04jUBMjyF)
-- [10、如何实现流程定义的查询？ (opens new window)](https://t.zsxq.com/04MF6URvz)
-- [11、如何实现流程的发起？ (opens new window)](https://t.zsxq.com/04jyvNfqj)
-- [12、如何实现我的流程列表？ (opens new window)](https://t.zsxq.com/046UFqRzz)
-- [13、如何实现流程的取消？ (opens new window)](https://t.zsxq.com/04aM72rzv)
-- [14、如何实现流程的任务分配？ (opens new window)](https://t.zsxq.com/04rNvFI2f)
-- [15、如何实现会签、或签任务？ (opens new window)](https://t.zsxq.com/04yFUVZvF)
-- [16、如何实现我的待办任务列表？ (opens new window)](https://t.zsxq.com/04QZzjAme)
-- [17、如何实现我的已办任务列表？ (opens new window)](https://t.zsxq.com/04uj6AQJE)
-- [18、如何实现任务的审批通过？ (opens new window)](https://t.zsxq.com/04Q7UbqBM)
-- [19、如何实现任务的审批不通过？ (opens new window)](https://t.zsxq.com/04BQvJM7y)
-- [20、如何实现流程的审批记录？ (opens new window)](https://t.zsxq.com/04Ie2v7m2)
-- [21、如何实现流程的流程图的高亮？ (opens new window)](https://t.zsxq.com/04R72rzzN)
-- [22、如何实现工作流的短信通知？ (opens new window)](https://t.zsxq.com/04eyRRJ2f)
-- [23、如何实现 OA 请假的发起？ (opens new window)](https://t.zsxq.com/04rFUjIei)
-- [24、如何实现 OA 请假的审批？ (opens new window)](https://t.zsxq.com/04fMJiufQ)
+- [01、如何集成 Flowable 框架？](https://t.zsxq.com/04aqfIiY3)
+- [02、如何实现动态的流程表单？](https://t.zsxq.com/04nun2RRz)
+- [03、如何实现流程表单的保存？](https://t.zsxq.com/04uneeaUb)
+- [04、如何实现流程表单的展示？](https://t.zsxq.com/04jiMrjAm)
+- [05、如何实现流程模型的新建？](https://t.zsxq.com/04iynUF6e)
+- [06、如何实现流程模型的流程图的设计？](https://t.zsxq.com/04rNVbEQB)
+- [07、如何实现流程模型的流程图的预览？](https://t.zsxq.com/042neybYz)
+- [08、如何实现流程模型的分配规则？](https://t.zsxq.com/04uburRvZ)
+- [09、如何实现流程模型的发布？](https://t.zsxq.com/04jUBMjyF)
+- [10、如何实现流程定义的查询？](https://t.zsxq.com/04MF6URvz)
+- [11、如何实现流程的发起？](https://t.zsxq.com/04jyvNfqj)
+- [12、如何实现我的流程列表？](https://t.zsxq.com/046UFqRzz)
+- [13、如何实现流程的取消？](https://t.zsxq.com/04aM72rzv)
+- [14、如何实现流程的任务分配？](https://t.zsxq.com/04rNvFI2f)
+- [15、如何实现会签、或签任务？](https://t.zsxq.com/04yFUVZvF)
+- [16、如何实现我的待办任务列表？](https://t.zsxq.com/04QZzjAme)
+- [17、如何实现我的已办任务列表？](https://t.zsxq.com/04uj6AQJE)
+- [18、如何实现任务的审批通过？](https://t.zsxq.com/04Q7UbqBM)
+- [19、如何实现任务的审批不通过？](https://t.zsxq.com/04BQvJM7y)
+- [20、如何实现流程的审批记录？](https://t.zsxq.com/04Ie2v7m2)
+- [21、如何实现流程的流程图的高亮？](https://t.zsxq.com/04R72rzzN)
+- [22、如何实现工作流的短信通知？](https://t.zsxq.com/04eyRRJ2f)
+- [23、如何实现 OA 请假的发起？](https://t.zsxq.com/04rFUjIei)
+- [24、如何实现 OA 请假的审批？](https://t.zsxq.com/04fMJiufQ)
 ## # 4. 功能描述
 ![BPM 功能列表](/images/bpm-feature.png) 基于 Flowable 构建，可支持信创（国产）数据库，满足中国特色流程操作：
 历经头部企业生产验证，工作流引擎须标配仿钉钉/飞书 + BPMN 双设计器！！！

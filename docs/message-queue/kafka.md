@@ -1,10 +1,10 @@
 # 消息队列（Kafka）
 
 ## # Kafka-Spring
-[`yudao-spring-boot-starter-mq` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 Kafka 实现分布式消息队列。
-如果你对 Kafka 不太了解，可以看看 [《芋道 Spring Boot 消息队列 Kafka 入门》 (opens new window)](https://www.iocoder.cn/Spring-Boot/Kafka/?yudao) 文档。
+[`yudao-spring-boot-starter-mq`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 Kafka 实现分布式消息队列。
+如果你对 Kafka 不太了解，可以看看 [《芋道 Spring Boot 消息队列 Kafka 入门》](https://www.iocoder.cn/Spring-Boot/Kafka/?yudao) 文档。
 如何安装一个 Kafka 服务？
-参考 [《芋道 Kafka 极简入门 》 (opens new window)](https://www.iocoder.cn/Kafka/install/?yudao) 文档。
+参考 [《芋道 Kafka 极简入门 》](https://www.iocoder.cn/Kafka/install/?yudao) 文档。
 ## # 2. 使用示例
 以【短信发送】举例子，改造使用 Kafka 作为消息队列。
 ## # 2.0 引入依赖与配置

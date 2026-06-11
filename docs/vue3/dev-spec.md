@@ -4,31 +4,31 @@
 本小节，提供大家开发管理后台的功能时，最常用的普通列表、树形列表、新增与修改的表单弹窗、详情表单弹窗的实战案例。
 ### # 0.1 分页列表
 可参考 [系统管理 -> 岗位管理] 菜单：
-- API 接口：[`/src/api/system/post/index.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/api/system/post/index.ts)
-- 列表界面：[`/src/views/system/post/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/post/index.vue)
-- 表单界面：[`/src/views/system/post/PostForm.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/post/PostForm.vue)
+- API 接口：[`/src/api/system/post/index.ts`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/api/system/post/index.ts)
+- 列表界面：[`/src/views/system/post/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/post/index.vue)
+- 表单界面：[`/src/views/system/post/PostForm.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/post/PostForm.vue)
 为什么界面拆成列表和表单两个 Vue 文件？
 每个 Vue 文件，只实现一个功能，更简洁，维护性更好，Git 代码冲突概率低。
 ### # 0.2 树形列表
 可参考 [系统管理 -> 部门管理] 菜单：
-- API 接口：[`/src/api/system/dept/index.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/api/system/dept/index.ts)
-- 列表界面：[`/src/views/system/dept/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/dept/index.vue)
-- 表单界面：[`/src/views/system/dept/DeptForm.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/dept/DeptForm.vue)
+- API 接口：[`/src/api/system/dept/index.ts`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/api/system/dept/index.ts)
+- 列表界面：[`/src/views/system/dept/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/dept/index.vue)
+- 表单界面：[`/src/views/system/dept/DeptForm.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/dept/DeptForm.vue)
 ### # 0.3 高性能列表
-可参考 [系统管理 -> 地区管理] 菜单，对应 [`/src/views/system/area/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/area/index.vue) 列表界面
-基于 [Virtualized Table 虚拟化表格 (opens new window)](https://element-plus.org/zh-CN/component/table-v2.html) 实现，解决一屏里超过 1000 条数据记录时，就会出现卡顿等性能问题。
+可参考 [系统管理 -> 地区管理] 菜单，对应 [`/src/views/system/area/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/area/index.vue) 列表界面
+基于 [Virtualized Table 虚拟化表格](https://element-plus.org/zh-CN/component/table-v2.html) 实现，解决一屏里超过 1000 条数据记录时，就会出现卡顿等性能问题。
 ### # 0.4 详情弹窗
-可参考 [基础设施 -> API 日志 -> 访问日志] 菜单，对应 [`/src/views/infra/apiAccessLog/ApiAccessLogDetail.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/infra/apiAccessLog/ApiAccessLogDetail.vue) 详情弹窗
+可参考 [基础设施 -> API 日志 -> 访问日志] 菜单，对应 [`/src/views/infra/apiAccessLog/ApiAccessLogDetail.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/infra/apiAccessLog/ApiAccessLogDetail.vue) 详情弹窗
 ## # 1. view 页面
-在 [`@views` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/) 目录下，每个模块对应一个目录，它的所有功能的 `.vue` 都放在该目录里。
+在 [`@views`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/) 目录下，每个模块对应一个目录，它的所有功能的 `.vue` 都放在该目录里。
 ![ 目录](../images/01.png) 一般来说，一个路由对应一个 `index.vue` 文件。
 ## # 2. api 请求
-在 [`@/api` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/tree/master/src/api) 目录下，每个模块对应一个 `index.ts` API 文件。
+在 [`@/api`](https://github.com/yudaocode/yudao-ui-admin-vue3/tree/master/src/api) 目录下，每个模块对应一个 `index.ts` API 文件。
 ![ 目录](../images/02.png) 
 - API 方法：会调用 `request` 方法，发起对后端 RESTful API 的调用。
 - `interface` 类型：定义了 API 的请求参数和返回结果的类型，对应后端的 VO 类型。
 ### # 2.1 请求封装
-[`/src/config/axios/index.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/config/axios/service.ts) 基于 [axios (opens new window)](http://axios-js.com/zh-cn/docs/index.html) 封装，统一处理 GET、POST 方法的请求参数、请求头，以及错误提示信息等。
+[`/src/config/axios/index.ts`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/config/axios/service.ts) 基于 [axios](http://axios-js.com/zh-cn/docs/index.html) 封装，统一处理 GET、POST 方法的请求参数、请求头，以及错误提示信息等。
 ![axios/index.ts](../images/03-01.png) 
 #### # 2.1.1 创建 axios 实例
 - `baseURL` 基础路径
@@ -302,7 +302,7 @@ loading.value = false
 }
 ## # 3. component 组件
 ### # 3.1 全局组件
-在 [`@/components` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/) 目录下，实现**全局**组件，被所有模块所公用。
+在 [`@/components`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/) 目录下，实现**全局**组件，被所有模块所公用。
 例如说，富文本编辑器、各种各搜索组件、封装的分页组件等等。
 ![全局组件](../images/04.png) 
 ### # 3.2 模块内组件
@@ -310,13 +310,13 @@ loading.value = false
 例如说，`@/views/pay/app/components/xxx.vue`：
 ![业务组件](../images/05.png) 
 ## # 4. style 样式
-① 在 [`@/styles` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/tree/master/src/styles) 目录下，实现**全局**样式，被所有页面所公用。
+① 在 [`@/styles`](https://github.com/yudaocode/yudao-ui-admin-vue3/tree/master/src/styles) 目录下，实现**全局**样式，被所有页面所公用。
 ![全局样式](../images/06.png) ② 每个 `.vue` 页面，可在 `` 标签中添加样式，注意需要添加 `scoped` 表示只作用在当前页面里，避免造成全局的样式污染。
 ![业务样式](../images/07.png) 更多也可以看看如下两篇文档：
-- [《vue-element-plus-admin —— 项目配置「样式配置」》 (opens new window)](https://element-plus-admin-doc.cn/guide/settings.html#%E6%A0%B7%E5%BC%8F%E9%85%8D%E7%BD%AE)
-- [《vue-element-plus-admin —— 样式》 (opens new window)](https://element-plus-admin-doc.cn/guide/design.html)
+- [《vue-element-plus-admin —— 项目配置「样式配置」》](https://element-plus-admin-doc.cn/guide/settings.html#%E6%A0%B7%E5%BC%8F%E9%85%8D%E7%BD%AE)
+- [《vue-element-plus-admin —— 样式》](https://element-plus-admin-doc.cn/guide/design.html)
 ## # 5. 项目规范
-可参考 [《vue-element-plus-admin —— 项目规范》 (opens new window)](https://element-plus-admin-doc.cn/dep/lint.html) 文档。
+可参考 [《vue-element-plus-admin —— 项目规范》](https://element-plus-admin-doc.cn/dep/lint.html) 文档。
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [Tomcat WAR 部署](/deployment-war/) [菜单路由](/vue3/route/) 

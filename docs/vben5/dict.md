@@ -7,18 +7,18 @@
 ![字典 store](../images/02.png) 这样，前端在使用到字典数据时，无需重复请求后端，提升用户体验。
 不过，缓存暂时未提供刷新，所以在字典数据发生变化时，需要用户刷新浏览器，进行重新加载。
 ## # 2. DICT_TYPE
-在 [`dict-enum.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/constants/src/dict-enum.ts) 文件中，使用 `DICT_TYPE` 枚举了字典的 KEY。如下图所示：
+在 [`dict-enum.ts`](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/constants/src/dict-enum.ts) 文件中，使用 `DICT_TYPE` 枚举了字典的 KEY。如下图所示：
 ![ 枚举](../images/03.png) 后续如果有新的字典 KEY，需要你自己进行添加。
 ## # 3. DictTag 字典标签
 ① `` 组件，翻译字段对应的字典展示文本，并根据 `colorType`、`cssClass` 进行高亮。
-- 源码位置： antd 版本：[apps/web-antd/src/components/dict-tag (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-antd/src/components/dict-tag)
-- ele 版本：[apps/web-ele/src/components/dict-tag (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-ele/src/components/dict-tag)
+- 源码位置： antd 版本：[apps/web-antd/src/components/dict-tag](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-antd/src/components/dict-tag)
+- ele 版本：[apps/web-ele/src/components/dict-tag](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-ele/src/components/dict-tag)
 使用示例如下：
 ![DictTag](../images/04-a.png) ② 对于 Grid（schema） 列表场景，通过 `cellRender` 属性为 `CellDict` 即可。如下图所示：
 ![ 的 属性](../images/04-b.png) ③ 对于 Description（schema） 描述场景，通过 `render` 为 `` 组件。如下图所示：
 ![ 的 属性](../images/04-c.png) ④ 对于 Form（schema） 表单场景，继续往下看「4. 字典工具类」。
 ## # 4. 字典工具类
-在 [`use-dict.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/effects/hooks/src/use-dict.ts) 文件中，提供了字典工具类，方法如下：
+在 [`use-dict.ts`](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/effects/hooks/src/use-dict.ts) 文件中，提供了字典工具类，方法如下：
 // 获取字典标签
 export function getDictLabel(dictType: string, value: any) { /** 省略代码 */ }
 // 获取字典对象
@@ -55,8 +55,8 @@ placeholder: '请选择用户状态',
 },
 ];
 }
-- 实战案例（antd）：[apps/web-antd/src/views/system/user/data.ts (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/src/views/system/user/data.ts)
-- 实战案例（ele）：[apps/web-ele/src/views/system/user/data.ts (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-ele/src/views/system/user/data.ts)
+- 实战案例（antd）：[apps/web-antd/src/views/system/user/data.ts](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-antd/src/views/system/user/data.ts)
+- 实战案例（ele）：[apps/web-ele/src/views/system/user/data.ts](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/apps/web-ele/src/views/system/user/data.ts)
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [图标、主题、国际化](/vben5/icon-theme/) [系统组件](/vben5/components/) 

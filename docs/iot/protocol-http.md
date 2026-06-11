@@ -2,7 +2,7 @@
 
 推荐阅读：
 - [《设备接入（概述）》](/iot/protocol-overview/) — 建议先阅读，了解整体架构和消息格式
-- [《阿里云物联网平台 —— 使用 HTTPS 协议自主接入》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/establish-connections-over-https)
+- [《阿里云物联网平台 —— 使用 HTTPS 协议自主接入》](https://help.aliyun.com/zh/iot/user-guide/establish-connections-over-https)
 HTTP 协议接入，由 `yudao-module-iot-gateway` 模块的 `protocol.http` 包实现，基于 Vert.x HTTP Server，默认端口 8092。
 HTTP 协议仅支持**上行**（设备 → 平台），无法下行推送。如需双向通信，请使用 [MQTT 协议](/iot/protocol-mqtt/)。
 ## # 1. 整体架构
@@ -42,7 +42,7 @@ port: 8092             # 监听端口
 | 网关设备 | IotGatewayDeviceHttpProtocolIntegrationTest |
 | 网关子设备 | IotGatewaySubDeviceHttpProtocolIntegrationTest |
 ## # 4. 手工测试（直连设备）
-以内置的 id 为 25 的 [演示设备 (opens new window)](http://127.0.0.1/iot/device/detail/25) 为例进行测试。
+以内置的 id 为 25 的 [演示设备](http://127.0.0.1/iot/device/detail/25) 为例进行测试。
 ### # 4.1 设备认证
 ① 使用设备三元组，发起 HTTP 请求：
 curl -X POST http://127.0.0.1:8092/auth \

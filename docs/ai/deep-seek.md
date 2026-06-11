@@ -1,6 +1,6 @@
 # 【模型接入】DeepSeek
 
-项目基于 Spring AI 提供的 [`spring-ai-deepseek` (opens new window)](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-deepseek)，实现 DeepSeek 的接入：
+项目基于 Spring AI 提供的 [`spring-ai-deepseek`](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-deepseek)，实现 DeepSeek 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
 | AI 对话 | deepseek-chat、deepseek-reasoner | DeepSeekChatModel |
@@ -8,18 +8,18 @@
 ## # 1. 申请密钥
 DeepSeek 目前有 3 种 方式，可以进行使用：
 ① 方式一：官方 API：DeepSeek 提供官方 API 服务，并且价格非常便宜，一般建议直接采用这种方式使用。
-② 方式二：私有化部署：[DeepSeek (opens new window)](https://github.com/deepseek-ai) 是开源模型，所以可以本地私有化部署使用。
+② 方式二：私有化部署：[DeepSeek](https://github.com/deepseek-ai) 是开源模型，所以可以本地私有化部署使用。
 ③ 方式三：云厂商部署：类似阿里云、字节、腾讯等厂商，私有化部署了 DeepSeek，然后提供 API 服务。
 ### # 1.1 方式一：官方 API 申请
-① 在 [DeepSeek 开放平台 (opens new window)](https://platform.deepseek.com/) 上，注册一个账号。目前，默认注册就送 500w tokens，还是蛮爽的。
-② 在 [API keys (opens new window)](https://platform.deepseek.com/api_keys) 菜单，创建一个 API key 即可。
+① 在 [DeepSeek 开放平台](https://platform.deepseek.com/) 上，注册一个账号。目前，默认注册就送 500w tokens，还是蛮爽的。
+② 在 [API keys](https://platform.deepseek.com/api_keys) 菜单，创建一个 API key 即可。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”，不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_a3d6488f.png) 
 ### # 1.2 方式二：私有化部署
-① 访问 [https://ollama.ai/download (opens new window)](https://ollama.ai/download)，下载对应系统 Ollama 客户端，然后安装。
-② 安装完成后，在命令中执行 `ollama run deepseek-r1` 命令，一键部署 [deepseek-r1 开源模型 (opens new window)](https://ollama.com/library/deepseek-r1)，默认跑的是 `deepseek-r1:7b` 模型。
+① 访问 [https://ollama.ai/download](https://ollama.ai/download)，下载对应系统 Ollama 客户端，然后安装。
+② 安装完成后，在命令中执行 `ollama run deepseek-r1` 命令，一键部署 [deepseek-r1 开源模型](https://ollama.com/library/deepseek-r1)，默认跑的是 `deepseek-r1:7b` 模型。
 部署完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。需要填写“密钥” + “自定义 API URL”（因为让 Spring AI 使用该地址）。如下图所示：
-![私有的密钥配置](../images/img_9266fd7d.png) 如果想部署 deepseek 的其它模型，可以搜索 [deepseek (opens new window)](https://ollama.com/search?q=deepseek) 文档，执行不同的 `ollama run` 命令即可。
+![私有的密钥配置](../images/img_9266fd7d.png) 如果想部署 deepseek 的其它模型，可以搜索 [deepseek](https://ollama.com/search?q=deepseek) 文档，执行不同的 `ollama run` 命令即可。
 注意：使用该方式时，后续配置模型名时，需要使用 `deepseek-r1` 而不是 `deepseek-reasoner`！！！例如说：
 ![私有的聊天模型](../images/img_3d2c240f.png) 
 ### # 1.3 方式三：云厂商部署
@@ -30,7 +30,7 @@ DeepSeek 目前有 3 种 方式，可以进行使用：
 目前 `ai_model` 表中，已经预置了一些模型，可以直接使用！！！
 ### # 2.1 AI 对话
 使用 [《AI 对话》](/ai/chat/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的聊天模型。
-模型有：`deepseek-chat`、`deepseek-reasoner` 等等，可通过 [《DeepSeek 首次调用 API 》 (opens new window)](https://api-docs.deepseek.com/zh-cn/) 查看。
+模型有：`deepseek-chat`、`deepseek-reasoner` 等等，可通过 [《DeepSeek 首次调用 API 》](https://api-docs.deepseek.com/zh-cn/) 查看。
 注意，每个模型标识的 `max_tokens`（回复数 Token 数）最大是 8192，具体也是看上述链接。
 ### # 2.2 AI 绘图
 TODO 等待 DeepSeek ImageModel 客户端！
@@ -58,13 +58,13 @@ TODO 目前 Spring AI 百度的 SDK 有问题，需要等待修复。
 ### # 4.1 阿里云 API
 ① 参考 [《【模型接入】通义千问》](/ai/tongyi) 文档，申请阿里云密钥，并配置 API 密钥。
 ② 配置聊天模型，如下图所示：
-![阿里云的聊天模型](../images/img_3bc0a817.png) 具体有哪些模型名，可见 [《阿里云 DeepSeek-R1》 (opens new window)](https://bailian.console.aliyun.com/#/model-market/detail/deepseek-r1?tabKey=sdk) 文档。
+![阿里云的聊天模型](../images/img_3bc0a817.png) 具体有哪些模型名，可见 [《阿里云 DeepSeek-R1》](https://bailian.console.aliyun.com/#/model-market/detail/deepseek-r1?tabKey=sdk) 文档。
 ### # 4.2 腾讯云 API
-① 参考 [《腾讯云知识引擎原子能力 —— API KEY 管理》 (opens new window)](https://cloud.tencent.com/document/product/1772/115970) 文档，申请腾讯 API Key，无需配置 API 密钥。
+① 参考 [《腾讯云知识引擎原子能力 —— API KEY 管理》](https://cloud.tencent.com/document/product/1772/115970) 文档，申请腾讯 API Key，无需配置 API 密钥。
 ② 配置 API 密钥，如下图所示：
 ![腾讯云的密钥配置](../images/img_8bf726ed.png) 其中，API URL 是 `https://api.lkeap.cloud.tencent.com` 。
 ③ 配置聊天模型，如下图所示：
-![腾讯云的聊天模型](../images/img_a72cf250.png) 具体有哪些模型名，可见 [《腾讯云 DeepSeek-R1》 (opens new window)](https://cloud.tencent.com/document/product/1772/115969) 文档。
+![腾讯云的聊天模型](../images/img_a72cf250.png) 具体有哪些模型名，可见 [《腾讯云 DeepSeek-R1》](https://cloud.tencent.com/document/product/1772/115969) 文档。
 ### # 4.3 字节火山云 API
 ① 参考 [《【模型接入】字节豆包》](/ai/doubao) 文档，申请字节密钥，并配置 API 密钥。
 ② 配置聊天模型，如下图所示：
@@ -74,7 +74,7 @@ TODO
 ### # 4.5 硅基流动 API
 ① 参考 [《【模型接入】硅基流动》](/ai/siliconflow) 文档，申请硅基密钥，并配置 API 密钥。
 ② 配置聊天模型，如下图所示：
-![硅基的聊天模型](../images/img_0ba48a83.png) 具体有哪些模型名，可在 [https://cloud.siliconflow.cn/models?types=chat (opens new window)](https://cloud.siliconflow.cn/models?types=chat) 搜 “deepseek” 关键字。
+![硅基的聊天模型](../images/img_0ba48a83.png) 具体有哪些模型名，可在 [https://cloud.siliconflow.cn/models?types=chat](https://cloud.siliconflow.cn/models?types=chat) 搜 “deepseek” 关键字。
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}
 [【模型接入】通义千问](/ai/tongyi/) [【模型接入】字节豆包](/ai/doubao/) 

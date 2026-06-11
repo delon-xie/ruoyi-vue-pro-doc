@@ -6,12 +6,12 @@
 - 第二，暂时没想到一个类似 [《短信配置》](/sms/) 这种形式，可以把钉钉、飞书、企微等 Webhook 平台统一起来，方便用户配置和使用
 当然，项目本身其实有比较精简的 Webhook 功能，比如：
 - DebugDingTalkSmsClient 类，模拟短信发送，使用钉钉机器人来接收消息
-- 有球友 [《Pull Request：添加钉钉机器人消息发送功能》 (opens new window)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1379) + [#788 (opens new window)](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/788)，一起聊过也不算特别满意
+- 有球友 [《Pull Request：添加钉钉机器人消息发送功能》](https://gitee.com/zhijiantianya/ruoyi-vue-pro/pulls/1379) + [#788](https://gitee.com/yudaocode/yudao-ui-admin-vue3/pulls/788)，一起聊过也不算特别满意
 ## # 2. 期望
-① 类似 [https://github.com/terminux/ding-talk-spring-boot (opens new window)](https://github.com/terminux/ding-talk-spring-boot) 这种形式，但是需要额外：
+① 类似 [https://github.com/terminux/ding-talk-spring-boot](https://github.com/terminux/ding-talk-spring-boot) 这种形式，但是需要额外：
 - 支持飞书、企微等平台
 - 不仅仅支持 yaml 配置文件，也支持数据库配置（类似短信配置）
 其它相似项目：
-- 飞书：[https://gitee.com/fandylin/feishu-alert-robot-starter (opens new window)](https://gitee.com/fandylin/feishu-alert-robot-starter)
-- 企微：[https://github.com/group-robot/work-weixin-robot-java (opens new window)](https://github.com/group-robot/work-weixin-robot-java)
-② 类似 [https://github.com/ymlluo/group-robot (opens new window)](https://github.com/ymlluo/group-robot) 这种形式，但是它是 PHP 实现，需要有 Java 版本。
+- 飞书：[https://gitee.com/fandylin/feishu-alert-robot-starter](https://gitee.com/fandylin/feishu-alert-robot-starter)
+- 企微：[https://github.com/group-robot/work-weixin-robot-java](https://github.com/group-robot/work-weixin-robot-java)
+② 类似 [https://github.com/ymlluo/group-robot](https://github.com/ymlluo/group-robot) 这种形式，但是它是 PHP 实现，需要有 Java 版本。

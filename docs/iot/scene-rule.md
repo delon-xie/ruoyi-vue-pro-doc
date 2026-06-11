@@ -1,8 +1,8 @@
 # 场景联动
 
 推荐阅读：
-- [《阿里云物联网平台 —— 什么是场景联动》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/scene-orchestration-1)
-- [《阿里云物联网平台 —— 云端场景联动》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/scene-orchestrations-in-the-cloud)
+- [《阿里云物联网平台 —— 什么是场景联动》](https://help.aliyun.com/zh/iot/user-guide/scene-orchestration-1)
+- [《阿里云物联网平台 —— 云端场景联动》](https://help.aliyun.com/zh/iot/user-guide/scene-orchestrations-in-the-cloud)
 场景联动模块，由 `yudao-module-iot` 后端模块的 `rule/scene` 包实现。它使用"触发器 + 执行条件 + 执行动作"（TCA）模型，实现设备间的自动化联动。例如：
 - 温度传感器检测到温度超过 30°C 时，自动打开空调
 - 每天早上 8 点定时检查所有设备是否在线，离线则触发告警
@@ -63,7 +63,7 @@ PRIMARY KEY (`id`) USING BTREE
 - 告警触发 / 告警恢复：选择关联的告警配置
 ![管理后台 - 执行动作配置](../images/img_01fd312f.png) 
 ## # 2. 快速上手
-以内置的 id 为 25 的 [演示设备 (opens new window)](http://127.0.0.1/iot/device/detail/25) 为例，演示如何配置一条场景联动规则：当设备上报的 `width` 属性大于 1000 时，自动触发服务调用。
+以内置的 id 为 25 的 [演示设备](http://127.0.0.1/iot/device/detail/25) 为例，演示如何配置一条场景联动规则：当设备上报的 `width` 属性大于 1000 时，自动触发服务调用。
 ### # 2.1 步骤一：创建场景联动规则
 进入 [IoT 物联网 -> 规则引擎 -> 场景联动]，点击【新增】按钮创建一条规则，配置如下：
 系统已预设了一条名为"宽度超标触发服务调用"的演示规则，可直接用于体验，跳过本步骤。

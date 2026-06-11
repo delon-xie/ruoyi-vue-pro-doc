@@ -3,8 +3,8 @@
 推荐阅读：
 - [《设备接入（概述）》](/iot/protocol-overview/) — 建议先阅读，了解整体架构和消息格式
 - [《设备接入（Modbus Server）》](/iot/protocol-modbus-server/)
-- [《阿里云物联网 —— 添加 Modbus 协议设备》 (opens new window)](https://help.aliyun.com/zh/iot-edge/user-guide/add-a-modbus-device)
-Modbus Client 协议接入，由 `yudao-module-iot-gateway` 模块的 `protocol.modbus.tcpclient` 包实现，基于 [j2mod (opens new window)](https://github.com/steveohara/j2mod) 库，默认端口 502。
+- [《阿里云物联网 —— 添加 Modbus 协议设备》](https://help.aliyun.com/zh/iot-edge/user-guide/add-a-modbus-device)
+Modbus Client 协议接入，由 `yudao-module-iot-gateway` 模块的 `protocol.modbus.tcpclient` 包实现，基于 [j2mod](https://github.com/steveohara/j2mod) 库，默认端口 502。
 网关作为 TCP **Client** 主动连接远程设备（PLC、传感器等），设备扮演 TCP **Server**（Modbus 从站）。连接建立后，网关作为 **Modbus 主站**，按配置的轮询间隔读取设备寄存器数据。
 适用场景：设备有固定 IP 地址，网关可以主动发起连接。
 ## # 1. 整体架构
@@ -105,7 +105,7 @@ KEY `idx_device_id` (`device_id`) COMMENT '设备编号索引'
 | 测试场景 | 测试类 |
 | --- | --- |
 | Client 轮询从站设备 | IoTModbusTcpClientIntegrationTest |
-以内置的 id 为 82 的 [Modbus TCP Client 演示设备 (opens new window)](http://127.0.0.1/iot/device/detail/82) 为例进行测试。
+以内置的 id 为 82 的 [Modbus TCP Client 演示设备](http://127.0.0.1/iot/device/detail/82) 为例进行测试。
 ① 该测试类内置了一个 j2mod 模拟从站（端口 5020），会自动初始化线圈、离散输入、保持寄存器、输入寄存器四种类型的数据，并每 5 秒更新一次模拟传感器数据变化。
 执行 IoTModbusTcpClientIntegrationTest 该测试类后，会看到如下日志：
 // 日志说明：模拟从站启动成功，监听 5020 端口，从站地址为 1

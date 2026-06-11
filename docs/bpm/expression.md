@@ -1,19 +1,19 @@
 # 流程表达式
 
 ## # 1. 流程表达式
-Flowable 使用 UEL 进行表达式解析。UEL 代表 [Unified Expression Language (opens new window)](https://docs.oracle.com/javaee/6/tutorial/doc/gjddd.html)，是 EE6 规范的一部分。例如说：
+Flowable 使用 UEL 进行表达式解析。UEL 代表 [Unified Expression Language](https://docs.oracle.com/javaee/6/tutorial/doc/gjddd.html)，是 EE6 规范的一部分。例如说：
 - 在 [《会签、或签、依次审批》](/bpm/multi-instance/) 看到的 `${ nrOfCompletedInstances >= nrOfInstances }`、`${ nrOfCompletedInstances == 1 }` 等，就是 UEL 表达式
 - 在 [《审批接入（流程表单）》](/bpm/use-business-form/) 看到的流转条件 `${day > 3}`，也是 UEL 表达式
 学习文档：
-- [《Flowable BPMN 用户手册 (v 6.3.0) —— 表达式》 (opens new window)](https://tkjohn.github.io/flowable-userguide/#apiExpressions)
+- [《Flowable BPMN 用户手册 (v 6.3.0) —— 表达式》](https://tkjohn.github.io/flowable-userguide/#apiExpressions)
 那么，具体怎么定义 UEL 表达式呢？我们逐个来看看。
 ### # 1.1 BpmTaskAssignStartUserExpression
-[BpmTaskAssignStartUserExpression (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/candidate/expression/BpmTaskAssignStartUserExpression.java)，分配给发起人审批的 Expression 流程表达式，需要声明成 Spring Bean，代码如下：
+[BpmTaskAssignStartUserExpression](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/candidate/expression/BpmTaskAssignStartUserExpression.java)，分配给发起人审批的 Expression 流程表达式，需要声明成 Spring Bean，代码如下：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![BpmTaskAssignStartUserExpression](../images/BpmTaskAssignStartUserExpression.png) 使用时，可以在 BPMN 流程图中，配置表达式 `${bpmTaskAssignStartUserExpression.calculateUsers(execution)}` ，如下图所示：
 ![BpmTaskAssignStartUserExpressionConfig](../images/BpmTaskAssignStartUserExpressionConfig.png) 这样，该任务节点的审批人，就会被分配给发起人。
 ### # 1.2 BpmTaskAssignLeaderExpression
-[BpmTaskAssignLeaderExpression (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/candidate/expression/BpmTaskAssignLeaderExpression.java)，分配给发起人的指定 `level` 级别 Leader 审批的 Expression 流程表达式，需要声明成 Spring Bean，代码如下：
+[BpmTaskAssignLeaderExpression](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/candidate/expression/BpmTaskAssignLeaderExpression.java)，分配给发起人的指定 `level` 级别 Leader 审批的 Expression 流程表达式，需要声明成 Spring Bean，代码如下：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![BpmTaskAssignLeaderExpression](../images/BpmTaskAssignLeaderExpression.png) 使用时，可以在 BPMN 流程图中，配置表达式 `${bpmTaskAssignLeaderExpression.calculateUsers(execution, 1)}` 表示一级领导，如下图所示：
 ![BpmTaskAssignLeaderExpressionConfig](../images/BpmTaskAssignLeaderExpressionConfig.png) 这样，该任务节点的审批人，就会被分配给发起人的一级领导。

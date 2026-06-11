@@ -1,9 +1,9 @@
 # 【模型接入】Claude
 
-项目基于 Spring AI 提供的 [`spring-ai-anthropic` (opens new window)](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-anthropic)，实现 Claude 的接入：
+项目基于 Spring AI 提供的 [`spring-ai-anthropic`](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-anthropic)，实现 Claude 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
-| AI 对话 | claude-sonnet-4、claude-opus-4 | [AnthropicChatModel (opens new window)](https://docs.spring.io/spring-ai/reference/api/chat/anthropic-chat.html) |
+| AI 对话 | claude-sonnet-4、claude-opus-4 | [AnthropicChatModel](https://docs.spring.io/spring-ai/reference/api/chat/anthropic-chat.html) |
 | AI 绘画 | 不支持 | 暂未接入 |
 ## # 1. 申请密钥
 由于 Claude 是非开源的模型，所以无法私有化部署，需要去官网申请 API Key，然后通过 Spring AI 提供的客户端接入。
@@ -13,13 +13,13 @@
 中转人卖给你一个 API KEY 令牌，你就可以把 AI 请求发送到他的池子：池子采取一定的算法选取一个 API 账号帮你把请求发送到大模型后端，然后再把大模型返回的结果转发给你。
 下面，我们来看看这两种方式怎么申请？
 ### # 1.1 方式一：官方 API 申请
-可以参考 [《如何使用 Claude API》 (opens new window)](https://chrislee0728.medium.com/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-claude-api-369a01ed050d) 进行申请。
+可以参考 [《如何使用 Claude API》](https://chrislee0728.medium.com/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-claude-api-369a01ed050d) 进行申请。
 会略微麻烦一些，我自己是直接采用了“方式二：中转 API 申请”。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”，不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_42b25e47.png) 友情提示：官方的 API 禁止国内直接访问，需要有 VPN 代理~
 ### # 1.2 方式二：中转 API 申请
 提供中转 API 服务的有很多，也可以 Google 直接搜索“claude API 中转”，例如说：
-- [https://aihubmix.com (opens new window)](https://aihubmix.com?aff=E13A) 【目前使用的比较多，胖友们反馈也非常不错！】
+- [https://aihubmix.com](https://aihubmix.com?aff=E13A) 【目前使用的比较多，胖友们反馈也非常不错！】
 友情提示：少量购买，可以使用体验即可！
 购买完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。需要填写“密钥” + “自定义 API URL”（因为让 Spring AI 使用该地址）。如下图所示：
 ![中转的密钥配置](../images/img_681335bd.png) 

@@ -74,7 +74,7 @@ KEY `idx_status` (`status`) USING BTREE COMMENT '状态'
 ③ 【业务】`biz_id`、`biz_type` 字段：业务编号、业务类型（由 BrokerageRecordBizTypeEnum 枚举）。`title`、`description` 字段：标题、说明，主要用于展示。
 例如说，订单分佣时，`biz_type` 为 1，`biz_id` 为订单编号。具体 TradeBrokerageOrderHandler 处理器，订单被支付时，会生成分佣记录。
 疑问：B 已经是 A 的下级了，为什么下单支付后，没有分销记录？
-有一种可能性，计算的分佣金额为 0，所以没有生成分销记录。例如说：[https://t.zsxq.com/e4aSR (opens new window)](https://t.zsxq.com/e4aSR)
+有一种可能性，计算的分佣金额为 0，所以没有生成分销记录。例如说：[https://t.zsxq.com/e4aSR](https://t.zsxq.com/e4aSR)
 ④ 【佣金】`price`、`total_price` 字段：分佣金额、当前总佣金。每个商品的佣金，可以全局设置，也可以自定设置，如下图所示：
 ![分销商品](../images/img_5b2a24f3.png) 友情提示：分销商品，后续会从商品管理中解耦出来，单独管理，单独表存储。
 ⑤ 【状态】`status` 字段：状态，由 BrokerageRecordStatusEnum 枚举，目前就待结算（冻结）、已结算（生效）、已取消（失效）三种状态。

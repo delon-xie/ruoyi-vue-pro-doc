@@ -1,14 +1,14 @@
 # 【模型接入】微软 OpenAI
 
-项目基于 Spring AI 提供的 [`spring-ai-azure-openai` (opens new window)](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-azure-openai)，实现微软 Azure 上部署的 OpenAI 的接入：
+项目基于 Spring AI 提供的 [`spring-ai-azure-openai`](https://github.com/spring-projects/spring-ai/tree/main/models/spring-ai-azure-openai)，实现微软 Azure 上部署的 OpenAI 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
-| AI 对话 | gpt3.5、gpt4.0 等 | [Azure OpenAI Chat (opens new window)](https://docs.spring.io/spring-ai/reference/api/chat/azure-openai-chat.html) |
-| AI 绘画 | [DALL (opens new window)](https://en.wikipedia.org/wiki/DALL-E) | [Azure OpenAI Image Generation (opens new window)](https://docs.spring.io/spring-ai/reference/api/image/azure-openai-image.html) |
+| AI 对话 | gpt3.5、gpt4.0 等 | [Azure OpenAI Chat](https://docs.spring.io/spring-ai/reference/api/chat/azure-openai-chat.html) |
+| AI 绘画 | [DALL](https://en.wikipedia.org/wiki/DALL-E) | [Azure OpenAI Image Generation](https://docs.spring.io/spring-ai/reference/api/image/azure-openai-image.html) |
 ## # 1. 申请密钥
 ### # 1.1 Azure API 申请
-可以在 [微软 Azure AI (opens new window)](https://azure.microsoft.com/en-us/products/ai-services/openai-service) 进行申请申请。
-我暂时没申请过，是由 [社区小伙伴 (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/issues/614) 提供密钥进行接入的，应该不复杂。
+可以在 [微软 Azure AI](https://azure.microsoft.com/en-us/products/ai-services/openai-service) 进行申请申请。
+我暂时没申请过，是由 [社区小伙伴](https://github.com/YunaiV/ruoyi-vue-pro/issues/614) 提供密钥进行接入的，应该不复杂。
 申请完成后，应该会有类似的模型列表。如下图所示：
 ![模型部署](../images/img_925d9f01.png) 购买完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。需要填写“密钥” + “自定义 API URL”。如下图所示：
 ![密钥配置](../images/img_f2a48d57.png) 

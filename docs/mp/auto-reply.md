@@ -9,17 +9,17 @@
 - 3 - 关键字回复：消息类型为文本时，匹配到关键字
 - 2 - 消息回复：没有匹配到关键字时，根据消息类型
 ## # 2. 自动回复界面
-- 前端：[/@views/mp/autoReply (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/mp/autoReply/index.vue)
-- 后端：[MpAutoReplyController (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/controller/admin/message/MpAutoReplyController.java)
+- 前端：[/@views/mp/autoReply](https://github.com/yudaocode/yudao-ui-admin-vue2/blob/master/src/views/mp/autoReply/index.vue)
+- 后端：[MpAutoReplyController](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/controller/admin/message/MpAutoReplyController.java)
 ## # 3. 关注回复
-用户关注公众号时，被动回复用户消息，由 [MpAutoReplyServiceImpl (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/service/message/MpAutoReplyServiceImpl.java#L181-L200) 的 `replyForSubscribe` 方法来生成回复内容。如下图所示：
+用户关注公众号时，被动回复用户消息，由 [MpAutoReplyServiceImpl](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/service/message/MpAutoReplyServiceImpl.java#L181-L200) 的 `replyForSubscribe` 方法来生成回复内容。如下图所示：
 图片纠错：最新版本不区分 yudao-module-mp-api 和 yudao-module-mp-biz 子模块，代码直接合并到 yudao-module-mp 模块的 src 目录下，更适合单体项目
 ![关注回复](../images/img_2febcfde.png) 
 ## # 4. 消息回复 & 关键字回复
 用户发送消息给公众号时，自动回复消息给用户，分为两种情况：
 - 关键字回复：消息类型为文本时，匹配到关键字，自动回复消息
 - 消息回复：没有匹配到关键字时，根据消息类型，自动回复消息
-这两种情况，由 [MessageAutoReplyHandler (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/service/handler/message/MessageAutoReplyHandler.java) 调用 [MpAutoReplyServiceImpl (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/service/message/MpAutoReplyServiceImpl.java#L154-L179) 的 `replyForMessage` 方法来生成回复内容。如下图所示：
+这两种情况，由 [MessageAutoReplyHandler](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/service/handler/message/MessageAutoReplyHandler.java) 调用 [MpAutoReplyServiceImpl](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-mp/src/main/java/cn/iocoder/yudao/module/mp/service/message/MpAutoReplyServiceImpl.java#L154-L179) 的 `replyForMessage` 方法来生成回复内容。如下图所示：
 图片纠错：最新版本不区分 yudao-module-mp-api 和 yudao-module-mp-biz 子模块，代码直接合并到 yudao-module-mp 模块的 src 目录下，更适合单体项目
 ![消息回复](../images/img_4f424f39.png) 
 .pageB img{width:80px!important;}

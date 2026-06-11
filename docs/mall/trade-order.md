@@ -188,10 +188,10 @@ ps：微信小程序的发货，可以使用订阅消息功能，具体可以后
 ![物流详情页](../images/img_846f0466.png) ② 物流信息，由 AppTradeOrderController 的 `#getOrderExpressTrackList(...)` 提供的“获得交易订单的物流轨迹”接口。它的核心实现由 ExpressClient 实现，如下图所示：
 图片纠错：最新版本不区分 yudao-module-trade-api 和 yudao-module-trade-biz 子模块，代码直接合并到 yudao-module-mp 模块的 src 目录下，更适合单体项目
 ![ExpressClient 类图](../images/img_aa440d47.png) 
-- KdNiaoExpressClient：对接快递鸟的客户端，官方文档 [https://www.kdniao.com/api-follow (opens new window)](https://www.kdniao.com/api-follow)
-- Kd100ExpressClient：对接快递 100 的客户端，官方文档 [https://api.kuaidi100.com/document/ (opens new window)](https://api.kuaidi100.com/document/)
+- KdNiaoExpressClient：对接快递鸟的客户端，官方文档 [https://www.kdniao.com/api-follow](https://www.kdniao.com/api-follow)
+- Kd100ExpressClient：对接快递 100 的客户端，官方文档 [https://api.kuaidi100.com/document/](https://api.kuaidi100.com/document/)
 具体使用哪个客户端，可修改 `application.yaml` 配置文件的 `yudao.trade.express.client` 配置项。如下图所示：
-![配置文件](../images/img_58bec194.png) 另外，如果使用快递鸟的话，要注意 1002 是免费套餐，8001 是付费套餐，可见 [https://t.zsxq.com/GcSDL (opens new window)](https://t.zsxq.com/GcSDL) 讨论。
+![配置文件](../images/img_58bec194.png) 另外，如果使用快递鸟的话，要注意 1002 是免费套餐，8001 是付费套餐，可见 [https://t.zsxq.com/GcSDL](https://t.zsxq.com/GcSDL) 讨论。
 ③ 回到订单详情页，点击「确认收货」按钮，完成收货，更新 `trade_order` 为已完成。
 订单状态：已完成（未评价）
 ![确认收货](../images/img_88cd42b2.png) 

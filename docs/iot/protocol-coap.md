@@ -2,7 +2,7 @@
 
 推荐阅读：
 - [《设备接入（概述）》](/iot/protocol-overview/) — 建议先阅读，了解整体架构和消息格式
-- [《阿里云物联网平台 —— 使用 CoAP 连接通信》 (opens new window)](https://help.aliyun.com/zh/iot/user-guide/coap-standard)
+- [《阿里云物联网平台 —— 使用 CoAP 连接通信》](https://help.aliyun.com/zh/iot/user-guide/coap-standard)
 CoAP 协议接入，由 `yudao-module-iot-gateway` 模块的 `protocol.coap` 包实现，基于 Eclipse Californium，默认端口 5683。
 CoAP（Constrained Application Protocol）是专为资源受限设备设计的**轻量级**协议，基于 UDP 传输，采用类 REST 风格（资源路径 + POST 方法）。仅支持**上行**（设备 → 平台），无法下行推送。
 ## # 1. 整体架构

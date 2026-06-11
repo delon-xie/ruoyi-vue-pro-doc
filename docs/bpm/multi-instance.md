@@ -1,7 +1,7 @@
 # 会签、或签、依次审批
 
 相关视频：
-- [15、如何实现会签、或签任务？ (opens new window)](https://t.zsxq.com/04yFUVZvF)
+- [15、如何实现会签、或签任务？](https://t.zsxq.com/04yFUVZvF)
 支持多人审批，包括：
 - 会签（并行会签）：同一个审批节点设置多个人（如 A、B、C 三人，三人会同时收到待办任务），需全部同意之后，审批才可到下一审批节点
 - 或签（并行或签）：同一个审批节点设置多个人，任意一个人处理后，就能进入下一个节点
@@ -35,8 +35,8 @@
 在 [《选择审批人、发起人自选》](/bpm/assignee) 小节中，我们看到使用 BpmUserTaskActivityBehavior 实现了审批任务的审批人分配。实际上，还有两个 Behavior 类，如下图所示：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![Behavior 类图](../images/Behavior.png) 
-- [BpmParallelMultiInstanceBehavior (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/behavior/BpmParallelMultiInstanceBehavior.java)：并行 + 多实例（单节点多任务）的 Behavior 类
-- [BpmSequentialMultiInstanceBehavior (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/behavior/BpmSequentialMultiInstanceBehavior.java)：顺序 + 多实例（单节点多任务）的 Behavior 类
+- [BpmParallelMultiInstanceBehavior](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/behavior/BpmParallelMultiInstanceBehavior.java)：并行 + 多实例（单节点多任务）的 Behavior 类
+- [BpmSequentialMultiInstanceBehavior](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/framework/flowable/core/behavior/BpmSequentialMultiInstanceBehavior.java)：顺序 + 多实例（单节点多任务）的 Behavior 类
 ### # 2.1 并行 BpmParallelMultiInstanceBehavior
 ① BpmParallelMultiInstanceBehavior 实现 Flowable ParallelMultiInstanceBehavior 类，实现单节点多任务的审批人 **“计算”**。如下图所示：
 ![BpmParallelMultiInstanceBehavior](../images/BpmParallelMultiInstanceBehavior.png) ② BpmUserTaskActivityBehavior，判断是多实例的情况，则复用 BpmParallelMultiInstanceBehavior “计算”结果，直接设置审批人。如下图所示：

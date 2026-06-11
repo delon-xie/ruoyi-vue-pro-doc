@@ -1,8 +1,8 @@
 # 审批接入（业务表单）
 
 相关视频：
-- [23、如何实现 OA 请假的发起？ (opens new window)](https://t.zsxq.com/04rFUjIei)
-- [24、如何实现 OA 请假的审批？ (opens new window)](https://t.zsxq.com/04fMJiufQ)
+- [23、如何实现 OA 请假的发起？](https://t.zsxq.com/04rFUjIei)
+- [24、如何实现 OA 请假的审批？](https://t.zsxq.com/04fMJiufQ)
 本文接 [《审批接入（流程表单）》](/bpm/use-bpm-form/)，讲解的是「业务接入（业务表单）」的流程：业务需建立独立的数据库表，并开发对应的表单、详情界面。
 整个过程，还是：
 1. 定义流程：【管理员】新建流程、设计流程模型、并设置用户任务的审批人，最终发布流程
@@ -13,9 +13,9 @@
 根据业务需要，业务通过建立独立的数据库表（业务表）记录申请信息，而流程引擎只负责推动流程的前进或者结束。两者需要进行**双向**的关联：
 - 每一条业务表记录，通过它的流程实例的编号( `process_instance_id` )指向对应的流程实例
 - 每一个流程实例，通过它的业务键( `BUSINESS_KEY_` ) 指向对应的业务表记录
-以项目中提供的 [OALeave (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/BpmOALeaveServiceImpl.java) 请假举例子，它的业务表 `bpm_oa_leave` 和流程引擎的流程实例的关系如下图：
+以项目中提供的 [OALeave](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/BpmOALeaveServiceImpl.java) 请假举例子，它的业务表 `bpm_oa_leave` 和流程引擎的流程实例的关系如下图：
 ![请假单数据库表](../images/img_b6452dbb.png) 也因为业务建立了独立的业务表，所以必须开发业务表对应的列表、表单、详情页面。不过，审核相关的功能是无需重新开发的，原因是业务表已经关联对应的流程实例，流程引擎审批流程实例即可。
-下面，我们以项目中的 [OALeave (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/BpmOALeaveServiceImpl.java) 为例子，详细讲解下业务表单的开发与使用的过程。
+下面，我们以项目中的 [OALeave](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/BpmOALeaveServiceImpl.java) 为例子，详细讲解下业务表单的开发与使用的过程。
 ### # 1.0 第零步：业务开发
 #### # 1.0.1 新建业务表
 新建业务表 `bpm_oa_leave`，建表语句如下：
@@ -42,19 +42,19 @@ PRIMARY KEY (`id`) USING BTREE
 - `status` 字段，请假结果，需要通过 Listener 监听回调结果，稍后来看看
 #### # 1.0.2 【后端】实现业务逻辑
 实现业务表的【后端】业务逻辑，具体代码可以看看如下两个类：
-- [BpmOALeaveController (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/controller/admin/oa/BpmOALeaveController.java)
-- [BpmOALeaveServiceImpl (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/BpmOALeaveServiceImpl.java)
+- [BpmOALeaveController](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/controller/admin/oa/BpmOALeaveController.java)
+- [BpmOALeaveServiceImpl](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/BpmOALeaveServiceImpl.java)
 重点是看流程发起的逻辑，它定义了 `/bpm/oa/leave/create` 给业务的表单界面调用，UML 时序图如下：
 ![后续时序图](../images/img_779d01e8.png) 具体的实现代码比较简单，如下图所示：
 ![BpmOALeaveServiceImpl 创建流程的逻辑](../images/img_d9a274e0.png) 
 - `PROCESS_KEY` 静态变量：是业务对应的流程模型的编号，稍后会进行创建编号为 oa_leave 的流程模型。
-- [BpmProcessInstanceApi (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/api/task/BpmProcessInstanceApi.java) 定义了 `#createProcessInstance(...)` 方法，用于创建流程实例，业务无需关心底层是 Flowable 引擎，还是 Activiti、Camunda 引擎。
+- [BpmProcessInstanceApi](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/api/task/BpmProcessInstanceApi.java) 定义了 `#createProcessInstance(...)` 方法，用于创建流程实例，业务无需关心底层是 Flowable 引擎，还是 Activiti、Camunda 引擎。
 #### # 1.0.3 【前端】实现业务逻辑
 实现业务表的【前端】业务逻辑，具体代码可以看看如下三个页面：
-- 请假发起界面：[`leave/create.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/oa/leave/create.vue)
-- 请假详情界面：[`leave/detail.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/oa/leave/detail.vue)
-- 请假列表界面：[`leave/index.vue` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/oa/leave/index.vue)
-另外，在 [`router/modules/remaining.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/router/modules/remaining.ts#L305-L328) 中定义 `create.vue` 和 `detail.vue` 的路由，配置如下：
+- 请假发起界面：[`leave/create.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/oa/leave/create.vue)
+- 请假详情界面：[`leave/detail.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/oa/leave/detail.vue)
+- 请假列表界面：[`leave/index.vue`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/bpm/oa/leave/index.vue)
+另外，在 [`router/modules/remaining.ts`](https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/router/modules/remaining.ts#L305-L328) 中定义 `create.vue` 和 `detail.vue` 的路由，配置如下：
 {
 path: '/bpm',
 component: Layout,
@@ -94,7 +94,7 @@ activeMenu: '/bpm/oa/leave'
 - 审批流程时，需要跳转到 `detail.vue` 页面，查看业务表的信息。
 #### # 1.0.4 【实现】实现审批结果的监听
 审批结束时（例如说流程实例最终被审批通过、不通过、取消），后端需要监听审批结果，然后更新业务表的状态。
-具体可见 [BpmOALeaveStatusListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/listener/BpmOALeaveStatusListener.java) 监听器，它实现流程引擎定义的 [BpmProcessInstanceStatusEventListener (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/api/event/BpmProcessInstanceStatusEventListener.java) 抽象类，在流程实例结束时，回调通知它**最终的**结果是通过还是不通过。代码如下图：
+具体可见 [BpmOALeaveStatusListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/service/oa/listener/BpmOALeaveStatusListener.java) 监听器，它实现流程引擎定义的 [BpmProcessInstanceStatusEventListener](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-module-bpm/src/main/java/cn/iocoder/yudao/module/bpm/api/event/BpmProcessInstanceStatusEventListener.java) 抽象类，在流程实例结束时，回调通知它**最终的**结果是通过还是不通过。代码如下图：
 图片纠错：最新版本不区分 yudao-module-bpm-api 和 yudao-module-bpm-biz 子模块，代码直接合并到 yudao-module-bpm 模块的 src 目录下，更适合单体项目
 ![BpmOALeaveStatusListener 监听结果](../images/img_3405f854.png) 友情提示：BpmProcessInstanceStatusEventListener 是什么呢？
 BpmProcessInstanceStatusEventListener 是我们框架自己封装的一个监听器，用于监听流程实例的最终结果。在流程实例结束时，会回调通知它。
@@ -141,7 +141,7 @@ BpmProcessInstanceStatusEventListener 是我们框架自己封装的一个监听
 也就是说，审批只是业务的一个环节，而不是整个业务的所有。所以，我们选择业务表单，是为了更好的支持业务的复杂度。
 ## # 3. 业务表单是如何集成的？
 ① 流程发起时，会跳转流程模型配置的“表单提交路由”，代码如下图所示：
-![业务表单 - 发起](../images/img_8fb280bc.png) ② 流程详情时，需要展示业务表单详情时，通过 [Vue3 异步组件 (opens new window)](https://cn.vuejs.org/guide/components/async) 特性，将展示流程模型配置的“表单查看路由”，代码如下图所示：
+![业务表单 - 发起](../images/img_8fb280bc.png) ② 流程详情时，需要展示业务表单详情时，通过 [Vue3 异步组件](https://cn.vuejs.org/guide/components/async) 特性，将展示流程模型配置的“表单查看路由”，代码如下图所示：
 ![业务表单 - 详情](../images/img_51557896.png) 
 .pageB img{width:80px!important;}
 .wwads-horizontal .wwads-text, .wwads-content .wwads-text{line-height:1;}

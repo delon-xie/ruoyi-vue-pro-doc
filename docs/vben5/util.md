@@ -3,7 +3,7 @@
 本小节，分享前端项目的常用方法和工具类。
 ## # 1. 缓存配置
 ### # 1.1 说明
-项目使用 [`StorageManager` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/@core/base/shared/src/cache/storage-manager.ts) 类进行本地存储管理，支持 `localStorage` 和 `sessionStorage` 两种存储方式，并提供了超时时间设置功能。
+项目使用 [`StorageManager`](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/@core/base/shared/src/cache/storage-manager.ts) 类进行本地存储管理，支持 `localStorage` 和 `sessionStorage` 两种存储方式，并提供了超时时间设置功能。
 ### # 1.2 使用示例
 ```javascript
 import { StorageManager } from '@vben/utils';
@@ -35,7 +35,7 @@ storage.clearExpiredItems();
 ## # 2. 工具类
 项目的工具类分为两层：全局工具类和项目专属工具类。
 ### # 2.1 全局工具类
-全局工具类位于 [`packages/@core/base/shared/src/utils` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/packages/@core/base/shared/src/utils) 目录，通过 `@vben/utils` 包导出，供所有项目共享使用。
+全局工具类位于 [`packages/@core/base/shared/src/utils`](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/packages/@core/base/shared/src/utils) 目录，通过 `@vben/utils` 包导出，供所有项目共享使用。
 | 文件 | 作用 |
 | --- | --- |
 | `date.ts` | 日期格式化、时区设置 |
@@ -53,17 +53,17 @@ storage.clearExpiredItems();
 | `window.ts` | 窗口操作（打开新窗口等） |
 ### # 2.2 项目专属工具类
 各项目有自己的工具类目录，用于存放项目特有的工具方法：
-- antd 版本：[`apps/web-antd/src/utils` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-antd/src/utils)
-- ele 版本：[`apps/web-ele/src/utils` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-ele/src/utils)
+- antd 版本：[`apps/web-antd/src/utils`](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-antd/src/utils)
+- ele 版本：[`apps/web-ele/src/utils`](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/apps/web-ele/src/utils)
 | 文件 | 作用 |
 | --- | --- |
 | `routerHelper.ts` | 路由辅助方法 |
 | `rangePickerProps.ts` | 日期范围选择器的快捷选项配置 |
 | `useUpload.ts` | 文件上传 Hook |
 ## # 3. 枚举类
-项目在 [`@vben/constants` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/packages/constants/src) 包中定义了枚举类，分为字典枚举和业务枚举两类。
+项目在 [`@vben/constants`](https://github.com/yudaocode/yudao-ui-admin-vben/tree/master/packages/constants/src) 包中定义了枚举类，分为字典枚举和业务枚举两类。
 ### # 3.1 字典枚举
-字典枚举定义在 [`dict-enum.ts` (opens new window)](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/constants/src/dict-enum.ts) 中，对应后端字典管理的字典类型 KEY，用于获取字典数据。
+字典枚举定义在 [`dict-enum.ts`](https://github.com/yudaocode/yudao-ui-admin-vben/blob/master/packages/constants/src/dict-enum.ts) 中，对应后端字典管理的字典类型 KEY，用于获取字典数据。
 字典枚举配合字典工具类使用，详见 [字典数据](/vben5/dict) 章节。
 ### # 3.2 业务枚举
 业务枚举定义在 `biz-*.ts` 文件中，用于前端业务逻辑判断，避免"魔法值"。

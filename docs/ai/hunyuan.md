@@ -1,15 +1,15 @@
 # 【模型接入】腾讯混元
 
-项目基于 Spring AI + 自己实现的 `models/hunyuan`，实现 [hunyuan 混元大模型 (opens new window)](https://cloud.tencent.com/product/hunyuan) 的接入：
+项目基于 Spring AI + 自己实现的 `models/hunyuan`，实现 [hunyuan 混元大模型](https://cloud.tencent.com/product/hunyuan) 的接入：
 | 功能 | 模型 | Spring AI 客户端 |
 | --- | --- | --- |
 | AI 对话 | hunyuan-turbo、hunyuan-large 等 | HunYuanChatModel |
-| AI 绘画 | [混元生图 (opens new window)](https://cloud.tencent.com/document/product/1729/105925) 等 | 暂未接入 |
+| AI 绘画 | [混元生图](https://cloud.tencent.com/document/product/1729/105925) 等 | 暂未接入 |
 ## # 1. 申请密钥
 由于腾讯混元是非开源的模型，所以无法私有化部署，需要去官网申请 API Key，然后通过 Spring AI 提供的客户端接入。
 ### # 1.1 申请腾讯密钥
-① 在 [腾讯云 (opens new window)](https://curl.qcloud.com/cxA9d2Ik) 上，注册一个账号。
-② 在 [管理 -> API Key 管理 (opens new window)](https://console.cloud.tencent.com/hunyuan/api-key) 上，创建一个 API Key 密钥。
+① 在 [腾讯云](https://curl.qcloud.com/cxA9d2Ik) 上，注册一个账号。
+② 在 [管理 -> API Key 管理](https://console.cloud.tencent.com/hunyuan/api-key) 上，创建一个 API Key 密钥。
 申请完成后，可以在我们系统的 [AI 大模型 -> 控制台 -> API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”，不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：
 ![官方的密钥配置](../images/img_3eaac85a.png) 
 ## # 2. 模型配置
@@ -17,7 +17,7 @@
 目前 `ai_model` 表中，已经预置了一些模型，可以直接使用！！！
 ### # 2.1 AI 对话
 使用 [《AI 对话》](/ai/chat/) 时，需要在 [AI 大模型 -> 控制台 -> 模型配置] 菜单，配置对应的聊天模型。
-模型有：`hunyuan-turbo`、`hunyuan-large` 等等，可以点击 [混元生文 (opens new window)](https://cloud.tencent.com/document/product/1729/97731) 进行查看。
+模型有：`hunyuan-turbo`、`hunyuan-large` 等等，可以点击 [混元生文](https://cloud.tencent.com/document/product/1729/97731) 进行查看。
 注意，每个模型标识的 `max_tokens`（回复数 Token 数）一般是 4096 或 8192，具体也是看上述链接。
 ### # 2.2 AI 绘图
 TODO 等待 DouBao ImageModel 客户端！

@@ -1,7 +1,7 @@
 # 支付宝转账接入
 
 ## # 0. 概述
-在 `yudao-module-pay` 模块的 [`demo` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo) 模块，我们提供了一个 **转账** 接入的示例（PayDemoWithdrawController）。
+在 `yudao-module-pay` 模块的 [`demo`](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo) 模块，我们提供了一个 **转账** 接入的示例（PayDemoWithdrawController）。
 它支持如下支付（转账）渠道：
 - 支付宝转账
 - 钱包转账
@@ -22,20 +22,20 @@
 因为内部会有多个业务模块，所以它们每个都有自己的回调地址，就是配置到对应的支付应用上！
 ② 点击“示例用户”对应的【支付宝 PC 网站支付】，进入支付渠道的配置。如下图所示：
 ![支付渠道](../images/img_5dadda78.png) 友情提示：
-如果你还没有支付宝开放平台的账号，可以先参考 [《沙箱环境》 (opens new window)](https://opendocs.alipay.com/common/02kkv7) 文档，申请一个测试账号，我目前就是这么测试的。只需要阅读该文档的如下小节即可：
-![沙箱环境](../images/img_8620c10e.png) 最终在 [沙箱应用 (opens new window)](https://open.alipay.com/develop/sandbox/app) 可以看到支付渠道的配置。
+如果你还没有支付宝开放平台的账号，可以先参考 [《沙箱环境》](https://opendocs.alipay.com/common/02kkv7) 文档，申请一个测试账号，我目前就是这么测试的。只需要阅读该文档的如下小节即可：
+![沙箱环境](../images/img_8620c10e.png) 最终在 [沙箱应用](https://open.alipay.com/develop/sandbox/app) 可以看到支付渠道的配置。
 ## # 2. 第二步，实现转账调用【重要】
 友情提示：由于 demo 模块的转账接入已经实现，这里你只要看懂什么意思即可，不用操作。
 ① 【后端】在 `demo` 模块所在的 `yudao-module-xx` 模块的 `pom.xml` 文件，引入 `yudao-module-pay` 依赖，这样才可以调用到 PayTransferApi 接口。代码如下：
 cn.iocoder.boot
 yudao-module-pay
 ${revision}
-② 【后端】在 `demo` 模块的转账逻辑中，需要调用 PayTransferApi 的 [`#createTransfer(...)` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master-jdk17/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/service/demo/PayDemoWithdrawServiceImpl.java#L77-L87) 方法，创建转账单。如下图所示：
+② 【后端】在 `demo` 模块的转账逻辑中，需要调用 PayTransferApi 的 [`#createTransfer(...)`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master-jdk17/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/service/demo/PayDemoWithdrawServiceImpl.java#L77-L87) 方法，创建转账单。如下图所示：
 图片纠错：最新版本不区分 yudao-module-pay-api 和 yudao-module-pay-biz 子模块，代码直接合并到 yudao-module-pay 模块的 src 目录下，更适合单体项目
 ![调用 PayOrderApi](../images/img_94f4bfa3.png) 
 ## # 3. 第三部，实现回调接口【重要】
 友情提示：由于 demo 模块的转账接入已经实现，这里你只要看懂什么意思即可，不用操作。
-在 `demo` 模块所在的 `yudao-module-xx` 模块，实现一个转账回调的接口，提供给支付【中心】回调。对应的代码在 PayDemoWithdrawController 的 [`#updateDemoWithdrawTransferred(...)` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master-jdk17/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo/PayDemoWithdrawController.java#L54-L61) 方法中，如下图所示：
+在 `demo` 模块所在的 `yudao-module-xx` 模块，实现一个转账回调的接口，提供给支付【中心】回调。对应的代码在 PayDemoWithdrawController 的 [`#updateDemoWithdrawTransferred(...)`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master-jdk17/yudao-module-pay/src/main/java/cn/iocoder/yudao/module/pay/controller/admin/demo/PayDemoWithdrawController.java#L54-L61) 方法中，如下图所示：
 ![实现回调接口](../images/img_893d89e6.png) 
 ## # 4. 第四步，转账功能测试
 至此，我们已经完成了转账接入的所有步骤，接下来，我们来测试一下转账功能。

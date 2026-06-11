@@ -1,10 +1,10 @@
 # 消息队列（RabbitMQ）
 
 ## # RabbitMQ-Spring
-[`yudao-spring-boot-starter-mq` (opens new window)](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 RabbitMQ 实现分布式消息队列。
-如果你对 RabbitMQ 不太了解，可以看看 [《芋道 Spring Boot 消息队列 RabbitMQ 入门》 (opens new window)](https://www.iocoder.cn/Spring-Boot/RabbitMQ/?yudao) 文档。
+[`yudao-spring-boot-starter-mq`](https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-framework/yudao-spring-boot-starter-mq/) 技术组件，基于 RabbitMQ 实现分布式消息队列。
+如果你对 RabbitMQ 不太了解，可以看看 [《芋道 Spring Boot 消息队列 RabbitMQ 入门》](https://www.iocoder.cn/Spring-Boot/RabbitMQ/?yudao) 文档。
 如何安装一个 RabbitMQ 服务？
-参考 [《芋道 RabbitMQ 极简入门 》 (opens new window)](https://www.iocoder.cn/RabbitMQ/install/?yudao) 文档。
+参考 [《芋道 RabbitMQ 极简入门 》](https://www.iocoder.cn/RabbitMQ/install/?yudao) 文档。
 ## # 2. 使用示例
 以【短信发送】举例子，改造使用 RabbitMQ 作为消息队列。
 ## # 2.0 引入依赖与配置
