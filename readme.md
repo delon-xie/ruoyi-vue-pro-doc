@@ -27,7 +27,7 @@
 
 ##  🐳 项目关系
 
-![架构演进](/.image/common/yudao-roadmap.png)
+![架构演进](/docs/images/ruoyi-vue-pro-architecture.png)
 
 三个项目的功能对比，可见社区共同整理的 [国产开源项目对比](https://www.yuque.com/xiatian-bsgny/lm0ec1/wqf8mn) 表格。
 
