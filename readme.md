@@ -2,7 +2,8 @@
 > 这是一个 **芋道** ruoyi-vue-pro 文档站。当前更新日期：2026-06-11
 >
 
-欢迎友情打赏，吹一瓶水 [微信打赏(/docs/images/wechatpay.jpg)]
+欢迎友情打赏，吹一瓶水 
+![微信打赏](/docs/images/wechatpay.jpg)
 
 ## 🐯 平台简介
 
